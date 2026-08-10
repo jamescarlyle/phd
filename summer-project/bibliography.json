@@ -1,0 +1,4075 @@
+[
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/DPN2MXJL",
+		"type": "article-journal",
+		"container-title": "Scripta Materialia",
+		"DOI": "10.1016/j.scriptamat.2016.10.004",
+		"ISSN": "13596462",
+		"journalAbbreviation": "Scripta Materialia",
+		"language": "en",
+		"page": "61-64",
+		"source": "DOI.org (Crossref)",
+		"title": "Polarization reversal and memory effect in anti-ferroelectric materials",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S1359646216304742",
+		"volume": "128",
+		"author": [
+			{
+				"family": "Vopson",
+				"given": "Melvin M."
+			},
+			{
+				"family": "Caruntu",
+				"given": "G."
+			},
+			{
+				"family": "Tan",
+				"given": "Xiaoli"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2017",
+					2
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/2C8U7R36",
+		"type": "article-journal",
+		"abstract": "Abstract\n            State-of-the-art computer vision systems use frame-based cameras that sample the visual scene as a series of high-resolution images. These are then processed using convolutional neural networks using neurons with continuous outputs. Biological vision systems use a quite different approach, where the eyes (cameras) sample the visual scene continuously, often with a non-uniform resolution, and generate neural spike events in response to changes in the scene. The resulting spatio-temporal patterns of events are then processed through networks of spiking neurons. Such event-based processing offers advantages in terms of focusing constrained resources on the most salient features of the perceived scene, and those advantages should also accrue to engineered vision systems based upon similar principles. Event-based vision sensors, and event-based processing exemplified by the SpiNNaker (Spiking Neural Network Architecture) machine, can be used to model the biological vision pathway at various levels of detail. Here we use this approach to explore structural synaptic plasticity as a possible mechanism whereby biological vision systems may learn the statistics of their inputs without supervision, pointing the way to engineered vision systems with similar online learning capabilities.",
+		"container-title": "Interface Focus",
+		"DOI": "10.1098/rsfs.2018.0007",
+		"ISSN": "2042-8898, 2042-8901",
+		"issue": "4",
+		"language": "en",
+		"license": "http://creativecommons.org/licenses/by/4.0/",
+		"page": "20180007",
+		"source": "DOI.org (Crossref)",
+		"title": "Spiking neural networks for computer vision",
+		"URL": "https://royalsocietypublishing.org/rsfs/article/8/4/20180007/64226/Spiking-neural-networks-for-computer-visionSpiking",
+		"volume": "8",
+		"author": [
+			{
+				"family": "Hopkins",
+				"given": "Michael"
+			},
+			{
+				"family": "Pineda-García",
+				"given": "Garibaldi"
+			},
+			{
+				"family": "Bogdan",
+				"given": "Petruţ A."
+			},
+			{
+				"family": "Furber",
+				"given": "Steve B."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					1,
+					6
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/U7GW25JQ",
+		"type": "article-journal",
+		"container-title": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+		"DOI": "10.1109/TPAMI.2023.3241201",
+		"ISSN": "0162-8828, 2160-9292, 1939-3539",
+		"issue": "8",
+		"journalAbbreviation": "IEEE Trans. Pattern Anal. Mach. Intell.",
+		"language": "en",
+		"license": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html",
+		"page": "9393-9410",
+		"source": "DOI.org (Crossref)",
+		"title": "Attention Spiking Neural Networks",
+		"URL": "https://ieeexplore.ieee.org/document/10032591/",
+		"volume": "45",
+		"author": [
+			{
+				"family": "Yao",
+				"given": "Man"
+			},
+			{
+				"family": "Zhao",
+				"given": "Guangshe"
+			},
+			{
+				"family": "Zhang",
+				"given": "Hengyu"
+			},
+			{
+				"family": "Hu",
+				"given": "Yifan"
+			},
+			{
+				"family": "Deng",
+				"given": "Lei"
+			},
+			{
+				"family": "Tian",
+				"given": "Yonghong"
+			},
+			{
+				"family": "Xu",
+				"given": "Bo"
+			},
+			{
+				"family": "Li",
+				"given": "Guoqi"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2023",
+					8
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/EEAD2MSH",
+		"type": "article-journal",
+		"abstract": "Abstract\n            Dynamic machine vision requires recognizing the past and predicting the future of a moving object based on present vision. Current machine vision systems accomplish this by processing numerous image frames or using complex algorithms. Here, we report motion recognition and prediction in recurrent photomemristor networks. In our system, a retinomorphic photomemristor array, working as dynamic vision reservoir, embeds past motion frames as hidden states into the present frame through inherent dynamic memory. The informative present frame facilitates accurate recognition of past and prediction of future motions with machine learning algorithms. This in-sensor motion processing capability eliminates redundant data flows and promotes real-time perception of moving objects for dynamic machine vision.",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-023-37886-y",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"language": "en",
+		"page": "2169",
+		"source": "DOI.org (Crossref)",
+		"title": "Dynamic machine vision with retinomorphic photomemristor-reservoir computing",
+		"URL": "https://www.nature.com/articles/s41467-023-37886-y",
+		"volume": "14",
+		"author": [
+			{
+				"family": "Tan",
+				"given": "Hongwei"
+			},
+			{
+				"family": "Van Dijken",
+				"given": "Sebastiaan"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2023",
+					4,
+					15
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/RZQ744SS",
+		"type": "article-journal",
+		"abstract": "Spiking neural networks (SNNs) are a promising avenue for machine learning with superior energy efﬁciency compared to traditional artiﬁcial neural networks (ANNs). Recent advances in training and input encoding have put SNNs on par with state-of-the-art ANNs in image classiﬁcation. However, such tasks do not utilize the internal dynamics of SNNs fully. Notably, a spiking neuron’s membrane potential acts as an internal memory, merging incoming inputs sequentially. This recurrent dynamic enables the networks to learn temporal correlations, making SNNs suitable for sequential learning. Such problems can also be tackled using ANNs. However, to capture the temporal dependencies, either the inputs have to be lumped over time (e.g., Transformers); or explicit recurrence needs to be introduced [e.g., recurrent neural networks (RNNs) and long-short-term memory (LSTM) networks], which incurs considerable complexity. To that end, we explore the capabilities of SNNs in providing lightweight solutions to four sequential tasks involving text, speech, and vision. Our results demonstrate that SNNs, by leveraging their intrinsic memory, can be an efﬁcient alternative to RNNs and LSTMs for sequence processing, especially for certain edge applications. Furthermore, SNNs can be combined with ANNs (hybrid networks) synergistically to obtain the best of both worlds in terms of accuracy and efﬁciency.",
+		"container-title": "IEEE Transactions on Cognitive and Developmental Systems",
+		"DOI": "10.1109/TCDS.2023.3329747",
+		"ISSN": "2379-8920, 2379-8939",
+		"issue": "5",
+		"journalAbbreviation": "IEEE Trans. Cogn. Dev. Syst.",
+		"language": "en",
+		"license": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html",
+		"page": "1648-1663",
+		"source": "DOI.org (Crossref)",
+		"title": "Unlocking the Potential of Spiking Neural Networks: Understanding the What, Why, and Where",
+		"title-short": "Unlocking the Potential of Spiking Neural Networks",
+		"URL": "https://ieeexplore.ieee.org/document/10322581/",
+		"volume": "16",
+		"author": [
+			{
+				"family": "Wickramasinghe",
+				"given": "Buddhi"
+			},
+			{
+				"family": "Chowdhury",
+				"given": "Sayeed Shafayet"
+			},
+			{
+				"family": "Kosta",
+				"given": "Adarsh Kumar"
+			},
+			{
+				"family": "Ponghiran",
+				"given": "Wachirawit"
+			},
+			{
+				"family": "Roy",
+				"given": "Kaushik"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					10
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/J683BEGB",
+		"type": "article-journal",
+		"abstract": "Spiking Neural Networks (SNNs) mimic biological brain activity, processing data efficiently through an event-driven design, wherein the neurons activate only when inputs exceed specific thresholds. Their ability to track voltage changes over time via membrane potential dynamics, helps retain temporal information. This study combines SNNs with PyTorch’s adaptable framework, snnTorch, to test their potential for image-based tasks. We introduce DRiVE, a vehicle detection model that uses spiking neuron dynamics to classify images, achieving 94.8% accuracy and a near-perfect 0.99 AUC score. These results highlight DRiVE’s ability to distinguish vehicle classes effectively, challenging the notion that SNNs are limited to temporal data. As interest grows in energy-efficient neural models, DRiVE’s success emphasizes the need to refine SNN optimization for visual tasks. This work encourages broader exploration of SNNs in scenarios where conventional networks struggle, particularly for real-world applications requiring both precision and efficiency.",
+		"language": "en",
+		"source": "Zotero",
+		"title": "DRiVE: Dynamic Recognition in VEhicles using snnTorch",
+		"author": [
+			{
+				"family": "Vora",
+				"given": "Heerak"
+			},
+			{
+				"family": "Pathak",
+				"given": "Param"
+			},
+			{
+				"family": "Bakaraniya",
+				"given": "Parul"
+			}
+		]
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/WG2WF7U4",
+		"type": "article-journal",
+		"abstract": "The growing demand for energy efficiency and sustainability in smart buildings necessitates advanced AI-driven methods for adaptive control and predictive maintenance. This study explores the application of Spiking Neural Networks (SNNs) to event-driven processing, real-time anomaly detection, and edge computing-based optimization in building automation. In contrast to conventional deep learning models, SNNs provide low-power, high-efficiency computation by mimicking biological neural processes, making them particularly suitable for real-time, edge-deployed decision-making. The proposed SNN based on Reward-Modulated Spike-Timing-Dependent Plasticity (STDP) and Bayesian Optimization (BO) integrates occupancy and ambient condition monitoring to dynamically manage assets such as appliances while simultaneously identifying anomalies for predictive maintenance. Experimental evaluations show that our BO-STDP-SNN framework achieves notable reductions in both energy consumption by 27.8% and power requirements by 70%, while delivering superior accuracy in anomaly detection compared with CNN, RNN, and LSTM based baselines. These results demonstrate the potential of SNNs to enhance the efficiency and resilience of smart building systems, reduce operational costs, and support long-term sustainability through low-latency, event-driven intelligence.",
+		"container-title": "Energies",
+		"DOI": "10.3390/en18195089",
+		"ISSN": "1996-1073",
+		"issue": "19",
+		"journalAbbreviation": "Energies",
+		"language": "en",
+		"page": "5089",
+		"source": "DOI.org (Crossref)",
+		"title": "Energy and Water Management in Smart Buildings Using Spiking Neural Networks: A Low-Power, Event-Driven Approach for Adaptive Control and Anomaly Detection",
+		"title-short": "Energy and Water Management in Smart Buildings Using Spiking Neural Networks",
+		"URL": "https://www.mdpi.com/1996-1073/18/19/5089",
+		"volume": "18",
+		"author": [
+			{
+				"family": "Alrashidi",
+				"given": "Malek"
+			},
+			{
+				"family": "Mnasri",
+				"given": "Sami"
+			},
+			{
+				"family": "Alqabli",
+				"given": "Maha"
+			},
+			{
+				"family": "Alghamdi",
+				"given": "Mansoor"
+			},
+			{
+				"family": "Short",
+				"given": "Michael"
+			},
+			{
+				"family": "Williams",
+				"given": "Sean"
+			},
+			{
+				"family": "Dawood",
+				"given": "Nashwan"
+			},
+			{
+				"family": "Alkhazi",
+				"given": "Ibrahim S."
+			},
+			{
+				"family": "Alrowaily",
+				"given": "Majed Abdullah"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					9,
+					24
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/LGYUT32A",
+		"type": "article-journal",
+		"abstract": "Creating datasets for Neuromorphic Vision is a challenging task. A lack of available recordings from Neuromorphic Vision sensors means that data must typically be recorded speciﬁcally for dataset creation rather than collecting and labeling existing data. The task is further complicated by a desire to simultaneously provide traditional frame-based recordings to allow for direct comparison with traditional Computer Vision algorithms. Here we propose a method for converting existing Computer Vision static image datasets into Neuromorphic Vision datasets using an actuated pan-tilt camera platform. Moving the sensor rather than the scene or image is a more biologically realistic approach to sensing and eliminates timing artifacts introduced by monitor updates when simulating motion on a computer monitor. We present conversion of two popular image datasets (MNIST and Caltech101) which have played important roles in the development of Computer Vision, and we provide performance metrics on these datasets using spike-based recognition algorithms. This work contributes datasets for future use in the ﬁeld, as well as results from spike-based algorithms against which future works can compare. Furthermore, by converting datasets already popular in Computer Vision, we enable more direct comparison with frame-based approaches.",
+		"container-title": "Frontiers in Neuroscience",
+		"DOI": "10.3389/fnins.2015.00437",
+		"ISSN": "1662-453X",
+		"journalAbbreviation": "Front. Neurosci.",
+		"language": "en",
+		"source": "DOI.org (Crossref)",
+		"title": "Converting Static Image Datasets to Spiking Neuromorphic Datasets Using Saccades",
+		"URL": "http://journal.frontiersin.org/Article/10.3389/fnins.2015.00437/abstract",
+		"volume": "9",
+		"author": [
+			{
+				"family": "Orchard",
+				"given": "Garrick"
+			},
+			{
+				"family": "Jayawant",
+				"given": "Ajinkya"
+			},
+			{
+				"family": "Cohen",
+				"given": "Gregory K."
+			},
+			{
+				"family": "Thakor",
+				"given": "Nitish"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2015",
+					11,
+					16
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/BY5ACLHF",
+		"type": "paper-conference",
+		"abstract": "We present the ﬁrst gesture recognition system implemented end-to-end on event-based hardware, using a TrueNorth neurosynaptic processor to recognize hand gestures in real-time at low power from events streamed live by a Dynamic Vision Sensor (DVS). The biologically inspired DVS transmits data only when a pixel detects a change, unlike traditional frame-based cameras which sample every pixel at a ﬁxed frame rate. This sparse, asynchronous data representation lets event-based cameras operate at much lower power than frame-based cameras. However, much of the energy efﬁciency is lost if, as in previous work, the event stream is interpreted by conventional synchronous processors. Here, for the ﬁrst time, we process a live DVS event stream using TrueNorth, a natively event-based processor with 1 million spiking neurons. Conﬁgured here as a convolutional neural network (CNN), the TrueNorth chip identiﬁes the onset of a gesture with a latency of 105 ms while consuming less than 200mW . The CNN achieves 96.5% out-of-sample accuracy on a newly collected DVS dataset (DvsGesture) comprising 11 hand gesture categories from 29 subjects under 3 illumination conditions.",
+		"container-title": "2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+		"DOI": "10.1109/CVPR.2017.781",
+		"event-title": "2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)",
+		"ISBN": "978-1-5386-0457-1",
+		"language": "en",
+		"page": "7388-7397",
+		"publisher": "IEEE",
+		"publisher-place": "Honolulu, HI",
+		"source": "DOI.org (Crossref)",
+		"title": "A Low Power, Fully Event-Based Gesture Recognition System",
+		"URL": "https://ieeexplore.ieee.org/document/8100264/",
+		"author": [
+			{
+				"family": "Amir",
+				"given": "Arnon"
+			},
+			{
+				"family": "Taba",
+				"given": "Brian"
+			},
+			{
+				"family": "Berg",
+				"given": "David"
+			},
+			{
+				"family": "Melano",
+				"given": "Timothy"
+			},
+			{
+				"family": "McKinstry",
+				"given": "Jeffrey"
+			},
+			{
+				"family": "Di Nolfo",
+				"given": "Carmelo"
+			},
+			{
+				"family": "Nayak",
+				"given": "Tapan"
+			},
+			{
+				"family": "Andreopoulos",
+				"given": "Alexander"
+			},
+			{
+				"family": "Garreau",
+				"given": "Guillaume"
+			},
+			{
+				"family": "Mendoza",
+				"given": "Marcela"
+			},
+			{
+				"family": "Kusnitz",
+				"given": "Jeff"
+			},
+			{
+				"family": "Debole",
+				"given": "Michael"
+			},
+			{
+				"family": "Esser",
+				"given": "Steve"
+			},
+			{
+				"family": "Delbruck",
+				"given": "Tobi"
+			},
+			{
+				"family": "Flickner",
+				"given": "Myron"
+			},
+			{
+				"family": "Modha",
+				"given": "Dharmendra"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2017",
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/I8Q83Q4K",
+		"type": "article",
+		"abstract": "Tactile sensing is an essential modality for smart robots as it enables them to interact ﬂexibly with physical objects in their environment. Recent advancements in electronic skins have led to the development of data-driven machine learning methods that exploit this important sensory modality. However, current datasets used to train such algorithms are limited to standard synchronous tactile sensors. There is a dearth of neuromorphic event-based tactile datasets, principally due to the scarcity of large-scale event-based tactile sensors. Having such datasets is crucial for the development and evaluation of new algorithms that process spatio-temporal event-based data. For example, evaluating spiking neural networks on conventional frame-based datasets is considered sub-optimal. Here, we debut a novel neuromorphic Spiking Tactile MNIST (ST-MNIST) dataset, which comprises handwritten digits obtained by human participants writing on a neuromorphic tactile sensor array. We also describe an initial effort to evaluate our ST-MNIST dataset using existing artiﬁcial and spiking neural network models. The classiﬁcation accuracies provided herein can serve as performance benchmarks for future work. We anticipate that our ST-MNIST dataset will be of interest and useful to the neuromorphic and robotics research communities.",
+		"DOI": "10.48550/arXiv.2005.04319",
+		"language": "en",
+		"note": "arXiv:2005.04319 [cs.NE]",
+		"number": "arXiv:2005.04319",
+		"publisher": "arXiv",
+		"source": "arXiv.org",
+		"title": "ST-MNIST -- The Spiking Tactile MNIST Neuromorphic Dataset",
+		"URL": "http://arxiv.org/abs/2005.04319",
+		"author": [
+			{
+				"family": "See",
+				"given": "Hian Hian"
+			},
+			{
+				"family": "Lim",
+				"given": "Brian"
+			},
+			{
+				"family": "Li",
+				"given": "Si"
+			},
+			{
+				"family": "Yao",
+				"given": "Haicheng"
+			},
+			{
+				"family": "Cheng",
+				"given": "Wen"
+			},
+			{
+				"family": "Soh",
+				"given": "Harold"
+			},
+			{
+				"family": "Tee",
+				"given": "Benjamin C. K."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2020",
+					5,
+					8
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/NFANIQSC",
+		"type": "article",
+		"abstract": "Neuromorphic sensors, specifically event cameras, revolutionize visual data acquisition by capturing pixel intensity changes with exceptional dynamic range, minimal latency, and energy efficiency, setting them apart from conventional frame-based cameras. The distinctive capabilities of event cameras have ignited significant interest in the domain of event-based action recognition, recognizing their vast potential for advancement. However, the development in this field is currently slowed by the lack of comprehensive, large-scale datasets, which are critical for developing robust recognition frameworks. To bridge this gap, we introduces DailyDVS-200 , a meticulously curated benchmark dataset tailored for the event-based action recognition community. DailyDVS200 is extensive, covering 200 action categories across real-world scenarios, recorded by 47 participants, and comprises more than 22,000 event sequences. This dataset is designed to reflect a broad spectrum of action types, scene complexities, and data acquisition diversity. Each sequence in the dataset is annotated with 14 attributes, ensuring a detailed characterization of the recorded actions. Moreover, DailyDVS200 is structured to facilitate a wide range of research paths, offering a solid foundation for both validating existing approaches and inspiring novel methodologies. By setting a new benchmark in the field, we challenge the current limitations of neuromorphic data processing and invite a surge of new approaches in event-based action recognition techniques, which paves the way for future explorations in neuromorphic computing and beyond. The dataset and source code are available at https://github.com/QiWang233/DailyDVS-200.",
+		"DOI": "10.48550/arXiv.2407.05106",
+		"language": "en",
+		"note": "arXiv:2407.05106 [cs.CV]",
+		"number": "arXiv:2407.05106",
+		"publisher": "arXiv",
+		"source": "arXiv.org",
+		"title": "DailyDVS-200: A Comprehensive Benchmark Dataset for Event-Based Action Recognition",
+		"title-short": "DailyDVS-200",
+		"URL": "http://arxiv.org/abs/2407.05106",
+		"author": [
+			{
+				"family": "Wang",
+				"given": "Qi"
+			},
+			{
+				"family": "Xu",
+				"given": "Zhou"
+			},
+			{
+				"family": "Lin",
+				"given": "Yuming"
+			},
+			{
+				"family": "Ye",
+				"given": "Jingtao"
+			},
+			{
+				"family": "Li",
+				"given": "Hongsheng"
+			},
+			{
+				"family": "Zhu",
+				"given": "Guangming"
+			},
+			{
+				"family": "Shah",
+				"given": "Syed Afaq Ali"
+			},
+			{
+				"family": "Bennamoun",
+				"given": "Mohammed"
+			},
+			{
+				"family": "Zhang",
+				"given": "Liang"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					7,
+					13
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/M46H9YWR",
+		"type": "article",
+		"abstract": "Video anomaly detection plays a significant role in intelligent surveillance systems. To enhance model’s anomaly recognition ability, previous works have typically involved RGB, optical flow, and text features. Recently, dynamic vision sensors (DVS) have emerged as a promising technology, which capture visual information as discrete events with a very high dynamic range and temporal resolution. It reduces data redundancy and enhances the capture capacity of moving objects compared to conventional camera. To introduce this rich dynamic information into the surveillance field, we created the first DVS video anomaly detection benchmark, namely UCF-Crime-DVS. To fully utilize this new data modality, a multi-scale spiking fusion network (MSF) is designed based on spiking neural networks (SNNs). This work explores the potential application of dynamic information from event data in video anomaly detection. Our experiments demonstrate the effectiveness of our framework on UCF-Crime-DVS and its superior performance compared to other models, establishing a new baseline for SNN-based weakly supervised video anomaly detection.",
+		"DOI": "10.48550/arXiv.2503.12905",
+		"language": "en",
+		"note": "arXiv:2503.12905 [cs.CV]",
+		"number": "arXiv:2503.12905",
+		"publisher": "arXiv",
+		"source": "arXiv.org",
+		"title": "UCF-Crime-DVS: A Novel Event-Based Dataset for Video Anomaly Detection with Spiking Neural Networks",
+		"title-short": "UCF-Crime-DVS",
+		"URL": "http://arxiv.org/abs/2503.12905",
+		"author": [
+			{
+				"family": "Qian",
+				"given": "Yuanbin"
+			},
+			{
+				"family": "Ye",
+				"given": "Shuhan"
+			},
+			{
+				"family": "Wang",
+				"given": "Chong"
+			},
+			{
+				"family": "Cai",
+				"given": "Xiaojie"
+			},
+			{
+				"family": "Qian",
+				"given": "Jiangbo"
+			},
+			{
+				"family": "Wu",
+				"given": "Jiafei"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					3,
+					17
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/J93EWRBS",
+		"type": "article-journal",
+		"abstract": "Biologically inspired spiking neural networks are increasingly popular in the ﬁeld of artiﬁcial intelligence due to their ability to solve complex problems while being power efﬁcient. They do so by leveraging the timing of discrete spikes as main information carrier. Though, industrial applications are still lacking, partially because the question of how to encode incoming data into discrete spike events cannot be uniformly answered. In this paper, we summarise the signal encoding schemes presented in the literature and propose a uniform nomenclature to prevent the vague usage of ambiguous deﬁnitions. Therefore we survey both, the theoretical foundations as well as applications of the encoding schemes. This work provides a foundation in spiking signal encoding and gives an overview over different application-oriented implementations which utilise the schemes.",
+		"container-title": "Neural Processing Letters",
+		"DOI": "10.1007/s11063-021-10562-2",
+		"ISSN": "1370-4621, 1573-773X",
+		"issue": "6",
+		"journalAbbreviation": "Neural Process Lett",
+		"language": "en",
+		"page": "4693-4710",
+		"source": "DOI.org (Crossref)",
+		"title": "A Survey of Encoding Techniques for Signal Processing in Spiking Neural Networks",
+		"URL": "https://link.springer.com/10.1007/s11063-021-10562-2",
+		"volume": "53",
+		"author": [
+			{
+				"family": "Auge",
+				"given": "Daniel"
+			},
+			{
+				"family": "Hille",
+				"given": "Julian"
+			},
+			{
+				"family": "Mueller",
+				"given": "Etienne"
+			},
+			{
+				"family": "Knoll",
+				"given": "Alois"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/Y5KC7GSB",
+		"type": "article-journal",
+		"abstract": "Spiking neural networks (SNNs) have emerged as a promising alternative to conventional artiﬁcial neural networks (ANNs) for energy efﬁcient design. The rate encoded computation in SNNs utilizes a number of spikes in a time window to encode information. In a similar but different scheme, stochastic computing (SC) encodes binary numbers into and operates on random binary bit streams. In this article, we ﬁrst propose a hardware-efﬁcient design of stochastic SNNs that attains a high accuracy. As a network becomes more complex or the number of neurons increases, memory usage tends to grow exponentially. Inspired by the notion of binarized neural networks (BNNs), we further propose the design of a weight-binarized SNN (WB-SNN) to reduce the stringent requirement in memory usage in SNNs. Both designs take advantage of a priority encoder to transform the spikes between layers of neurons into index-based signals. In this way, it mitigates the issue of requiring signiﬁcant hardware resources for a relatively low information density. Additionally, a WB-SNN based convolutional neural network (CNN) is designed for the recognition task of larger datasets. An implementation on ﬁeld programmable gate arrays (FPGAs) for the Modiﬁed National Institute of Standards and Technology (MNIST) image recognition dataset shows that the stochastic SNN design achieves a higher accuracy with smaller hardware compared to other SNNs. Validated by using a multi-layer-perceptron and a CNN on the MNIST and CIFAR-10 datasets, respectively, the WBSNN achieves a signiﬁcant saving in memory with only a limited accuracy loss compared with its SNN and BNN counterparts.",
+		"container-title": "IEEE Transactions on Circuits and Systems for Artificial Intelligence",
+		"DOI": "10.1109/TCASAI.2025.3569509",
+		"ISSN": "2996-6647",
+		"issue": "3",
+		"journalAbbreviation": "IEEE Trans. Circuits Syst. Artif. Intel.",
+		"language": "en",
+		"license": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html",
+		"page": "262-275",
+		"source": "DOI.org (Crossref)",
+		"title": "Design of Highly-Accurate and Hardware-Efficient Spiking Neural Networks",
+		"URL": "https://ieeexplore.ieee.org/document/11002749/",
+		"volume": "2",
+		"author": [
+			{
+				"family": "Tang",
+				"given": "Chengcheng"
+			},
+			{
+				"family": "Han",
+				"given": "Jie"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					9
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/8Y8R57AA",
+		"type": "article-journal",
+		"abstract": "Brain-inspired neuromorphic computing offers significant potential for efficient and adaptive computational platforms. Emerging ferroelectric and antiferroelectric HfZrOx devices provide key roles in convolutional neural network (CNN) and spiking neural network (SNN) computing with unique polarization switching characteristics. Here, we present ferroelectric/antiferroelectric HfZrOx devices to realize functions of artificial synapse/neurons by element doping engineering. The HfZrOx-based ferroelectric and antiferroelectric devices exhibit excellent endurance characteristics of 1 × 109 cycles. Based on the non-volatile polarization switching and spontaneous depolarization nature of ferroelectric and antiferroelectric devices, integrate-andfire behaviors were constructed for neuromorphic computing. For the first time, a complementary ferroelectric/antiferroelectric HfZrOx artificial synapse/neuron-based hybrid CNN−SNN framework was constructed for energy-efficient cardiac magnetic resonance imaging (MRI) classification. The hybrid neural network breaks the limitation of pure SNN in 3D image recognition and improves the accuracy from 82.3 to 92.7% compared to pure CNN, highlighting the potential of composition-engineered ferroelectric materials to implement high-efficiency neuromorphic computing.",
+		"container-title": "Nano Letters",
+		"DOI": "10.1021/acs.nanolett.5c02889",
+		"ISSN": "1530-6984, 1530-6992",
+		"issue": "37",
+		"journalAbbreviation": "Nano Lett.",
+		"language": "en",
+		"license": "https://doi.org/10.15223/policy-029",
+		"page": "13739-13747",
+		"source": "DOI.org (Crossref)",
+		"title": "Ferroelectric/Antiferroelectric HfZrO<sub> <i>x</i> </sub> Artificial Synapses/Neurons for Convolutional Neural Network–Spiking Neural Network Neuromorphic Computing",
+		"URL": "https://pubs.acs.org/doi/10.1021/acs.nanolett.5c02889",
+		"volume": "25",
+		"author": [
+			{
+				"family": "Zhang",
+				"given": "Jinhao"
+			},
+			{
+				"family": "Xu",
+				"given": "Kangli"
+			},
+			{
+				"family": "Lu",
+				"given": "Lin"
+			},
+			{
+				"family": "Lu",
+				"given": "Chen"
+			},
+			{
+				"family": "Tao",
+				"given": "Xinchen"
+			},
+			{
+				"family": "Liu",
+				"given": "Yongkai"
+			},
+			{
+				"family": "Yu",
+				"given": "Jiajie"
+			},
+			{
+				"family": "Meng",
+				"given": "Jialin"
+			},
+			{
+				"family": "Zhang",
+				"given": "David Wei"
+			},
+			{
+				"family": "Wang",
+				"given": "Tianyu"
+			},
+			{
+				"family": "Chen",
+				"given": "Lin"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					9,
+					17
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/QWDJLRLW",
+		"type": "article-journal",
+		"abstract": "This study suggests a ferroelectric memristor array device optimized for neuromorphic computing systems, leveraging a TiN/HAO/SiO2/n+ Si structure. The proposed 24 × 24 crossbar array demonstrates scalable device characteristics through varying cell sizes (10 × 10–70 × 70 µm²), highlighting improved tunneling electroresistance (TER) ratios and switching speed in smaller cells due to reduced domain counts. The device exhibits short-term memory (STM) and long-term memory (LTM) properties, enabling the emulation of biological synaptic behaviors such as paired-pulse facilitation (PPF) and spike-duration/spike-number-dependent plasticity (SDDP, SNDP). Furthermore, the ferroelectric memristor array functions as a reservoir layer in a reservoir computing (RC) system, achieving high accuracy in MNIST and Fashion MNIST pattern recognition (98.78 % and 88.78 %, respectively). Experimental results confirm its capability to mimic Pavlovian associative learning and nociceptor functions, reflecting both volatile and non-volatile memory characteristics. The uniformity of the fabricated array is validated through device-to-device and cycle-to-cycle switching variations, ensuring its feasibility for high-density memory applications. This work underscores the potential of ferroelectric memristor devices as key components in future neuromorphic computing architectures, offering energy efficiency, scalability, and functional versatility.",
+		"container-title": "Nano Energy",
+		"DOI": "10.1016/j.nanoen.2025.111137",
+		"ISSN": "22112855",
+		"journalAbbreviation": "Nano Energy",
+		"language": "en",
+		"page": "111137",
+		"source": "DOI.org (Crossref)",
+		"title": "Ferroelectric memristor crossbar arrays for highly integrated neuromorphic computing system",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S2211285525004963",
+		"volume": "141",
+		"author": [
+			{
+				"family": "Park",
+				"given": "Yongjin"
+			},
+			{
+				"family": "Lim",
+				"given": "Eunjin"
+			},
+			{
+				"family": "Lee",
+				"given": "Seungjun"
+			},
+			{
+				"family": "Georgiev",
+				"given": "Vihar"
+			},
+			{
+				"family": "Kim",
+				"given": "Sungjoon"
+			},
+			{
+				"family": "Kim",
+				"given": "Sungjun"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					8
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/BTZEVZEV",
+		"type": "article-journal",
+		"abstract": "Artificial neural networks (ANNs) have demonstrated remarkable progress in various domains. However, ANNs suffer from enormous time and energy consumption during training and inference processes. Brain-inspired spiking neural networks (SNNs) have recently attracted more attention due to their higher biological plausibility and potential cost-efficient properties. However, most existing SNNs significantly degrade in performance and efficiency when simulated on conventional CPU/GPU hardware. Therefore, a novel temporally coded multilayer SNN (TMSNN) is proposed in this study. It is a typical event-driven model, which encodes information in the relative timing of spikes rather than in firing rates and uses the leaky integrate-and-fire neuron as the basic unit to pursue high biological plausibility. Its multilayer architecture enables the model to solve complicated problems effectively. On the other hand, the proposed TMSNN can be implemented on memristor-based hardware, which uses customized weight quantization and sharing techniques to mitigate the size restrictions of the memristor crossbars. After refining the weights using the simulated annealing algorithm, the hardware implementation of TMSNN can achieve very competitive performance on benchmark datasets, outperforming state-of-the-art temporally coded SNNs in our experiments. The source code of TMSNN is available at https://github.com/jhc050998/Memristor-Crossbar-Based-SNN.",
+		"container-title": "Neurocomputing",
+		"DOI": "10.1016/j.neucom.2025.131523",
+		"ISSN": "09252312",
+		"journalAbbreviation": "Neurocomputing",
+		"language": "en",
+		"page": "131523",
+		"source": "DOI.org (Crossref)",
+		"title": "A temporally coded multilayer spiking neural network and its memristor-based hardware implementation",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S0925231225021952",
+		"volume": "656",
+		"author": [
+			{
+				"family": "Jin",
+				"given": "Haochang"
+			},
+			{
+				"family": "Yang",
+				"given": "Xiuzhi"
+			},
+			{
+				"family": "Song",
+				"given": "Shuangbao"
+			},
+			{
+				"family": "Song",
+				"given": "Zhenyu"
+			},
+			{
+				"family": "Ji",
+				"given": "Junkai"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/P5VK3K8A",
+		"type": "document",
+		"title": "22-11 Compact artificial neuron supplement"
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/4XPMEWXK",
+		"type": "document",
+		"title": "91-12 A silicon neuron"
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/F855X6RA",
+		"type": "paper-conference",
+		"abstract": "Neuromorphic systems that densely integrate CMOS spiking neurons and nano-scale memristor synapses open a new avenue of brain-inspired computing. Existing silicon neurons have molded neural biophysical dynamics but are incompatible with memristor synapses, or used extra training circuitry thus eliminating much of the density advantages gained by using memristors, or were energyinefficient. Here we describe a novel CMOS spiking leaky integrate-and-fire neuron circuit. Building on a reconfigurable architecture with a single opamp, the described neuron accommodates a large number of memristor synapses, and enables online spike timing dependent plasticity (STDP) learning with optimized power consumption. Simulation results of an 180nm CMOS design showed 97% power efficiency metric when realizing STDP learning in 10,000 memristor synapses with a nominal 1Mȍ memristance, and only 13ȝA current consumption when integrating input spikes. Therefore, the described CMOS neuron contributes a generalized building block for large-scale brain-inspired neuromorphic systems.",
+		"container-title": "2015 International Joint Conference on Neural Networks (IJCNN)",
+		"DOI": "10.1109/IJCNN.2015.7280819",
+		"event-title": "2015 International Joint Conference on Neural Networks (IJCNN)",
+		"ISBN": "978-1-4799-1960-4",
+		"language": "en",
+		"page": "1-6",
+		"publisher": "IEEE",
+		"publisher-place": "Killarney, Ireland",
+		"source": "DOI.org (Crossref)",
+		"title": "A CMOS spiking neuron for dense memristor-synapse connectivity for brain-inspired computing",
+		"URL": "http://ieeexplore.ieee.org/document/7280819/",
+		"author": [
+			{
+				"literal": "Xinyu Wu"
+			},
+			{
+				"family": "Saxena",
+				"given": "Vishal"
+			},
+			{
+				"literal": "Kehan Zhu"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2015",
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/VP89UW8M",
+		"type": "article-journal",
+		"abstract": "Abstract\n            Neuromorphic systems aim to implement large‐scale artificial neural network on hardware to ultimately realize human‐level intelligence. The recent development of nonsilicon nanodevices has opened the huge potential of full memristive neural networks (FMNN), consisting of memristive neurons and synapses, for neuromorphic applications. Unlike the widely reported memristive synapses, the development of artificial neurons on memristive devices has less progress. Sophisticated neural dynamics is the major obstacle behind the lagging. Here a rich dynamics‐driven artificial neuron is demonstrated, which successfully emulates partial essential neural features of neural processing, including leaky integration, automatic threshold‐driven fire, and self‐recovery, in a unified manner. The realization of bioplausible artificial neurons on a single device with ultralow power consumption paves the way for constructing energy‐efficient large‐scale FMNN and may boost the development of neuromorphic systems with high density, low power, and fast speed.",
+		"container-title": "Small",
+		"DOI": "10.1002/smll.201802188",
+		"ISSN": "1613-6810, 1613-6829",
+		"issue": "51",
+		"journalAbbreviation": "Small",
+		"language": "en",
+		"page": "1802188",
+		"source": "DOI.org (Crossref)",
+		"title": "Highly Compact Artificial Memristive Neuron with Low Energy Consumption",
+		"URL": "https://onlinelibrary.wiley.com/doi/10.1002/smll.201802188",
+		"volume": "14",
+		"author": [
+			{
+				"family": "Zhang",
+				"given": "Yishu"
+			},
+			{
+				"family": "He",
+				"given": "Wei"
+			},
+			{
+				"family": "Wu",
+				"given": "Yujie"
+			},
+			{
+				"family": "Huang",
+				"given": "Kejie"
+			},
+			{
+				"family": "Shen",
+				"given": "Yangshu"
+			},
+			{
+				"family": "Su",
+				"given": "Jiasheng"
+			},
+			{
+				"family": "Wang",
+				"given": "Yaoyuan"
+			},
+			{
+				"family": "Zhang",
+				"given": "Ziyang"
+			},
+			{
+				"family": "Ji",
+				"given": "Xinglong"
+			},
+			{
+				"family": "Li",
+				"given": "Guoqi"
+			},
+			{
+				"family": "Zhang",
+				"given": "Hongtao"
+			},
+			{
+				"family": "Song",
+				"given": "Sen"
+			},
+			{
+				"family": "Li",
+				"given": "Huanglong"
+			},
+			{
+				"family": "Sun",
+				"given": "Litao"
+			},
+			{
+				"family": "Zhao",
+				"given": "Rong"
+			},
+			{
+				"family": "Shi",
+				"given": "Luping"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/CLK5GVF6",
+		"type": "article-journal",
+		"abstract": "Abstract\n            \n              Neuromorphic machines are intriguing for building energy-efficient intelligent systems, where spiking neurons are pivotal components. Recently, memristive neurons with promising bio-plausibility have been developed, but with limited reliability, bulky capacitors or additional reset circuits. Here, we propose an anti-ferroelectric field-effect transistor neuron based on the inherent polarization and depolarization of Hf\n              0.2\n              Zr\n              0.8\n              O\n              2\n              anti-ferroelectric film to meet these challenges. The intrinsic accumulated polarization/spontaneous depolarization of Hf\n              0.2\n              Zr\n              0.8\n              O\n              2\n              films implements the integration/leaky behavior of neurons, avoiding external capacitors and reset circuits. Moreover, the anti-ferroelectric neuron exhibits low energy consumption (37 fJ/spike), high endurance (>10\n              12\n              ), high uniformity and high stability. We further construct a two-layer fully ferroelectric spiking neural networks that combines anti-ferroelectric neurons and ferroelectric synapses, achieving 96.8% recognition accuracy on the Modified National Institute of Standards and Technology dataset. This work opens the way to emulate neurons with anti-ferroelectric materials and provides a promising approach to building high-efficient neuromorphic hardware.",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-022-34774-9",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"language": "en",
+		"page": "7018",
+		"source": "DOI.org (Crossref)",
+		"title": "Compact artificial neuron based on anti-ferroelectric transistor",
+		"URL": "https://www.nature.com/articles/s41467-022-34774-9",
+		"volume": "13",
+		"author": [
+			{
+				"family": "Cao",
+				"given": "Rongrong"
+			},
+			{
+				"family": "Zhang",
+				"given": "Xumeng"
+			},
+			{
+				"family": "Liu",
+				"given": "Sen"
+			},
+			{
+				"family": "Lu",
+				"given": "Jikai"
+			},
+			{
+				"family": "Wang",
+				"given": "Yongzhou"
+			},
+			{
+				"family": "Jiang",
+				"given": "Hao"
+			},
+			{
+				"family": "Yang",
+				"given": "Yang"
+			},
+			{
+				"family": "Sun",
+				"given": "Yize"
+			},
+			{
+				"family": "Wei",
+				"given": "Wei"
+			},
+			{
+				"family": "Wang",
+				"given": "Jianlu"
+			},
+			{
+				"family": "Xu",
+				"given": "Hui"
+			},
+			{
+				"family": "Li",
+				"given": "Qingjiang"
+			},
+			{
+				"family": "Liu",
+				"given": "Qi"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					11,
+					17
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/EM5D9B8P",
+		"type": "article-journal",
+		"abstract": "Neuromorphic devices emulating the temperature-sensing capabilities of biological thermoreceptors hold significant promise for neuron-like artificial sensory systems. In this work, Bi2Se3-based threshold-switching memristors were presented in constructing temperature-sensing neuron circuits, leveraging its exceptional attributes, such as high switching ratio (>106), low threshold voltage, and thermoelectric response. The spiking oscillation response of the devices to resistance and temperature variations was analyzed using Hspice simulation of the memristor model based on its resistance in on/off states, threshold voltage (Vth), and hold voltage (Vhold). These results show the great potential of the Bi2Se3-based memristor in enabling biorealistic thermoreception applications.",
+		"container-title": "Sensors",
+		"DOI": "10.3390/s25051533",
+		"ISSN": "1424-8220",
+		"issue": "5",
+		"journalAbbreviation": "Sensors",
+		"language": "en",
+		"page": "1533",
+		"source": "DOI.org (Crossref)",
+		"title": "Threshold-Switching Memristors for Neuromorphic Thermoreception",
+		"URL": "https://www.mdpi.com/1424-8220/25/5/1533",
+		"volume": "25",
+		"author": [
+			{
+				"family": "Li",
+				"given": "Haotian"
+			},
+			{
+				"family": "Jiang",
+				"given": "Chunsheng"
+			},
+			{
+				"family": "Hua",
+				"given": "Qilin"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					3,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/RA5VSFJE",
+		"type": "article-journal",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-025-59603-7",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"language": "en",
+		"page": "4368",
+		"source": "DOI.org (Crossref)",
+		"title": "Reconfigurable neuromorphic functions in antiferroelectric transistors through coupled polarization switching and charge trapping dynamics",
+		"URL": "https://www.nature.com/articles/s41467-025-59603-7",
+		"volume": "16",
+		"author": [
+			{
+				"family": "Gao",
+				"given": "Jing"
+			},
+			{
+				"family": "Chien",
+				"given": "Yu-Chieh"
+			},
+			{
+				"family": "Huo",
+				"given": "Jiali"
+			},
+			{
+				"family": "Li",
+				"given": "Lingqi"
+			},
+			{
+				"family": "Zheng",
+				"given": "Haofei"
+			},
+			{
+				"family": "Xiang",
+				"given": "Heng"
+			},
+			{
+				"family": "Ang",
+				"given": "Kah-Wee"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					5,
+					11
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/NR5RXC73",
+		"type": "article-journal",
+		"abstract": "Abstract\n            \n              The human brain's efficiency and adaptability in processing information is largely attributed to spatiotemporal spiking activities and intrinsic plasticity—the ability of neurons to autonomously modulate their excitability. Mott memristors, with their threshold switching characteristics, have been effectively utilized as artificial neurons, or neuristors, to generate spiking activities. However, the implementation of intrinsic plasticity and its significance in neuromorphic computing has yet to be systematically explored. Here, a frequency switching (FS) neuristor is presented that emulates neuron's intrinsic plasticity characteristics. By combining a volatile Mott memristor with a non‐volatile valence change memory (VCM) memristor, the FS neuristor achieves programmable multi‐level frequency–voltage (\n              f\n              –V\n              ) characteristics analogous to the transfer functions of neuronal intrinsic plasticity. Through device‐based simulations of sparse neural networks, it is proposed that this intrinsic plasticity acts as memory and processor itself, enhancing network performance and reducing energy consumption. Additionally, intrinsic plasticity endows the network with structural plasticity, enabling full recovery of the network's performance after random neuron damage, suggesting a pathway toward more adaptive and resilient neuromorphic computing systems.",
+		"container-title": "Advanced Materials",
+		"DOI": "10.1002/adma.202502255",
+		"ISSN": "0935-9648, 1521-4095",
+		"issue": "44",
+		"journalAbbreviation": "Advanced Materials",
+		"language": "en",
+		"page": "e02255",
+		"source": "DOI.org (Crossref)",
+		"title": "Frequency Switching Neuristor for Realizing Intrinsic Plasticity and Enabling Robust Neuromorphic Computing",
+		"URL": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202502255",
+		"volume": "37",
+		"author": [
+			{
+				"family": "Park",
+				"given": "Woojoon"
+			},
+			{
+				"family": "Song",
+				"given": "Hanchan"
+			},
+			{
+				"family": "Kim",
+				"given": "Eun Young"
+			},
+			{
+				"family": "Choi",
+				"given": "Moon Gu"
+			},
+			{
+				"family": "Lee",
+				"given": "Min Gu"
+			},
+			{
+				"family": "Rhee",
+				"given": "Hakseung"
+			},
+			{
+				"family": "Kim",
+				"given": "Gwangmin"
+			},
+			{
+				"family": "Go",
+				"given": "Taewook"
+			},
+			{
+				"family": "Martinez",
+				"given": "Alba"
+			},
+			{
+				"family": "Kim",
+				"given": "Daehee"
+			},
+			{
+				"family": "Kang",
+				"given": "Junmo"
+			},
+			{
+				"family": "In",
+				"given": "Jae Hyun"
+			},
+			{
+				"family": "Kim",
+				"given": "Kyung Min"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					11
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/HBHXYCBA",
+		"type": "article-journal",
+		"container-title": "Nature Electronics",
+		"DOI": "10.1038/s41928-025-01488-x",
+		"ISSN": "2520-1131",
+		"issue": "12",
+		"journalAbbreviation": "Nat Electron",
+		"language": "en",
+		"page": "1211-1221",
+		"source": "DOI.org (Crossref)",
+		"title": "A spiking artificial neuron based on one diffusive memristor, one transistor and one resistor",
+		"URL": "https://www.nature.com/articles/s41928-025-01488-x",
+		"volume": "8",
+		"author": [
+			{
+				"family": "Zhao",
+				"given": "Ruoyu"
+			},
+			{
+				"family": "Wang",
+				"given": "Tong"
+			},
+			{
+				"family": "Moon",
+				"given": "Taehwan"
+			},
+			{
+				"family": "Xu",
+				"given": "Yichun"
+			},
+			{
+				"family": "Zhao",
+				"given": "Jian"
+			},
+			{
+				"family": "Sud",
+				"given": "Piyush"
+			},
+			{
+				"family": "Kim",
+				"given": "Seung Ju"
+			},
+			{
+				"family": "Liao",
+				"given": "Han-Ting"
+			},
+			{
+				"family": "Zhuo",
+				"given": "Ye"
+			},
+			{
+				"family": "Midya",
+				"given": "Rivu"
+			},
+			{
+				"family": "Asapu",
+				"given": "Shiva"
+			},
+			{
+				"family": "Gao",
+				"given": "Dawei"
+			},
+			{
+				"family": "Rong",
+				"given": "Zixuan"
+			},
+			{
+				"family": "Qiu",
+				"given": "Qinru"
+			},
+			{
+				"family": "Bowers",
+				"given": "Cynthia"
+			},
+			{
+				"family": "Mahalingam",
+				"given": "Krishnamurthy"
+			},
+			{
+				"family": "Ganguli",
+				"given": "S."
+			},
+			{
+				"family": "Roy",
+				"given": "A. K."
+			},
+			{
+				"family": "Wu",
+				"given": "Qing"
+			},
+			{
+				"family": "Han",
+				"given": "Jin-Woo"
+			},
+			{
+				"family": "Williams",
+				"given": "R. Stanley"
+			},
+			{
+				"family": "Chen",
+				"given": "Yong"
+			},
+			{
+				"family": "Yang",
+				"given": "J. Joshua"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					10,
+					27
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/SL78B9N3",
+		"type": "article-journal",
+		"abstract": "Analog reservoir computing (ARC) systems offer an energy-efficient platform for temporal information processing. However, their physical implementation typically requires disparate materials and device architectures for different system components, leading to complicated fabrication processes and increased system complexity. In this work, we present a coplanar floating-gate antiferroelectric field-effect transistor (FG AFeFET) that unifies multiple neural functionalities within a single device, enabling the physical implementation of a complete ARC system. By combining a coplanar layout design with an area ratio engineering strategy, we achieve tunable device behaviors, including volatile responses for artificial neuron emulation, nonvolatile states for synaptic functions, and fading memory dynamics for reservoir operations. The mechanisms underlying these functionalities and their operating mechanism are systematically elucidated using load line analysis and energy band diagrams. Leveraging these insights, we demonstrate an all-in-one ARC system based on the unified coplanar FG AFeFET architecture, which achieves recognition accuracies of 95.6% and 83.4% on the MNIST and Fashion-MNIST datasets, respectively. These findings highlight the potential of coplanar FG AFeFETs to deliver area-efficient, design-flexible neuromorphic hardware for next-generation computing systems.",
+		"container-title": "Nano-Micro Letters",
+		"DOI": "10.1007/s40820-025-02049-9",
+		"ISSN": "2311-6706, 2150-5551",
+		"issue": "1",
+		"journalAbbreviation": "Nano-Micro Lett.",
+		"language": "en",
+		"page": "202",
+		"source": "DOI.org (Crossref)",
+		"title": "Coplanar Floating-Gate Antiferroelectric Transistor with Multifunctionality for All-in-One Analog Reservoir Computing",
+		"URL": "https://link.springer.com/10.1007/s40820-025-02049-9",
+		"volume": "18",
+		"author": [
+			{
+				"family": "Shi",
+				"given": "Yufei"
+			},
+			{
+				"family": "Zheng",
+				"given": "Zijie"
+			},
+			{
+				"family": "Huo",
+				"given": "Jiali"
+			},
+			{
+				"family": "Chien",
+				"given": "Yu-Chieh"
+			},
+			{
+				"family": "Li",
+				"given": "Sifan"
+			},
+			{
+				"family": "Zheng",
+				"given": "Haofei"
+			},
+			{
+				"family": "Gong",
+				"given": "Xiao"
+			},
+			{
+				"family": "Ang",
+				"given": "Kah-Wee"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					12
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/CTSJ5NLQ",
+		"type": "article-journal",
+		"abstract": "<p>The leaky integrate-and-fire (LIF) neurons implemented in hardware have been proposed as a key approach for neuromorphic computing, offering a promising pathway to overcome the limitations of traditional von Neumann architectures. Among various candidates, ferroelectric-based neuromorphic devices (including antiferroelectric devices) offer a compact, energy-efficient, and highly scalable neuromorphic hardware, making them promising candidates for LIF neurons. This review systematically explains ferroelectric-based LIF neurons, covering the fundamental principles of neuronal operation, the implementation of neuronal functionalities, the key performance metrics, and strategies for performance optimization. Specifically, the implementation of neuronal functionalities is discussed focusing on the realization of leaky behavior by introducing depolarizing or inducing antiferroelectric phase to achieve volatility, since the neuronal integration and firing behaviors can be easily mimicked through the inherent cumulative polarization switching. Moreover, the key performance metrics, including hardware cost, energy consumption, and endurance of devices are identified to demonstrate the comprehensive advantages of ferroelectric LIF neurons. Additionally, the review also covers the applications of ferroelectric LIF neurons. Finally, this review summarizes challenges and prospects of ferroelectric-based artificial neurons for advanced neuromorphic computing systems. This review aims to provide theoretical guidance and practical insights to support further progress in neuromorphic computing systems based on ferroelectric materials.</p>",
+		"container-title": "The Innovation Materials",
+		"DOI": "10.59717/j.xinn-mater.2026.100202",
+		"ISSN": "2959-8737",
+		"issue": "2",
+		"journalAbbreviation": "TIMS",
+		"language": "en",
+		"page": "100202",
+		"source": "DOI.org (Crossref)",
+		"title": "Ferroelectric-based leaky integrate-and-fire neurons: A review on device design and performance optimization",
+		"title-short": "Ferroelectric-based leaky integrate-and-fire neurons",
+		"URL": "https://www.the-innovation.org/article/doi/10.59717/j.xinn-mater.2026.100202",
+		"volume": "4",
+		"author": [
+			{
+				"family": "Lu",
+				"given": "Mengdi"
+			},
+			{
+				"family": "Wang",
+				"given": "Jie"
+			},
+			{
+				"family": "Fang",
+				"given": "Hong"
+			},
+			{
+				"family": "Chen",
+				"given": "Chuanhui"
+			},
+			{
+				"family": "Zhao",
+				"given": "Le"
+			},
+			{
+				"family": "Zheng",
+				"given": "Limei"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/ZX4F694P",
+		"type": "article",
+		"abstract": "Rapid progress of artificial neural network applications in recent years has led to the issue of an unprecedented energy consumption. It can be solved by the implementation of energy efficient hardware based on non-von-Neumann architectures, which requires the development of electronic components emulating the behavior of synapses and neurons. While research of synaptic elements is vast, the technology for fabrication of scalable and highly reproducible neuronal elements is far less developed. In this paper, we demonstrate an artificial neuron with multiple functionalities based on filamentary switching Ag/Hf0.5Zr0.5O2 (HZO) memristors. To improve the parameters of memristors, we propose a two-step annealing method, which allows for better control of the crystallization of the functional dielectric layer (HZO) as well as of the diffusion of active electrode (Ag) atoms. Furthermore, we demonstrate the leaky integrate-and-fire (LIF) neuronal behavior in multiple spiking modes: time-to-first-spike (TTFS), number of spikes and firing rate coding. Moreover, the neuron operation does not require the additional electronic overhead and is supported solely by a Ag/HZO memristor with a current limiting resistor connected in series. The presented results pave the way for the creation of next generation energy efficient neuromorphic hardware operating on the principles of spiking neural networks.",
+		"DOI": "10.48550/arXiv.2604.11780",
+		"language": "en",
+		"note": "arXiv:2604.11780 [cond-mat.mtrl-sci]",
+		"number": "arXiv:2604.11780",
+		"publisher": "arXiv",
+		"source": "arXiv.org",
+		"title": "Multiple spiking functionalities in annealing-optimized Ag/Hf$_{0.5}$Zr$_{0.5}$O$_2$-based memristive neurons",
+		"URL": "http://arxiv.org/abs/2604.11780",
+		"author": [
+			{
+				"family": "Zhidkov",
+				"given": "Nikita"
+			},
+			{
+				"family": "Zenkevich",
+				"given": "Andrei"
+			},
+			{
+				"family": "Khanas",
+				"given": "Anton"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					4,
+					13
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/FWSWB3LZ",
+		"type": "article-journal",
+		"container-title": "Nature Sensors",
+		"DOI": "10.1038/s44460-026-00067-7",
+		"ISSN": "3059-4499",
+		"issue": "6",
+		"journalAbbreviation": "Nat. Sens.",
+		"language": "en",
+		"page": "535-544",
+		"source": "DOI.org (Crossref)",
+		"title": "Self-powered analogue neuromorphic system for multimodal sensing, encoding and learning with diffusive and drift memristors",
+		"URL": "https://www.nature.com/articles/s44460-026-00067-7",
+		"volume": "1",
+		"author": [
+			{
+				"family": "Kim",
+				"given": "Seung Ju"
+			},
+			{
+				"family": "Zhao",
+				"given": "Ruoyu"
+			},
+			{
+				"family": "Sud",
+				"given": "Piyush"
+			},
+			{
+				"family": "Xu",
+				"given": "Yichun"
+			},
+			{
+				"family": "Zhao",
+				"given": "Jian"
+			},
+			{
+				"family": "Liao",
+				"given": "Han-Ting"
+			},
+			{
+				"family": "Zhang",
+				"given": "Serena"
+			},
+			{
+				"family": "Midya",
+				"given": "Rivu"
+			},
+			{
+				"family": "Qiu",
+				"given": "Qinru"
+			},
+			{
+				"family": "Yang",
+				"given": "J. Joshua"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					4,
+					30
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/N54MQ89D",
+		"type": "article-journal",
+		"abstract": "Abstract\n            \n              The progress in the field of neural computation hinges on the use of hardware more efficient than the conventional microprocessors. Recent works have shown that mixed-signal integrated memristive circuits, especially their passive (0T1R) variety, may increase the neuromorphic network performance dramatically, leaving far behind their digital counterparts. The major obstacle, however, is immature memristor technology so that only limited functionality has been reported. Here we demonstrate operation of one-hidden layer perceptron classifier entirely in the mixed-signal integrated hardware, comprised of two passive 20 × 20 metal-oxide memristive crossbar arrays, board-integrated with discrete conventional components. The demonstrated network, whose hardware complexity is almost 10× higher as compared to previously reported functional classifier circuits based on passive memristive crossbars, achieves classification fidelity within 3% of that obtained in simulations, when using ex-situ training. The successful demonstration was facilitated by improvements in fabrication technology of memristors, specifically by lowering variations in their\n              I–V\n              characteristics.",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-018-04482-4",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"language": "en",
+		"page": "2331",
+		"source": "DOI.org (Crossref)",
+		"title": "Implementation of multilayer perceptron network with highly uniform passive memristive crossbar circuits",
+		"URL": "https://www.nature.com/articles/s41467-018-04482-4",
+		"volume": "9",
+		"author": [
+			{
+				"family": "Bayat",
+				"given": "F. Merrikh"
+			},
+			{
+				"family": "Prezioso",
+				"given": "M."
+			},
+			{
+				"family": "Chakrabarti",
+				"given": "B."
+			},
+			{
+				"family": "Nili",
+				"given": "H."
+			},
+			{
+				"family": "Kataeva",
+				"given": "I."
+			},
+			{
+				"family": "Strukov",
+				"given": "D."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					6,
+					13
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/6QSQKQN9",
+		"type": "article-journal",
+		"abstract": "Memristors, resistors with memory whose outputs depend on the history of their inputs, have been used with success in neuromorphic architectures, particularly as synapses and non-volatile memories. However, to the best of our knowledge, no model for a network in which both the synapses and the neurons are implemented using memristors has been proposed so far. In the present work we introduce models for single and multilayer perceptrons based exclusively on memristors. We adapt the delta rule to the memristor-based single-layer perceptron and the backpropagation algorithm to the memristor-based multilayer perceptron. Our results show that both perform as expected for perceptrons, including satisfying Minsky–Papert’s theorem. As a consequence of the Universal Approximation Theorem, they also show that memristors are universal function approximators. By using memristors for both the neurons and the synapses, our models pave the way for novel memristor-based neural network architectures and algorithms. A neural network based on memristors could show advantages in terms of energy conservation and open up possibilities for other learning systems to be adapted to a memristor-based paradigm, both in the classical and quantum learning realms.",
+		"container-title": "Neural Networks",
+		"DOI": "10.1016/j.neunet.2019.10.013",
+		"ISSN": "08936080",
+		"journalAbbreviation": "Neural Networks",
+		"language": "en",
+		"page": "273-278",
+		"source": "DOI.org (Crossref)",
+		"title": "Perceptrons from memristors",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S0893608019303351",
+		"volume": "122",
+		"author": [
+			{
+				"family": "Silva",
+				"given": "Francisco"
+			},
+			{
+				"family": "Sanz",
+				"given": "Mikel"
+			},
+			{
+				"family": "Seixas",
+				"given": "João"
+			},
+			{
+				"family": "Solano",
+				"given": "Enrique"
+			},
+			{
+				"family": "Omar",
+				"given": "Yasser"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2020",
+					2
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/KMWQUZN9",
+		"type": "article-journal",
+		"abstract": "The inherent bottleneck of the von Neumann architecture and the limited power budget of edge devices necessitate energy-efficient hardware solutions for artificial intelligence. Memristor-based In-Memory Computing (IMC) has emerged as a promising candidate; however, the high-power consumption of peripheral circuits, particularly Analog-to-Digital Converters (ADCs), and the reliability issues of memristive devices remain significant challenges. In this paper, we propose a hybrid Convolutional Spiking Neural Network (CSNN) architecture designed for resource-constrained edge computing. Our approach integrates digital Non-Leaky Integrate-and-Fire (NLIF) neurons with Knowm Self-Directed Channel (SDC) memristor-based synapses in a 1T1R crossbar array. To maximize power efficiency, we replace conventional high-resolution ADCs with a streamlined readout circuit utilizing a Current Sense Amplifier (CSA) and a 1-bit comparator. Furthermore, we employ an intensity-to-latency temporal coding scheme to minimize spike activity and mitigate device endurance degradation. We validated the proposed system using the MNIST dataset, achieving a classification accuracy of 97.8%, which is comparable to state-of-the-art floating-point SNNs using supervised learning methods. Power analysis confirms that our 1-bit readout method consumes only 18.4% of the energy required by an 8-bit ADCbased approach while maintaining negligible accuracy loss. Additionally, the deterministic single-spike nature of our temporal coding significantly reduces write stress on memristors compared to rate coding. These results demonstrate that the proposed hybrid CSNN offers a robust and energy-efficient solution for neuromorphic edge intelligence.",
+		"container-title": "Electronics",
+		"DOI": "10.3390/electronics15061217",
+		"ISSN": "2079-9292",
+		"issue": "6",
+		"journalAbbreviation": "Electronics",
+		"language": "en",
+		"page": "1217",
+		"source": "DOI.org (Crossref)",
+		"title": "An Energy- and Endurance-Aware Hybrid CMOS–SDC Memristor Convolutional Spiking Neural Network for Edge Intelligence",
+		"URL": "https://www.mdpi.com/2079-9292/15/6/1217",
+		"volume": "15",
+		"author": [
+			{
+				"family": "Go",
+				"given": "Jun Sung"
+			},
+			{
+				"family": "Kim",
+				"given": "Jong Tae"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					3,
+					14
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/UBRWENJJ",
+		"type": "article-journal",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-026-71372-5",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"language": "en",
+		"page": "5576",
+		"source": "DOI.org (Crossref)",
+		"title": "Ultra-high density perovskite nanowire array memristor-based multi-layer perceptron",
+		"URL": "https://www.nature.com/articles/s41467-026-71372-5",
+		"volume": "17",
+		"author": [
+			{
+				"family": "Poddar",
+				"given": "Swapnadeep"
+			},
+			{
+				"family": "Khan",
+				"given": "Biswadeep"
+			},
+			{
+				"family": "Kumar",
+				"given": "Shivam"
+			},
+			{
+				"family": "Li",
+				"given": "Jinghao"
+			},
+			{
+				"family": "Ding",
+				"given": "Yucheng"
+			},
+			{
+				"family": "Chen",
+				"given": "Zhesi"
+			},
+			{
+				"family": "Wang",
+				"given": "Kaichen"
+			},
+			{
+				"family": "Jin",
+				"given": "Chenxi"
+			},
+			{
+				"family": "Wei",
+				"given": "Jinchen"
+			},
+			{
+				"family": "Peng",
+				"given": "Zhirong"
+			},
+			{
+				"family": "Jaesiri",
+				"given": "On-mongkol"
+			},
+			{
+				"family": "Chan",
+				"given": "Mansun"
+			},
+			{
+				"family": "Semmelhack",
+				"given": "Julie L."
+			},
+			{
+				"family": "Fan",
+				"given": "Zhiyong"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					5,
+					27
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/RU696GEK",
+		"type": "article",
+		"abstract": "Neuromorphic computing has come to refer to a variety of brain-inspired computers, devices, and models that contrast the pervasive von Neumann computer architecture. This biologically inspired approach has created highly connected synthetic neurons and synapses that can be used to model neuroscience theories as well as solve challenging machine learning problems. The promise of the technology is to create a brainlike ability to learn and adapt, but the technical challenges are signiﬁcant, starting with an accurate neuroscience model of how the brain works, to ﬁnding materials and engineering breakthroughs to build devices to support these models, to creating a programming framework so the systems can learn, to creating applications with brain-like capabilities. In this work, we provide a comprehensive survey of the research and motivations for neuromorphic computing over its history. We begin with a 35-year review of the motivations and drivers of neuromorphic computing, then look at the major research areas of the ﬁeld, which we deﬁne as neuro-inspired models, algorithms and learning approaches, hardware and devices, supporting systems, and ﬁnally applications. We conclude with a broad discussion on the major research topics that need to be addressed in the coming years to see the promise of neuromorphic computing fulﬁlled. The goals of this work are to provide an exhaustive review of the research conducted in neuromorphic computing since the inception of the term, and to motivate further work by illuminating gaps in the ﬁeld where new research is needed.",
+		"DOI": "10.48550/arXiv.1705.06963",
+		"language": "en",
+		"note": "arXiv:1705.06963 [cs.NE]",
+		"number": "arXiv:1705.06963",
+		"publisher": "arXiv",
+		"source": "arXiv.org",
+		"title": "A Survey of Neuromorphic Computing and Neural Networks in Hardware",
+		"URL": "http://arxiv.org/abs/1705.06963",
+		"author": [
+			{
+				"family": "Schuman",
+				"given": "Catherine D."
+			},
+			{
+				"family": "Potok",
+				"given": "Thomas E."
+			},
+			{
+				"family": "Patton",
+				"given": "Robert M."
+			},
+			{
+				"family": "Birdwell",
+				"given": "J. Douglas"
+			},
+			{
+				"family": "Dean",
+				"given": "Mark E."
+			},
+			{
+				"family": "Rose",
+				"given": "Garrett S."
+			},
+			{
+				"family": "Plank",
+				"given": "James S."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2017",
+					5,
+					19
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/B898B5HS",
+		"type": "article-journal",
+		"abstract": "Machine learning, particularly in the form of deep learning (DL), has driven most of the recent fundamental developments in artificial intelligence (AI). DL is based on computational models that are, to a certain extent, bio‐inspired, as they rely on networks of connected simple computing units operating in parallel. The success of DL is supported by three factors: availability of vast amounts of data, continuous growth in computing power, and algorithmic innovations. The approaching demise of Moore's law, and the consequent expected modest improvements in computing power that can be achieved by scaling, raises the question of whether the progress will be slowed or halted due to hardware limitations. This article reviews the case for a novel beyond‐complementary metal–oxide–semiconductor (CMOS) technology—memristors—as a potential solution for the implementation of power‐efficient in‐memory computing, DL accelerators, and spiking neural networks. Central themes are the reliance on non‐von‐Neumann computing architectures and the need for developing tailored learning and inference algorithms. To argue that lessons from biology can be useful in providing directions for further progress in AI, an example‐based reservoir computing is briefly discussed. At the end, speculation is given on the “big picture” view of future neuromorphic and brain‐inspired computing systems.",
+		"container-title": "Advanced Intelligent Systems",
+		"DOI": "10.1002/aisy.202000085",
+		"ISSN": "2640-4567, 2640-4567",
+		"issue": "11",
+		"journalAbbreviation": "Advanced Intelligent Systems",
+		"language": "en",
+		"page": "2000085",
+		"source": "DOI.org (Crossref)",
+		"title": "Memristors—From In‐Memory Computing, Deep Learning Acceleration, and Spiking Neural Networks to the Future of Neuromorphic and Bio‐Inspired Computing",
+		"URL": "https://advanced.onlinelibrary.wiley.com/doi/10.1002/aisy.202000085",
+		"volume": "2",
+		"author": [
+			{
+				"family": "Mehonic",
+				"given": "Adnan"
+			},
+			{
+				"family": "Sebastian",
+				"given": "Abu"
+			},
+			{
+				"family": "Rajendran",
+				"given": "Bipin"
+			},
+			{
+				"family": "Simeone",
+				"given": "Osvaldo"
+			},
+			{
+				"family": "Vasilaki",
+				"given": "Eleni"
+			},
+			{
+				"family": "Kenyon",
+				"given": "Anthony J."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2020",
+					11
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/LI8PRAJM",
+		"type": "article-journal",
+		"abstract": "Abstract\n            Artificial neural networks (ANNs) have experienced a rapid advancement for their success in various application domains, including autonomous driving and drone vision. Researchers have been improving the performance efficiency and computational requirement of ANNs inspired by the mechanisms of the biological brain. Spiking neural networks (SNNs) provide a power-efficient and brain-inspired computing paradigm for machine learning applications. However, evaluating large-scale SNNs on classical von Neumann architectures (central processing units/graphics processing units) demands a high amount of power and time. Therefore, hardware designers have developed neuromorphic platforms to execute SNNs in and approach that combines fast processing and low power consumption. Recently, field-programmable gate arrays (FPGAs) have been considered promising candidates for implementing neuromorphic solutions due to their varied advantages, such as higher flexibility, shorter design, and excellent stability. This review aims to describe recent advances in SNNs and the neuromorphic hardware platforms (digital, analog, hybrid, and FPGA based) suitable for their implementation. We present that biological background of SNN learning, such as neuron models and information encoding techniques, followed by a categorization of SNN training. In addition, we describe state-of-the-art SNN simulators. Furthermore, we review and present FPGA-based hardware implementation of SNNs. Finally, we discuss some future directions for research in this field.",
+		"container-title": "Neural Computation",
+		"DOI": "10.1162/neco_a_01499",
+		"ISSN": "0899-7667, 1530-888X",
+		"issue": "6",
+		"language": "en",
+		"page": "1289-1328",
+		"source": "DOI.org (Crossref)",
+		"title": "Advancements in Algorithms and Neuromorphic Hardware for Spiking Neural Networks",
+		"URL": "https://direct.mit.edu/neco/article/34/6/1289/110645/Advancements-in-Algorithms-and-Neuromorphic",
+		"volume": "34",
+		"author": [
+			{
+				"family": "Javanshir",
+				"given": "Amirhossein"
+			},
+			{
+				"family": "Nguyen",
+				"given": "Thanh Thi"
+			},
+			{
+				"family": "Mahmud",
+				"given": "M. A. Parvez"
+			},
+			{
+				"family": "Kouzani",
+				"given": "Abbas Z."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					5,
+					19
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/HRLZYLT6",
+		"type": "article-journal",
+		"container-title": "Nature Computational Science",
+		"DOI": "10.1038/s43588-021-00184-y",
+		"ISSN": "2662-8457",
+		"issue": "1",
+		"journalAbbreviation": "Nat Comput Sci",
+		"language": "en",
+		"page": "10-19",
+		"source": "DOI.org (Crossref)",
+		"title": "Opportunities for neuromorphic computing algorithms and applications",
+		"URL": "https://www.nature.com/articles/s43588-021-00184-y",
+		"volume": "2",
+		"author": [
+			{
+				"family": "Schuman",
+				"given": "Catherine D."
+			},
+			{
+				"family": "Kulkarni",
+				"given": "Shruti R."
+			},
+			{
+				"family": "Parsa",
+				"given": "Maryam"
+			},
+			{
+				"family": "Mitchell",
+				"given": "J. Parker"
+			},
+			{
+				"family": "Date",
+				"given": "Prasanna"
+			},
+			{
+				"family": "Kay",
+				"given": "Bill"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					1,
+					31
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/UKBH57F4",
+		"type": "article-journal",
+		"abstract": "Artificial neural networks have long been studied to emulate the cognitive capabilities of the human brain for artificial intelligence (AI) computing. However, as computational demands intensify, conventional hardware based on transistor and complementary metal oxide semiconductor (CMOS) technology faces substantial limitations due to the separation of memory and processing, a challenge commonly known as the von Neumann bottleneck. In this review, we examine how memristors, which are novel nonvolatile memory devices that exhibit memory-dependent resistance, can be harnessed to build more efficient and scalable neural networks. We provide a comprehensive background on the evolution of neural network models and memristors, as well as introduce the principles of memristive devices, which mimic the dynamic behavior of biological synapses. Various neural network architectures, including convolutional, recurrent, and spiking models, are discussed, highlighting the advantages of integrating memristors for in-memory computing and parallel processing. Our review further examines key mechanisms such as synaptic plasticity, encompassing both long-term potentiation and depression, as well as emerging learning algorithms that leverage memristive behavior. Finally, we identify current challenges, such as achieving ultra-low power consumption, high device uniformity, and seamless system integration, and propose future directions in materials science, device engineering, system integration, and industrialization. These advances suggest that memristor-based neural networks may pave the way for next-generation AI systems that combine low power consumption with high computational performance, ultimately bridging the gap between biological and electronic information processing.",
+		"container-title": "Research",
+		"DOI": "10.34133/research.0758",
+		"ISSN": "2639-5274",
+		"journalAbbreviation": "Research",
+		"language": "en",
+		"page": "0758",
+		"source": "DOI.org (Crossref)",
+		"title": "Memristor-Based Artificial Neural Networks for Hardware Neuromorphic Computing",
+		"URL": "https://spj.science.org/doi/10.34133/research.0758",
+		"volume": "8",
+		"author": [
+			{
+				"family": "Jin",
+				"given": "Boyan"
+			},
+			{
+				"family": "Wang",
+				"given": "Zhenlong"
+			},
+			{
+				"family": "Wang",
+				"given": "Tianyu"
+			},
+			{
+				"family": "Meng",
+				"given": "Jialin"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/GYYM9HAP",
+		"type": "article-journal",
+		"abstract": "Threshold-switching memristors (TSMs) are emerging as key enablers for hardware spiking neural networks, offering intrinsic spiking dynamics, sub-pJ energy consumption, and nanoscale footprints ideal for brain-inspired computing at the edge. This review provides a comprehensive examination of how TSMs emulate diverse spiking behaviors—including oscillatory, leaky integrate-and-fire (LIF), Hodgkin–Huxley (H-H), and stochastic dynamics—and how these features enable compact, energy-efficient neuromorphic systems. We analyze the physical switching mechanisms of redox and Mott-type TSMs, discuss their voltage-dependent dynamics, and assess their suitability for spike generation. We review memristor-based neuron circuits regarding architectures, materials, and key performance metrics. At the system level, we summarize bio-inspired neuromorphic platforms integrating TSM neurons with visual, tactile, thermal, and olfactory sensors, achieving real-time edge computation with high accuracy and low power. Finally, we critically examine key challenges—such as stochastic switching origins, device variability, and endurance limits—and propose future directions toward reconfigurable, robust, and scalable memristive neuromorphic architectures.",
+		"container-title": "Nanomaterials",
+		"DOI": "10.3390/nano15141130",
+		"ISSN": "2079-4991",
+		"issue": "14",
+		"journalAbbreviation": "Nanomaterials",
+		"language": "en",
+		"page": "1130",
+		"source": "DOI.org (Crossref)",
+		"title": "Memristor-Based Spiking Neuromorphic Systems Toward Brain-Inspired Perception and Computing",
+		"URL": "https://www.mdpi.com/2079-4991/15/14/1130",
+		"volume": "15",
+		"author": [
+			{
+				"family": "Wang",
+				"given": "Xiangjing"
+			},
+			{
+				"family": "Zhu",
+				"given": "Yixin"
+			},
+			{
+				"family": "Zhou",
+				"given": "Zili"
+			},
+			{
+				"family": "Chen",
+				"given": "Xin"
+			},
+			{
+				"family": "Jia",
+				"given": "Xiaojun"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					7,
+					21
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/FW2HU7BD",
+		"type": "article-journal",
+		"abstract": "The memristor has long been known as a nonvolatile memory technology alternative and has recently been explored for neuromorphic computing, owing to its capability to mimic the synaptic plasticity of the human brain. The architecture of a memristor synapse device allows ultra-high-density integration by internetworking with crossbar arrays, which benefits large-scale training and learning using advanced machine-learning algorithms. In this review, we present a statistical analysis of neuromorphic computing device publications from 2018 to 2025, focusing on various memristive systems. Furthermore, we provide a device-level perspective on biomimetic properties in hardware neural networks such as short-term plasticity (STP), long-term plasticity (LTP), spike timing-dependent plasticity (STDP), and spike rate-dependent plasticity (SRDP). Herein, we highlight the utilization of optoelectronic synapses based on 2D materials driven by a sequence of optical stimuli to mimic the plasticity of the human brain, further broadening the scope of memristor controllability by optical stimulation. We also highlight practical applications ranging from MNIST dataset recognition to hardware-based pattern recognition and explore future directions for memristor synapses in healthcare, including artificial cognitive retinal implants, vital organ interfaces, artificial vision systems, and physiological signal anomaly detection.",
+		"container-title": "Nanomaterials",
+		"DOI": "10.3390/nano16030179",
+		"ISSN": "2079-4991",
+		"issue": "3",
+		"journalAbbreviation": "Nanomaterials",
+		"language": "en",
+		"page": "179",
+		"source": "DOI.org (Crossref)",
+		"title": "Memristor Synapse—A Device-Level Critical Review",
+		"URL": "https://www.mdpi.com/2079-4991/16/3/179",
+		"volume": "16",
+		"author": [
+			{
+				"family": "Chandrasekaran",
+				"given": "Sridhar"
+			},
+			{
+				"family": "Chang",
+				"given": "Yao-Feng"
+			},
+			{
+				"family": "Simanjuntak",
+				"given": "Firman Mangasa"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					1,
+					28
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/JQG22V82",
+		"type": "document",
+		"title": "25-12 Energy-Efficient On-Device Learning Co-Design for Neuromorphic Edge Intelligence"
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/WZQWIYNP",
+		"type": "article-journal",
+		"abstract": "In order to understand how the mammalian neocortex is performing computations, two things are necessary; we need to have a good understanding of the available neuronal processing units and mechanisms, and we need to gain a better understanding of how those mechanisms are combined to build functioning systems. Therefore, in recent years there is an increasing interest in how spiking neural networks (SNN) can be used to perform complex computations or solve pattern recognition tasks. However, it remains a challenging task to design SNNs which use biologically plausible mechanisms (especially for learning new patterns), since most such SNN architectures rely on training in a rate-based network and subsequent conversion to a SNN. We present a SNN for digit recognition which is based on mechanisms with increased biological plausibility, i.e., conductance-based instead of current-based synapses, spike-timing-dependent plasticity with time-dependent weight change, lateral inhibition, and an adaptive spiking threshold. Unlike most other systems, we do not use a teaching signal and do not present any class labels to the network. Using this unsupervised learning scheme, our architecture achieves 95% accuracy on the MNIST benchmark, which is better than previous SNN implementations without supervision. The fact that we used no domain-speciﬁc knowledge points toward the general applicability of our network design. Also, the performance of our network scales well with the number of neurons used and shows similar performance for four different learning rules, indicating robustness of the full combination of mechanisms, which suggests applicability in heterogeneous biological neural networks.",
+		"container-title": "Frontiers in Computational Neuroscience",
+		"DOI": "10.3389/fncom.2015.00099",
+		"ISSN": "1662-5188",
+		"journalAbbreviation": "Front. Comput. Neurosci.",
+		"language": "en",
+		"source": "DOI.org (Crossref)",
+		"title": "Unsupervised learning of digit recognition using spike-timing-dependent plasticity",
+		"URL": "http://journal.frontiersin.org/Article/10.3389/fncom.2015.00099/abstract",
+		"volume": "9",
+		"author": [
+			{
+				"family": "Diehl",
+				"given": "Peter U."
+			},
+			{
+				"family": "Cook",
+				"given": "Matthew"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2015",
+					8,
+					3
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/FYFNLCPD",
+		"type": "paper-conference",
+		"abstract": "Spiking neural networks (SNNs) are neuroscienceinspired computational systems that carry out computation based on the biological modeling of neuron interactions. Current SNN studies have shown their ability to solve a wide variety of machine learning problems. The temporal dynamics and future low-power neuromorphic implementations of SNNs also make them suitable controller candidates for embedded applications, especially for robotic platforms with very low payload and power budgets (e.g. Micro Air Vehicles). In this paper, we present a solution to simulate full control of a hexacopter UAV in 6 degrees of freedom using SNNs. By decomposing the neurocontroller into modules, we demonstrate that the development of UAV ﬂight control can be accomplished by an incremental evolutionary approach using a modiﬁed NEAT algorithm.",
+		"container-title": "2020 IEEE Symposium Series on Computational Intelligence (SSCI)",
+		"DOI": "10.1109/SSCI47803.2020.9308275",
+		"event-title": "2020 IEEE Symposium Series on Computational Intelligence (SSCI)",
+		"ISBN": "978-1-7281-2547-3",
+		"language": "en",
+		"license": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html",
+		"page": "1928-1935",
+		"publisher": "IEEE",
+		"publisher-place": "Canberra, ACT, Australia",
+		"source": "DOI.org (Crossref)",
+		"title": "Evolving Spiking Neurocontrollers for UAVs",
+		"URL": "https://ieeexplore.ieee.org/document/9308275/",
+		"author": [
+			{
+				"family": "Qiu",
+				"given": "Huanneng"
+			},
+			{
+				"family": "Garratt",
+				"given": "Matthew"
+			},
+			{
+				"family": "Howard",
+				"given": "David"
+			},
+			{
+				"family": "Anavatti",
+				"given": "Sreenatha"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2020",
+					12,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/SIT8YUIW",
+		"type": "article-journal",
+		"abstract": "Direct training of Spiking Neural Networks (SNNs) on neuromorphic hardware has the potential to significantly reduce the energy consumption of artificial neural network training. SNNs trained with Spike Timing-Dependent Plasticity (STDP) benefit from gradient-free and unsupervised local learning, which can be easily implemented on ultra-low-power neuromorphic hardware. However, classification tasks cannot be performed solely with unsupervised STDP. In this paper, we propose Stabilized Supervised STDP (S2-STDP), a supervised STDP learning rule to train the classification layer of an SNN equipped with unsupervised STDP for feature extraction. S2-STDP integrates error-modulated weight updates that align neuron spikes with desired timestamps derived from the average firing time within the layer. Then, we introduce a training architecture called Paired Competing Neurons (PCN) to further enhance the learning capabilities of our classification layer trained with S2-STDP. PCN associates each class with paired neurons and encourages neuron specialization toward target or non-target samples through intra-class competition. We evaluate our methods on image recognition datasets, including MNIST, Fashion-MNIST, and CIFAR-10. Results show that our methods outperform state-of-the-art supervised STDP learning rules, for comparable architectures and numbers of neurons. Further analysis demonstrates that the use of PCN enhances the performance of S2-STDP, regardless of the hyperparameter set and without introducing any additional hyperparameters.",
+		"container-title": "Frontiers in Neuroscience",
+		"DOI": "10.3389/fnins.2024.1401690",
+		"ISSN": "1662-453X",
+		"journalAbbreviation": "Front. Neurosci.",
+		"language": "en",
+		"page": "1401690",
+		"source": "DOI.org (Crossref)",
+		"title": "Paired competing neurons improving STDP supervised local learning in spiking neural networks",
+		"URL": "https://www.frontiersin.org/articles/10.3389/fnins.2024.1401690/full",
+		"volume": "18",
+		"author": [
+			{
+				"family": "Goupy",
+				"given": "Gaspard"
+			},
+			{
+				"family": "Tirilly",
+				"given": "Pierre"
+			},
+			{
+				"family": "Bilasco",
+				"given": "Ioan Marius"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					7,
+					24
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/RAJGDDLE",
+		"type": "article-journal",
+		"abstract": "Spiking neural networks (SNNs) are the basis for many energy-efficient neuromorphic hardware systems. While there has been substantial progress in SNN research, artificial SNNs still lack many capabilities of their biological counterparts. In biological neural systems, memory is a key component that enables the retention of information over a huge range of temporal scales, ranging from hundreds of milliseconds up to years. While Hebbian plasticity is believed to play a pivotal role in biological memory, it has so far been analyzed mostly in the context of pattern completion and unsupervised learning in artificial and SNNs. Here, we propose that Hebbian plasticity is fundamental for computations in biological and artificial spiking neural systems. We introduce a novel memory-augmented SNN architecture that is enriched by Hebbian synaptic plasticity. We show that Hebbian enrichment renders SNNs surprisingly versatile in terms of their computational as well as learning capabilities. It improves their abilities for out-of-distribution generalization, one-shot learning, cross-modal generative association, language processing, and reward-based learning. This suggests that powerful cognitive neuromorphic systems can be built based on this principle.",
+		"container-title": "IEEE Transactions on Neural Networks and Learning Systems",
+		"DOI": "10.1109/TNNLS.2023.3341446",
+		"ISSN": "2162-237X, 2162-2388",
+		"issue": "2",
+		"journalAbbreviation": "IEEE Trans. Neural Netw. Learning Syst.",
+		"language": "en",
+		"license": "https://creativecommons.org/licenses/by/4.0/legalcode",
+		"page": "2551-2562",
+		"source": "DOI.org (Crossref)",
+		"title": "Memory-Dependent Computation and Learning in Spiking Neural Networks Through Hebbian Plasticity",
+		"URL": "https://ieeexplore.ieee.org/document/10365548/",
+		"volume": "36",
+		"author": [
+			{
+				"family": "Limbacher",
+				"given": "Thomas"
+			},
+			{
+				"family": "Özdenizci",
+				"given": "Ozan"
+			},
+			{
+				"family": "Legenstein",
+				"given": "Robert"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					2
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/P8DFZVFL",
+		"type": "article-journal",
+		"abstract": "Spiking Neural Networks (SNNs) are currently attracting researchers’ attention due to their efficiencies in various tasks. Spike-timing-dependent plasticity (STDP) is an unsupervised learning process that utilizes bio-plausibility based on the relative timing of pre/post-synaptic spikes of neurons. Integrated with STDP, SNNs perform well consuming less energy. However, it is hard to ensure that synaptic weights always converge to values guaranteeing accurate prediction because STDP does not change synaptic weights with supervision. To address this limitation, researchers have proposed mechanisms for inducing STDP to converge synaptic weights on the proper values referring to current synaptic weights. Thus, if the current weights fail to describe proper synaptic connections, they cannot induce STDP to update synaptic weights properly. To solve this problem, we propose an adaptive mechanism that helps STDP to converge synaptic weights directly based on input data features: Adaptive synaptic template (AST). AST leads synaptic weights to describe synaptic connections according to the data features. It prevents STDP from changing synaptic weights based on abnormal weights that fail to describe the proper synaptic connections. This is because it does not use the current synaptic weights that can disturb proper weight convergence. We integrate AST with an SNN and conduct experiments to compare it with a baseline (the SNN without AST) and benchmarks (previous works to improve STDP). Our experimental results show that the SNN using AST classifies various data sets with 6%–39% higher accuracy than the baseline and benchmarks.",
+		"container-title": "Computational Intelligence",
+		"DOI": "10.1111/coin.70001",
+		"ISSN": "0824-7935, 1467-8640",
+		"issue": "5",
+		"journalAbbreviation": "Computational Intelligence",
+		"language": "en",
+		"page": "e70001",
+		"source": "DOI.org (Crossref)",
+		"title": "Adaptive Synaptic Adjustment Mechanism to Improve Learning Performances of Spiking Neural Networks",
+		"URL": "https://onlinelibrary.wiley.com/doi/10.1111/coin.70001",
+		"volume": "40",
+		"author": [
+			{
+				"family": "Lee",
+				"given": "Hyun‐Jong"
+			},
+			{
+				"family": "Lim",
+				"given": "Jae‐Han"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					10
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/2IMNHQVH",
+		"type": "paper-conference",
+		"abstract": "Green Mountain Semiconductor (GMS) is presenting functional subcomponents designed for the core of a spiking neural network (SNN). This design utilizes Resistive RandomAccess Memory (ReRAM) as a radiation tolerant storage element. SNNs are a biologically inspired computing paradigm that more closely resemble neural processing in the human brain than conventional artiﬁcial neural networks. SNNs communicate through discrete pulses, with information encoded in their timing or rate. This event-driven nature allows these networks to achieve greater energy efﬁciency than the state of the art. By leveraging ReRAMs ability to efﬁciently store and update synaptic weights, the proposed system enables energy-efﬁcient, scalable, and resilient artiﬁcial intelligence processing. This architecture supports unsupervised Hebbian learning SNN models, mimicking biological learning mechanisms to achieve in situ adaptability in real time. A proof of concept circuit was implemented with a two neuron input layer and a two neuron output layer, fully connected through a resistive memory array having 2 bit lines and two word lines. The neurons are designed as fully asynchronous leaky integrate and ﬁre circuits without any clock signal. The design has recently been submitted for manufacturing at GlobalFoundries in 22nm FDX technology. Scaled power consumption and compute performance will be discussed and benchmarked against state of the art solutions, along with further improvements to reduce power consumption for a variety of technology nodes.",
+		"container-title": "2025 IEEE 34st Microelectronics Design &amp; Test Symposium (MDTS)",
+		"DOI": "10.1109/MDTS64924.2025.11177094",
+		"event-title": "2025 IEEE 34st Microelectronics Design &amp; Test Symposium (MDTS)",
+		"ISBN": "979-8-3315-3689-3",
+		"language": "en",
+		"license": "https://doi.org/10.15223/policy-029",
+		"page": "1-5",
+		"publisher": "IEEE",
+		"publisher-place": "Albany, NY, USA",
+		"source": "DOI.org (Crossref)",
+		"title": "A Hebbian Learning based Spiking Neuromorphic Hardware Accelerator with ReRAM",
+		"URL": "https://ieeexplore.ieee.org/document/11177094/",
+		"author": [
+			{
+				"family": "Hokenmaier",
+				"given": "W."
+			},
+			{
+				"family": "Jurasek",
+				"given": "R."
+			},
+			{
+				"family": "McNeil",
+				"given": "E."
+			},
+			{
+				"family": "Daudelin",
+				"given": "Darin"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					5,
+					19
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/8AGGJF63",
+		"type": "article-journal",
+		"abstract": "In this brief, we propose a novel resource-friendly neuromorphic processor architecture named “NeuCore” with fully event-driven on-chip Spike Timing Dependent Plasticity (STDP) learning. We focus on the partial clock-driven parameters and optimize them into the event-driven updating mode to reduce memory overhead. Several key techniques such as spike-driven updating values are proposed and well-scheduled to further improve the energy efﬁciency and implementation efﬁciency of on-chip learning. The experimental results show that the accuracy of NeuCore reaches 90.04% on DVS128 Gesture datasets. NeuCore achieves 4.44× and 2.5× speed-up in performance and learning throughput, respectively, when compared with the state-of-the-art trace-based work. NeuCore achieves an implementation efﬁciency of 1.37× - 2.27× compared to state-of-the-art counterbased work.",
+		"container-title": "IEEE Transactions on Circuits and Systems II: Express Briefs",
+		"DOI": "10.1109/TCSII.2025.3569536",
+		"ISSN": "1549-7747, 1558-3791",
+		"issue": "7",
+		"journalAbbreviation": "IEEE Trans. Circuits Syst. II",
+		"language": "en",
+		"license": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html",
+		"page": "928-932",
+		"source": "DOI.org (Crossref)",
+		"title": "NeuCore: A Novel Neuromorphic Processor Architecture With On-Chip Event-Driven Learning",
+		"title-short": "NeuCore",
+		"URL": "https://ieeexplore.ieee.org/document/11002572/",
+		"volume": "72",
+		"author": [
+			{
+				"family": "Wei",
+				"given": "Yi"
+			},
+			{
+				"family": "Yang",
+				"given": "Zhijie"
+			},
+			{
+				"family": "Xiao",
+				"given": "Xun"
+			},
+			{
+				"family": "Wang",
+				"given": "Xiangyu"
+			},
+			{
+				"family": "Xu",
+				"given": "Weixia"
+			},
+			{
+				"family": "Wang",
+				"given": "Lei"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/4KUMVXRF",
+		"type": "article-journal",
+		"abstract": "Memristor crossbar-based neural network systems offer high throughput with low energy consumption. A key advantage of on-chip training in these systems is their ability to mitigate the effects of device variability and faults. This paper presents an efficient on-chip training circuit for memristor crossbar-based multi-layer neural networks. We propose a novel method for storing the product of two analog signals directly in a memristor device, eliminating the need for ADC and DAC converters. Experimental results show that the proposed system is approximately twice as energy efficient and 1.5 times faster than existing memristor-based systems for training multi-layer neural networks.",
+		"container-title": "Chips",
+		"DOI": "10.3390/chips4030038",
+		"ISSN": "2674-0729",
+		"issue": "3",
+		"journalAbbreviation": "Chips",
+		"language": "en",
+		"page": "38",
+		"source": "DOI.org (Crossref)",
+		"title": "Energy-Efficient Training of Memristor Crossbar-Based Multi-Layer Neural Networks",
+		"URL": "https://www.mdpi.com/2674-0729/4/3/38",
+		"volume": "4",
+		"author": [
+			{
+				"family": "Hasan",
+				"given": "Raqibul"
+			},
+			{
+				"family": "Alam",
+				"given": "Md Shahanur"
+			},
+			{
+				"family": "Taha",
+				"given": "Tarek M."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					9,
+					5
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/23LLWEE8",
+		"type": "article-journal",
+		"abstract": "Recent years have seen an increased importance of neural network inference in edge-based scenarios, which impose size and power constraints requiring novel computing devices. These same edge scenarios may require operating over long periods of time, or exposure to extreme environments, resulting in a drift of neural network weights that cause degraded performance. In searching for ways to develop neural network approaches that perform robustly under these conditions, we propose a biologically-inspired mechanism for the dynamic adaptation of within-neuron parameters that is guided by a global context signal carrying information about perturbations and variability in incoming stimuli. Specifically, we demonstrate that adaptive voltage thresholds or neuronal time constants, when informed by a global context signal, can enable network-level mechanisms to recover from perturbed synaptic weights. Consistent with prior literature, the context-modulated approach is effective for recurrent, but not feedforward networks, by modulating network level dynamics. We demonstrate this approach successfully recovers performance in image classification tasks and spatiotemporal tracking tasks under idealized and Gaussian noise as well as for realistic perturbations from a memristive device when exposed to ionizing radiation. Finally, we discuss how this approach enables the design of robust and energy-efficient neuromorphic systems that perform well, even in resource-constrained scenarios with extreme environments such as edge processing.",
+		"container-title": "Frontiers in Neuroscience",
+		"DOI": "10.3389/fnins.2026.1766765",
+		"ISSN": "1662-453X",
+		"journalAbbreviation": "Front. Neurosci.",
+		"language": "en",
+		"page": "1766765",
+		"source": "DOI.org (Crossref)",
+		"title": "Learned adaptive properties for mitigation of weight perturbations in embedded spiking networks",
+		"URL": "https://www.frontiersin.org/articles/10.3389/fnins.2026.1766765/full",
+		"volume": "20",
+		"author": [
+			{
+				"family": "Luca",
+				"given": "Sarah"
+			},
+			{
+				"family": "Xiao",
+				"given": "T. Patrick"
+			},
+			{
+				"family": "Chance",
+				"given": "Frances S."
+			},
+			{
+				"family": "Agarwal",
+				"given": "Sapan"
+			},
+			{
+				"family": "Teeter",
+				"given": "Corinne"
+			},
+			{
+				"family": "Chapman",
+				"given": "G. William"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					3,
+					11
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/RTJQ8CLV",
+		"type": "article-journal",
+		"abstract": "Abstract\n            Recurrently connected networks of spiking neurons underlie the astounding information processing capabilities of the brain. Yet in spite of extensive research, how they can learn through synaptic plasticity to carry out complex network computations remains unclear. We argue that two pieces of this puzzle were provided by experimental data from neuroscience. A mathematical result tells us how these pieces need to be combined to enable biologically plausible online network learning through gradient descent, in particular deep reinforcement learning. This learning method–called e-prop–approaches the performance of backpropagation through time (BPTT), the best-known method for training recurrent neural networks in machine learning. In addition, it suggests a method for powerful on-chip learning in energy-efficient spike-based hardware for artificial intelligence.",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-020-17236-y",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"language": "en",
+		"page": "3625",
+		"source": "DOI.org (Crossref)",
+		"title": "A solution to the learning dilemma for recurrent networks of spiking neurons",
+		"URL": "https://www.nature.com/articles/s41467-020-17236-y",
+		"volume": "11",
+		"author": [
+			{
+				"family": "Bellec",
+				"given": "Guillaume"
+			},
+			{
+				"family": "Scherr",
+				"given": "Franz"
+			},
+			{
+				"family": "Subramoney",
+				"given": "Anand"
+			},
+			{
+				"family": "Hajek",
+				"given": "Elias"
+			},
+			{
+				"family": "Salaj",
+				"given": "Darjan"
+			},
+			{
+				"family": "Legenstein",
+				"given": "Robert"
+			},
+			{
+				"family": "Maass",
+				"given": "Wolfgang"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2020",
+					7,
+					17
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/EN6KA3LX",
+		"type": "article",
+		"abstract": "Spiking Neural Networks (SNNs), as the third generation of neural networks, have gained prominence for their biological plausibility and computational efficiency, especially in processing diverse datasets. The integration of attention mechanisms, inspired by advancements in neural network architectures, has led to the development of Spiking Transformers. These have shown promise in enhancing SNNs’ capabilities, particularly in the realms of both static and neuromorphic datasets. Despite their progress, a discernible gap exists in these systems, specifically in the Spiking Self Attention (SSA) mechanism’s effectiveness in leveraging the temporal processing potential of SNNs. To address this, we introduce the Temporal Interaction Module (TIM), a novel, convolutionbased enhancement designed to augment the temporal data processing abilities within SNN architectures. TIM’s integration into existing SNN frameworks is seamless and efficient, requiring minimal additional parameters while significantly boosting their temporal information handling capabilities. Through rigorous experimentation, TIM has demonstrated its effectiveness in exploiting temporal information, leading to state-of-the-art performance across various neuromorphic datasets. The code is available at https://github.com/BrainCogX/Brain-Cog/tree/main/examples/TIM.",
+		"DOI": "10.48550/arXiv.2401.11687",
+		"language": "en",
+		"note": "arXiv:2401.11687 [cs.NE]",
+		"number": "arXiv:2401.11687",
+		"publisher": "arXiv",
+		"source": "arXiv.org",
+		"title": "TIM: An Efficient Temporal Interaction Module for Spiking Transformer",
+		"title-short": "TIM",
+		"URL": "http://arxiv.org/abs/2401.11687",
+		"author": [
+			{
+				"family": "Shen",
+				"given": "Sicheng"
+			},
+			{
+				"family": "Zhao",
+				"given": "Dongcheng"
+			},
+			{
+				"family": "Shen",
+				"given": "Guobin"
+			},
+			{
+				"family": "Zeng",
+				"given": "Yi"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					5,
+					9
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/YT6NKW5W",
+		"type": "article-journal",
+		"abstract": "The coexistence of nonvolatile and volatile switching characteristics in ZnO-based conducting bridge random access memory (CBRAM) devices and the feasibility of the cycle-to-cycle fluctuation of both characteristics for data storage and random number generator (RNG) applications are investigated. The insertion of a 6-nm-thick Ti barrier layer between the Ag top electrode (TE) and the ZnO switching layer improves the switching stability and the memory window up to five orders of magnitude. The employment of current compliance (CC) of 1 mA leads to a permanent LRS; meanwhile, CC lower than 100 uA exhibits volatile switching characteristics. Although the lower CC operations might not be applicable for data storage applications, their switching fluctuations can be used as inputs for generating random bitstreams. An RNG circuit design is proposed, and the randomness of the bitstreams is evaluated using the NIST randomness test suite. The volatile switching induced by the lower CC tends to produce bitstreams with a better randomicity than the nonvolatile one, where the resistance state of the device operated with a CC of 10 uA is able to generate 1600 bits that pass seven out of seven NIST tests. We conduct statistical analysis to shed light on the relationship between the resistance states and the quality of the produced random bitstream. In contrast to popular opinion, the coefficient of variation might not be the best method to quantify the fluctuation of the resistance state in our case. Therefore, we propose the switching fluctuation factor (FF) to determine the threshold value of the resistance state that can produce a sufficient random bitstream; it is found that our RNG circuit requires a threshold FF of 96% to produce a bitstream that passes at least four out of seven tests. This work not only proposes a solution to enhance the switching stability for data storage applications but also provides insight into the exploitation of switching instability for RNG applications, where a single device can be programmed to have both capabilities, rendering programmable and multifunctional electronics.",
+		"container-title": "IET Circuits, Devices & Systems",
+		"DOI": "10.1049/cds2/9982211",
+		"ISSN": "1751-8598",
+		"issue": "1",
+		"language": "en",
+		"note": "_eprint: https://ietresearch.onlinelibrary.wiley.com/doi/pdf/10.1049/cds2/9982211",
+		"page": "9982211",
+		"source": "Wiley Online Library",
+		"title": "Exploring the Switching Instability of CBRAM for Random Number Generator Applications",
+		"URL": "https://onlinelibrary.wiley.com/doi/abs/10.1049/cds2/9982211",
+		"volume": "2025",
+		"author": [
+			{
+				"family": "Xu",
+				"given": "Weixin"
+			},
+			{
+				"family": "Bazaz",
+				"given": "Hajira S."
+			},
+			{
+				"family": "Nugroho",
+				"given": "Asep"
+			},
+			{
+				"family": "Purnama",
+				"given": "Irwan"
+			},
+			{
+				"family": "Hajiabadi",
+				"given": "Zohreh"
+			},
+			{
+				"family": "Graham",
+				"given": "Aiden"
+			},
+			{
+				"family": "Wang",
+				"given": "Alexander-Hanyu"
+			},
+			{
+				"family": "Chandrasekaran",
+				"given": "Sridhar"
+			},
+			{
+				"family": "Simanjuntak",
+				"given": "Firman M."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025"
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/W3RSNQD2",
+		"type": "article-journal",
+		"abstract": "The leaky integrate-and-fire (LIF) spiking model can successively mimic the firing patterns and information propagation of a biological neuron. It has been applied in neural networks, cognitive computing, and brain-inspired computing. Due to the resistance variability and the natural storage capacity of the memristor, the LIF spiking model with a memristor (MLIF) is presented in this paper to simulate the function and working mode of neurons in biological systems. First, the comparison between the MLIF spiking model and the LIF spiking model is conducted. Second, it is experimentally shown that a single memristor could mimic the function of the integration and filtering of the dendrite and emulate the function of the integration and firing of the soma. Finally, the feasibility of the proposed MLIF spiking model is verified by the generation and recognition of Morse code. The experimental results indicate that the presented MLIF model efficiently performs good biological frequency adaptation, high firing frequency, and rich spiking patterns. A memristor can be used as the dendrite and the soma, and the MLIF spiking model can emulate the axon. The constructed single neuron can efficiently complete the generation and propagation of firing patterns.",
+		"container-title": "Frontiers in Neuroscience",
+		"DOI": "10.3389/fnins.2022.853010",
+		"ISSN": "1662-453X",
+		"journalAbbreviation": "Front. Neurosci.",
+		"language": "English",
+		"publisher": "Frontiers",
+		"source": "Frontiers",
+		"title": "Memristive LIF Spiking Neuron Model and Its Application in Morse Code",
+		"URL": "https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.853010/full",
+		"volume": "16",
+		"author": [
+			{
+				"family": "Fang",
+				"given": "Xiaoyan"
+			},
+			{
+				"family": "Liu",
+				"given": "Derong"
+			},
+			{
+				"family": "Duan",
+				"given": "Shukai"
+			},
+			{
+				"family": "Wang",
+				"given": "Lidan"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					4,
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/6LREICM3",
+		"type": "article-journal",
+		"abstract": "To address the von Neumann bottleneck, artificial neural networks (ANNs) are aroused to construct neuromorphic computing systems. The artificial neuron is one of the essential components that collect the weight updating information of artificial synapses. Leaky-Integrate-and-Fire (LIF) neuron mimicking the cell membrane of biological neurons is a promising neural model due to its simplicity. To adjust the performances of artificial neurons, multiple resistors with different resistive values need to be integrated into the circuit. Whereas more components mean higher manufacturing costs, more complex circuits, and more complicated control systems. In this work, the first adjustable LIF neuron was developed, which can further simplify the circuits. To achieve adjustable fashions, a memristor-coupled capacitor with binary intrinsic resistant states was employed to integrate input signals. The intrinsic tunable resistance can modify the charge leaking rate, which determines the neural spiking features. Another contribution of this work is to overcome the hinder of credible circuit design using novel memristor-coupled capacitors with entangled capacitive and memristive effects. The genetic algorithm (GA) was utilized to detach the entanglement of memristive and capacitive effects, which is crucial for circuit design. This method can be generalized to other entangled physical behaviors, facilitating the development of novel circuits. The results will not only strengthen neuromorphic computing capability but also provides a methodology to mathematically decode electronic devices with entangled physical behaviors for novel circuits.",
+		"container-title": "Materials Today Advances",
+		"DOI": "10.1016/j.mtadv.2021.100192",
+		"ISSN": "2590-0498",
+		"journalAbbreviation": "Materials Today Advances",
+		"page": "100192",
+		"source": "ScienceDirect",
+		"title": "Adjustable Leaky-Integrate-and-fire neurons based on memristor-coupled capacitors",
+		"URL": "https://www.sciencedirect.com/science/article/pii/S259004982100062X",
+		"volume": "12",
+		"author": [
+			{
+				"family": "Guo",
+				"given": "T."
+			},
+			{
+				"family": "Pan",
+				"given": "K."
+			},
+			{
+				"family": "Sun",
+				"given": "B."
+			},
+			{
+				"family": "Wei",
+				"given": "L."
+			},
+			{
+				"family": "Yan",
+				"given": "Y."
+			},
+			{
+				"family": "Zhou",
+				"given": "Y. N."
+			},
+			{
+				"family": "Wu",
+				"given": "Y. A."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2021",
+					12,
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/6QFM96RT",
+		"type": "article-journal",
+		"container-title": "The Journal of Physical Chemistry Letters",
+		"DOI": "10.1021/acs.jpclett.6c01632",
+		"ISSN": "1948-7185, 1948-7185",
+		"issue": "27",
+		"journalAbbreviation": "J. Phys. Chem. Lett.",
+		"language": "en",
+		"license": "https://creativecommons.org/licenses/by/4.0/",
+		"page": "7619-7624",
+		"source": "DOI.org (Crossref)",
+		"title": "Spiking without Resets: Continuous Integrate-and-Fire Dynamics in Neuronal Circuits",
+		"title-short": "Spiking without Resets",
+		"URL": "https://pubs.acs.org/doi/10.1021/acs.jpclett.6c01632",
+		"volume": "17",
+		"author": [
+			{
+				"family": "Fenollosa",
+				"given": "Roberto"
+			},
+			{
+				"family": "Bisquert",
+				"given": "Juan"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					7,
+					9
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/C62TZTX9",
+		"type": "article-journal",
+		"abstract": "The von Neumann architecture, due to the physical separation between memory and processor, has limited the development of data-intensive applications. Neuromorphic computing technologies inspired by the brain’s parallel and event-driven operation mechanisms have enabled low-power in-memory computing. Memristors with tunable conductance can emulate biological synapses, while flexible memristors further offer mechanical flexibility, making them suitable for wearable electronics and intelligent sensing systems. This review systematically summarizes the switching mechanisms of flexible neuromorphic memristors, including conductive filaments, interface effects, ferroelectricity, phase change, and multiple synergistic mechanisms. It categorically discusses natural and bio-derived materials, synthetic organic/polymer materials, and inorganic functional materials, and introduces strategies for enhancing flexibility. The article also covers device architectures such as sandwich structures, crossbar arrays, and fiber-based textile structures, along with low-temperature fabrication techniques. Finally, it reviews recent advances in neuromorphic computing, in-memory computing, biomimetic sensing, and biomedical wearable systems. Challenges related to mechanical stability and device uniformity are analyzed, and future directions toward self-healing materials and integrated sensing-storage-computing systems are outlined. This comprehensive review bridges the gap between material innovation and system-level integration in flexible neuromorphic memristors, providing a valuable roadmap for accelerating the development of next-generation wearable artificial intelligence, edge computing, and bio-integrated electronic technologies.",
+		"container-title": "Materials",
+		"DOI": "10.3390/ma19153234",
+		"ISSN": "1996-1944",
+		"issue": "15",
+		"language": "en",
+		"license": "http://creativecommons.org/licenses/by/3.0/",
+		"page": "3234",
+		"publisher": "Multidisciplinary Digital Publishing Institute",
+		"source": "www.mdpi.com",
+		"title": "Flexible Neuromorphic Memristors: From Mechanisms to Applications",
+		"title-short": "Flexible Neuromorphic Memristors",
+		"URL": "https://www.mdpi.com/1996-1944/19/15/3234",
+		"volume": "19",
+		"author": [
+			{
+				"family": "Yang",
+				"given": "Letian"
+			},
+			{
+				"family": "Cheng",
+				"given": "Jing"
+			},
+			{
+				"family": "Zhang",
+				"given": "Yun"
+			},
+			{
+				"family": "Wang",
+				"given": "Yunbo"
+			},
+			{
+				"family": "Yao",
+				"given": "Jiseng"
+			},
+			{
+				"family": "Liu",
+				"given": "Yuqing"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					1
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/FM67F46P",
+		"type": "article-journal",
+		"abstract": "The growing demand for fast and energy-efficient computing has motivated the development of neuromorphic hardware inspired by biological neural systems. Spiking neural networks (SNNs), as the third generation of neural networks, offer an event-driven and highly parallel computing paradigm that is well suited for such applications. A key challenge in hardware SNNs is the efficient implementation of synaptic learning mechanisms, particularly spike-timing-dependent plasticity (STDP), with minimal circuit complexity and energy overhead. In this work, we propose a fully CMOS leaky integrate-and-fire (LIF) neuron designed to enable local, on-chip STDP-like learning when interfaced with analog memristive synapses. The proposed neuron generates a bipolar output spike composed of both positive and negative voltage pulses, allowing direct modulation of memristor conductance without the need for complex peripheral circuits or explicit timing storage elements. The neuron operates in two distinct modes of training mode, which produces bipolar spikes to support synaptic updates, and inference mode, which generates a single unipolar spike while deactivating non-essential circuitry to reduce power consumption. To validate the proposed design, a proof-of-concept 15$$\\times$$4 spiking neural network incorporating a winner-takes-all (WTA) mechanism is implemented in 65-nm CMOS technology and evaluated using circuit-level simulations. The results demonstrate correct local synaptic adaptation, stable neuron operation under process variations, and successful pattern association during training and inference. The network processes each training pattern within 0.6 ms and performs inference within 0.32 ms.",
+		"container-title": "Scientific Reports",
+		"DOI": "10.1038/s41598-026-55364-5",
+		"ISSN": "2045-2322",
+		"journalAbbreviation": "Sci Rep",
+		"language": "en",
+		"license": "2026 The Author(s)",
+		"publisher": "Nature Publishing Group",
+		"source": "www.nature.com",
+		"title": "A fully-CMOS spiking LIF neuron implementation for optimized STDP learning on memristor",
+		"URL": "https://www.nature.com/articles/s41598-026-55364-5",
+		"author": [
+			{
+				"family": "Karamimanesh",
+				"given": "Mehrzad"
+			},
+			{
+				"family": "Moosavi",
+				"given": "S. M. Rasoul"
+			},
+			{
+				"family": "Abiri",
+				"given": "Ebrahim"
+			},
+			{
+				"family": "Shahsavari",
+				"given": "Mahyar"
+			},
+			{
+				"family": "Hassanli",
+				"given": "Kourosh"
+			},
+			{
+				"family": "Kumar",
+				"given": "Prashant"
+			},
+			{
+				"family": "Kang",
+				"given": "Sung-Mo"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					3
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					5,
+					28
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/WPVB7AKG",
+		"type": "article-journal",
+		"abstract": "Abstract\n            Recent advances in memory technologies, devices, and materials have shown great potential for integration into neuromorphic electronic systems. However, a significant gap remains between the development of these materials and the realization of large-scale, fully functional systems. One key challenge is determining which devices and materials are best suited for specific functions and how they can be paired with complementary metal-oxide-semiconductor circuitry. To address this, we present a mixed-signal neuromorphic architecture designed to explore the integration of on-chip learning circuits and novel two- and three-terminal devices. The chip serves as a platform to bridge the gap between silicon-based neuromorphic computation and the latest advancements in emerging devices. In this paper, we demonstrate the readiness of the architecture for device integration through comprehensive measurements and simulations. The processor provides a practical system for testing bio-inspired learning algorithms alongside emerging devices, establishing a tangible link between brain-inspired computation and cutting-edge device research.",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-025-61576-6",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"language": "en",
+		"page": "6424",
+		"source": "DOI.org (Crossref)",
+		"title": "A neuromorphic processor with on-chip learning for beyond-CMOS device integration",
+		"URL": "https://www.nature.com/articles/s41467-025-61576-6",
+		"volume": "16",
+		"author": [
+			{
+				"family": "Greatorex",
+				"given": "Hugh"
+			},
+			{
+				"family": "Richter",
+				"given": "Ole"
+			},
+			{
+				"family": "Mastella",
+				"given": "Michele"
+			},
+			{
+				"family": "Cotteret",
+				"given": "Madison"
+			},
+			{
+				"family": "Klein",
+				"given": "Philipp"
+			},
+			{
+				"family": "Fabre",
+				"given": "Maxime"
+			},
+			{
+				"family": "Rubino",
+				"given": "Arianna"
+			},
+			{
+				"family": "Soares Girão",
+				"given": "Willian"
+			},
+			{
+				"family": "Chen",
+				"given": "Junren"
+			},
+			{
+				"family": "Ziegler",
+				"given": "Martin"
+			},
+			{
+				"family": "Bégon-Lours",
+				"given": "Laura"
+			},
+			{
+				"family": "Indiveri",
+				"given": "Giacomo"
+			},
+			{
+				"family": "Chicca",
+				"given": "Elisabetta"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					4
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					7,
+					11
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/7U6CSYQ4",
+		"type": "article-journal",
+		"container-title": "Current Opinion in Solid State and Materials Science",
+		"DOI": "10.1016/j.cossms.2025.101226",
+		"ISSN": "13590286",
+		"journalAbbreviation": "Current Opinion in Solid State and Materials Science",
+		"language": "en",
+		"page": "101226",
+		"source": "DOI.org (Crossref)",
+		"title": "Current opinions on memristor-accelerated machine learning hardware",
+		"URL": "https://linkinghub.elsevier.com/retrieve/pii/S1359028625000130",
+		"volume": "37",
+		"author": [
+			{
+				"family": "Jiang",
+				"given": "Mingrui"
+			},
+			{
+				"family": "Xu",
+				"given": "Yichun"
+			},
+			{
+				"family": "Li",
+				"given": "Zefan"
+			},
+			{
+				"family": "Li",
+				"given": "Can"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					5
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2025",
+					7
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/D4UB9ISN",
+		"type": "article-journal",
+		"language": "fr",
+		"source": "Zotero",
+		"title": "Neuromorphic in-memory learning with analog integrated circuits and nanoscale memristive devices",
+		"author": [
+			{
+				"family": "Garg",
+				"given": "Nikhil"
+			}
+		]
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/ZX2UEK33",
+		"type": "article-journal",
+		"abstract": "Abstract\n            Artificial Intelligence (AI) is currently experiencing a bloom driven by deep learning (DL) techniques, which rely on networks of connected simple computing units operating in parallel. The low communication bandwidth between memory and processing units in conventional von Neumann machines does not support the requirements of emerging applications that rely extensively on large sets of data. More recent computing paradigms, such as high parallelization and near-memory computing, help alleviate the data communication bottleneck to some extent, but paradigm- shifting concepts are required. Memristors, a novel beyond-complementary metal-oxide-semiconductor (CMOS) technology, are a promising choice for memory devices due to their unique intrinsic device-level properties, enabling both storing and computing with a small, massively-parallel footprint at low power. Theoretically, this directly translates to a major boost in energy efficiency and computational throughput, but various practical challenges remain. In this work we review the latest efforts for achieving hardware-based memristive artificial neural networks (ANNs), describing with detail the working principia of each block and the different design alternatives with their own advantages and disadvantages, as well as the tools required for accurate estimation of performance metrics. Ultimately, we aim to provide a comprehensive protocol of the materials and methods involved in memristive neural networks to those aiming to start working in this field and the experts looking for a holistic approach.",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-024-45670-9",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"language": "en",
+		"page": "1974",
+		"source": "DOI.org (Crossref)",
+		"title": "Hardware implementation of memristor-based artificial neural networks",
+		"URL": "https://www.nature.com/articles/s41467-024-45670-9",
+		"volume": "15",
+		"author": [
+			{
+				"family": "Aguirre",
+				"given": "Fernando"
+			},
+			{
+				"family": "Sebastian",
+				"given": "Abu"
+			},
+			{
+				"family": "Le Gallo",
+				"given": "Manuel"
+			},
+			{
+				"family": "Song",
+				"given": "Wenhao"
+			},
+			{
+				"family": "Wang",
+				"given": "Tong"
+			},
+			{
+				"family": "Yang",
+				"given": "J. Joshua"
+			},
+			{
+				"family": "Lu",
+				"given": "Wei"
+			},
+			{
+				"family": "Chang",
+				"given": "Meng-Fan"
+			},
+			{
+				"family": "Ielmini",
+				"given": "Daniele"
+			},
+			{
+				"family": "Yang",
+				"given": "Yuchao"
+			},
+			{
+				"family": "Mehonic",
+				"given": "Adnan"
+			},
+			{
+				"family": "Kenyon",
+				"given": "Anthony"
+			},
+			{
+				"family": "Villena",
+				"given": "Marco A."
+			},
+			{
+				"family": "Roldán",
+				"given": "Juan B."
+			},
+			{
+				"family": "Wu",
+				"given": "Yuting"
+			},
+			{
+				"family": "Hsu",
+				"given": "Hung-Hsi"
+			},
+			{
+				"family": "Raghavan",
+				"given": "Nagarajan"
+			},
+			{
+				"family": "Suñé",
+				"given": "Jordi"
+			},
+			{
+				"family": "Miranda",
+				"given": "Enrique"
+			},
+			{
+				"family": "Eltawil",
+				"given": "Ahmed"
+			},
+			{
+				"family": "Setti",
+				"given": "Gianluca"
+			},
+			{
+				"family": "Smagulova",
+				"given": "Kamilya"
+			},
+			{
+				"family": "Salama",
+				"given": "Khaled N."
+			},
+			{
+				"family": "Krestinskaya",
+				"given": "Olga"
+			},
+			{
+				"family": "Yan",
+				"given": "Xiaobing"
+			},
+			{
+				"family": "Ang",
+				"given": "Kah-Wee"
+			},
+			{
+				"family": "Jain",
+				"given": "Samarth"
+			},
+			{
+				"family": "Li",
+				"given": "Sifan"
+			},
+			{
+				"family": "Alharbi",
+				"given": "Osamah"
+			},
+			{
+				"family": "Pazos",
+				"given": "Sebastian"
+			},
+			{
+				"family": "Lanza",
+				"given": "Mario"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					5
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					3,
+					4
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/VRPEV9I8",
+		"type": "article-journal",
+		"container-title": "Nature Electronics",
+		"DOI": "10.1038/s41928-018-0023-2",
+		"ISSN": "2520-1131",
+		"issue": "2",
+		"journalAbbreviation": "Nat Electron",
+		"language": "en",
+		"page": "137-145",
+		"source": "DOI.org (Crossref)",
+		"title": "Fully memristive neural networks for pattern classification with unsupervised learning",
+		"URL": "https://www.nature.com/articles/s41928-018-0023-2",
+		"volume": "1",
+		"author": [
+			{
+				"family": "Wang",
+				"given": "Zhongrui"
+			},
+			{
+				"family": "Joshi",
+				"given": "Saumil"
+			},
+			{
+				"family": "Savel’ev",
+				"given": "Sergey"
+			},
+			{
+				"family": "Song",
+				"given": "Wenhao"
+			},
+			{
+				"family": "Midya",
+				"given": "Rivu"
+			},
+			{
+				"family": "Li",
+				"given": "Yunning"
+			},
+			{
+				"family": "Rao",
+				"given": "Mingyi"
+			},
+			{
+				"family": "Yan",
+				"given": "Peng"
+			},
+			{
+				"family": "Asapu",
+				"given": "Shiva"
+			},
+			{
+				"family": "Zhuo",
+				"given": "Ye"
+			},
+			{
+				"family": "Jiang",
+				"given": "Hao"
+			},
+			{
+				"family": "Lin",
+				"given": "Peng"
+			},
+			{
+				"family": "Li",
+				"given": "Can"
+			},
+			{
+				"family": "Yoon",
+				"given": "Jung Ho"
+			},
+			{
+				"family": "Upadhyay",
+				"given": "Navnidhi K."
+			},
+			{
+				"family": "Zhang",
+				"given": "Jiaming"
+			},
+			{
+				"family": "Hu",
+				"given": "Miao"
+			},
+			{
+				"family": "Strachan",
+				"given": "John Paul"
+			},
+			{
+				"family": "Barnell",
+				"given": "Mark"
+			},
+			{
+				"family": "Wu",
+				"given": "Qing"
+			},
+			{
+				"family": "Wu",
+				"given": "Huaqiang"
+			},
+			{
+				"family": "Williams",
+				"given": "R. Stanley"
+			},
+			{
+				"family": "Xia",
+				"given": "Qiangfei"
+			},
+			{
+				"family": "Yang",
+				"given": "J. Joshua"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					5
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2018",
+					2,
+					8
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/HG7LLPX3",
+		"type": "article-journal",
+		"abstract": "The capabilities of natural neural systems have inspired new generations of machine learning algorithms as well as neuromorphic very large-scale integrated (VLSI) circuits capable of fast, low-power information processing. However, it has been argued that most modern machine learning algorithms are not neurophysiologically plausible. In particular, the workhorse of modern deep learning, the backpropagation algorithm, has proven difficult to translate to neuromorphic hardware. In this study, we present a neuromorphic, spiking backpropagation algorithm based on synfire-gated dynamical information coordination and processing, implemented on Intel's Loihi neuromorphic research processor. We demonstrate a proof-of-principle three-layer circuit that learns to classify digits from the MNIST dataset. To our knowledge, this is the first work to show a Spiking Neural Network (SNN) implementation of the backpropagation algorithm that is fully on-chip, without a computer in the loop. It is competitive in accuracy with off-chip trained SNNs and achieves an energy-delay product suitable for edge computing. This implementation shows a path for using in-memory, massively parallel neuromorphic processors for low-power, low-latency implementation of modern deep learning applications.",
+		"container-title": "Nature Communications",
+		"DOI": "10.1038/s41467-024-53827-9",
+		"ISSN": "2041-1723",
+		"issue": "1",
+		"journalAbbreviation": "Nat Commun",
+		"note": "arXiv:2106.07030 [cs.NE]",
+		"page": "9691",
+		"source": "arXiv.org",
+		"title": "The Backpropagation Algorithm Implemented on Spiking Neuromorphic Hardware",
+		"URL": "http://arxiv.org/abs/2106.07030",
+		"volume": "15",
+		"author": [
+			{
+				"family": "Renner",
+				"given": "Alpha"
+			},
+			{
+				"family": "Sheldon",
+				"given": "Forrest"
+			},
+			{
+				"family": "Zlotnik",
+				"given": "Anatoly"
+			},
+			{
+				"family": "Tao",
+				"given": "Louis"
+			},
+			{
+				"family": "Sornborger",
+				"given": "Andrew"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					6
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2024",
+					11,
+					8
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/98FCH6EK",
+		"type": "article",
+		"abstract": "Recent breakthroughs in neuromorphic computing show that local forms of gradient descent learning are compatible with Spiking Neural Networks (SNNs) and synaptic plasticity. Although SNNs can be scalably implemented using neuromorphic VLSI, an architecture that can learn using gradient-descent in situ is still missing. In this paper, we propose a local, gradient-based, error-triggered learning algorithm with online ternary weight updates. The proposed algorithm enables online training of multi-layer SNNs with memristive neuromorphic hardware showing a small loss in the performance compared with the state of the art. We also propose a hardware architecture based on memristive crossbar arrays to perform the required vector-matrix multiplications. The necessary peripheral circuitry including pre-synaptic, post-synaptic and write circuits required for online training, have been designed in the sub-threshold regime for power saving with a standard 180 nm CMOS process.",
+		"DOI": "10.48550/arXiv.2011.10852",
+		"note": "arXiv:2011.10852 [cs.NE]",
+		"number": "arXiv:2011.10852",
+		"publisher": "arXiv",
+		"source": "arXiv.org",
+		"title": "On-Chip Error-triggered Learning of Multi-layer Memristive Spiking Neural Networks",
+		"URL": "http://arxiv.org/abs/2011.10852",
+		"author": [
+			{
+				"family": "Payvand",
+				"given": "Melika"
+			},
+			{
+				"family": "Fouda",
+				"given": "Mohammed E."
+			},
+			{
+				"family": "Kurdahi",
+				"given": "Fadi"
+			},
+			{
+				"family": "Eltawil",
+				"given": "Ahmed M."
+			},
+			{
+				"family": "Neftci",
+				"given": "Emre O."
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					6
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2020",
+					11,
+					21
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/K7DTFRN6",
+		"type": "article-journal",
+		"abstract": "This study proposes voltage-dependent-synaptic plasticity (VDSP), a novel brain-inspired unsupervised local learning rule for the online implementation of Hebb’s plasticity mechanism on neuromorphic hardware. The proposed VDSP learning rule updates the synaptic conductance on the spike of the postsynaptic neuron only, which reduces by a factor of two the number of updates with respect to standard spike timing dependent plasticity (STDP). This update is dependent on the membrane potential of the presynaptic neuron, which is readily available as part of neuron implementation and hence does not require additional memory for storage. Moreover, the update is also regularized on synaptic weight and prevents explosion or vanishing of weights on repeated stimulation. Rigorous mathematical analysis is performed to draw an equivalence between VDSP and STDP. To validate the system-level performance of VDSP, we train a single-layer spiking neural network (SNN) for the recognition of handwritten digits. We report 85.01 ± 0.76% (Mean ± SD) accuracy for a network of 100 output neurons on the MNIST dataset. The performance improves when scaling the network size (89.93 ± 0.41% for 400 output neurons, 90.56 ± 0.27 for 500 neurons), which validates the applicability of the proposed learning rule for spatial pattern recognition tasks. Future work will consider more complicated tasks. Interestingly, the learning rule better adapts than STDP to the frequency of input signal and does not require hand-tuning of hyperparameters.",
+		"container-title": "Frontiers in Neuroscience",
+		"DOI": "10.3389/fnins.2022.983950",
+		"ISSN": "1662-453X",
+		"journalAbbreviation": "Front. Neurosci.",
+		"page": "983950",
+		"source": "DOI.org (Crossref)",
+		"title": "Voltage-dependent synaptic plasticity: Unsupervised probabilistic Hebbian plasticity rule based on neurons membrane potential",
+		"title-short": "Voltage-dependent synaptic plasticity",
+		"URL": "https://www.frontiersin.org/articles/10.3389/fnins.2022.983950/full",
+		"volume": "16",
+		"author": [
+			{
+				"family": "Garg",
+				"given": "Nikhil"
+			},
+			{
+				"family": "Balafrej",
+				"given": "Ismael"
+			},
+			{
+				"family": "Stewart",
+				"given": "Terrence C."
+			},
+			{
+				"family": "Portal",
+				"given": "Jean-Michel"
+			},
+			{
+				"family": "Bocquet",
+				"given": "Marc"
+			},
+			{
+				"family": "Querlioz",
+				"given": "Damien"
+			},
+			{
+				"family": "Drouin",
+				"given": "Dominique"
+			},
+			{
+				"family": "Rouat",
+				"given": "Jean"
+			},
+			{
+				"family": "Beilliard",
+				"given": "Yann"
+			},
+			{
+				"family": "Alibart",
+				"given": "Fabien"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					6
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2022",
+					10,
+					21
+				]
+			]
+		}
+	},
+	{
+		"id": "http://zotero.org/users/local/tZ0uPREt/items/F8M64THB",
+		"type": "article-journal",
+		"abstract": "Abstract\n            \n              The deployment of AI on edge computing devices faces significant challenges related to energy consumption and functionality. These devices could greatly benefit from brain-inspired learning mechanisms, allowing for real-time adaptation while using low-power. In-memory computing with nanoscale resistive memories may play a crucial role in enabling the execution of AI workloads on these edge devices. In this study, we introduce voltage-dependent synaptic plasticity (VDSP) as an efficient approach for unsupervised and local learning in memristive synapses based on Hebbian principles. This method enables online learning without requiring complex pulse-shaping circuits typically necessary for spike-timing-dependent plasticity (STDP). We show how VDSP can be advantageously adapted to three types of memristive devices (TiO\n              2\n              , HfO\n              2\n              -based metal-oxide filamentary synapses, and HfZrO\n              4\n              -based ferroelectric tunnel junctions (FTJ)) with disctinctive switching characteristics. System-level simulations of spiking neural networks incorporating these devices were conducted to validate unsupervised learning on MNIST-based pattern recognition tasks, achieving state-of-the-art performance. The results demonstrated over 83% accuracy across all devices using 200 neurons. Additionally, we assessed the impact of device variability, such as switching thresholds and ratios between high and low resistance state levels, and proposed mitigation strategies to enhance robustness.",
+		"container-title": "Communications Materials",
+		"DOI": "10.1038/s43246-025-01033-5",
+		"ISSN": "2662-4443",
+		"issue": "1",
+		"journalAbbreviation": "Commun Mater",
+		"language": "en",
+		"page": "19",
+		"source": "DOI.org (Crossref)",
+		"title": "Unsupervised local learning based on voltage-dependent synaptic plasticity for resistive and ferroelectric synapses",
+		"URL": "https://www.nature.com/articles/s43246-025-01033-5",
+		"volume": "7",
+		"author": [
+			{
+				"family": "Garg",
+				"given": "Nikhil"
+			},
+			{
+				"family": "Balafrej",
+				"given": "Ismael"
+			},
+			{
+				"family": "Palhares",
+				"given": "Joao Henrique Quintino"
+			},
+			{
+				"family": "Bégon-Lours",
+				"given": "Laura"
+			},
+			{
+				"family": "Florini",
+				"given": "Davide"
+			},
+			{
+				"family": "Falcone",
+				"given": "Donato Francesco"
+			},
+			{
+				"family": "Stecconi",
+				"given": "Tommaso"
+			},
+			{
+				"family": "Bragaglia",
+				"given": "Valeria"
+			},
+			{
+				"family": "Offrein",
+				"given": "Bert Jan"
+			},
+			{
+				"family": "Portal",
+				"given": "Jean-Michel"
+			},
+			{
+				"family": "Querlioz",
+				"given": "Damien"
+			},
+			{
+				"family": "Beilliard",
+				"given": "Yann"
+			},
+			{
+				"family": "Drouin",
+				"given": "Dominique"
+			},
+			{
+				"family": "Alibart",
+				"given": "Fabien"
+			}
+		],
+		"accessed": {
+			"date-parts": [
+				[
+					"2026",
+					8,
+					7
+				]
+			]
+		},
+		"issued": {
+			"date-parts": [
+				[
+					"2026",
+					1,
+					12
+				]
+			]
+		}
+	}
+]
