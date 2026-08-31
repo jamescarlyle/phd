@@ -337,7 +337,7 @@
 	url = {https://www.nature.com/articles/s41467-022-34774-9},
 	doi = {10.1038/s41467-022-34774-9},
 	abstract = {Abstract
-            
+
               Neuromorphic machines are intriguing for building energy-efficient intelligent systems, where spiking neurons are pivotal components. Recently, memristive neurons with promising bio-plausibility have been developed, but with limited reliability, bulky capacitors or additional reset circuits. Here, we propose an anti-ferroelectric field-effect transistor neuron based on the inherent polarization and depolarization of Hf
               0.2
               Zr
@@ -406,7 +406,7 @@
 	url = {https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202502255},
 	doi = {10.1002/adma.202502255},
 	abstract = {Abstract
-            
+
               The human brain's efficiency and adaptability in processing information is largely attributed to spatiotemporal spiking activities and intrinsic plasticity—the ability of neurons to autonomously modulate their excitability. Mott memristors, with their threshold switching characteristics, have been effectively utilized as artificial neurons, or neuristors, to generate spiking activities. However, the implementation of intrinsic plasticity and its significance in neuromorphic computing has yet to be systematically explored. Here, a frequency switching (FS) neuristor is presented that emulates neuron's intrinsic plasticity characteristics. By combining a volatile Mott memristor with a non‐volatile valence change memory (VCM) memristor, the FS neuristor achieves programmable multi‐level frequency–voltage (
               f
               –V
@@ -515,7 +515,7 @@
 	url = {https://www.nature.com/articles/s41467-018-04482-4},
 	doi = {10.1038/s41467-018-04482-4},
 	abstract = {Abstract
-            
+
               The progress in the field of neural computation hinges on the use of hardware more efficient than the conventional microprocessors. Recent works have shown that mixed-signal integrated memristive circuits, especially their passive (0T1R) variety, may increase the neuromorphic network performance dramatically, leaving far behind their digital counterparts. The major obstacle, however, is immature memristor technology so that only limited functionality has been reported. Here we demonstrate operation of one-hidden layer perceptron classifier entirely in the mixed-signal integrated hardware, comprised of two passive 20 × 20 metal-oxide memristive crossbar arrays, board-integrated with discrete conventional components. The demonstrated network, whose hardware complexity is almost 10× higher as compared to previously reported functional classifier circuits based on passive memristive crossbars, achieves classification fidelity within 3\% of that obtained in simulations, when using ex-situ training. The successful demonstration was facilitated by improvements in fabrication technology of memristors, specifically by lowering variations in their
               I–V
               characteristics.},
@@ -1133,7 +1133,7 @@
 	url = {https://www.nature.com/articles/s43246-025-01033-5},
 	doi = {10.1038/s43246-025-01033-5},
 	abstract = {Abstract
-            
+
               The deployment of AI on edge computing devices faces significant challenges related to energy consumption and functionality. These devices could greatly benefit from brain-inspired learning mechanisms, allowing for real-time adaptation while using low-power. In-memory computing with nanoscale resistive memories may play a crucial role in enabling the execution of AI workloads on these edge devices. In this study, we introduce voltage-dependent synaptic plasticity (VDSP) as an efficient approach for unsupervised and local learning in memristive synapses based on Hebbian principles. This method enables online learning without requiring complex pulse-shaping circuits typically necessary for spike-timing-dependent plasticity (STDP). We show how VDSP can be advantageously adapted to three types of memristive devices (TiO
               2
               , HfO
@@ -4415,7 +4415,7 @@
 	url = {https://iopscience.iop.org/article/10.1088/2634-4386/acf1c5},
 	doi = {10.1088/2634-4386/acf1c5},
 	abstract = {Abstract
-            
+
               Spiking neural networks (SNNs) have emerged as a hardware efficient architecture for classification tasks. The challenge of spike-based encoding has been the lack of a universal training mechanism performed entirely using spikes. There have been several attempts to adopt the powerful backpropagation (BP) technique used in non-spiking artificial neural networks (ANNs): (1) SNNs can be trained by externally computed numerical gradients. (2) A major advancement towards native spike-based learning has been the use of approximate BP using spike-time dependent plasticity with phased forward/backward passes. However, the transfer of information between such phases for gradient and weight update calculation necessitates external memory and computational access. This is a challenge for standard neuromorphic hardware implementations. In this paper, we propose a stochastic SNN based back-prop (SSNN-BP) algorithm that utilizes a composite neuron to
               simultaneously
               compute the forward pass activations and backward pass gradients explicitly with spikes. Although signed gradient values are a challenge for spike-based representation, we tackle this by splitting the gradient signal into positive and negative streams. The composite neuron encodes information in the form of stochastic spike-trains and converts BP weight updates into temporally and spatially local spike coincidence updates compatible with hardware-friendly resistive processing units. Furthermore, we characterize the quantization effect of discrete spike-based weight update to show that our method approaches BP ANN baseline with sufficiently long spike-trains. Finally, we show that the well-performing softmax cross-entropy loss function can be implemented through inhibitory lateral connections enforcing a winner take all rule. Our SNN with a two-layer network shows excellent generalization through comparable performance to ANNs with equivalent architecture and regularization parameters on static image datasets like MNIST, Fashion-MNIST, Extended MNIST, and temporally encoded image datasets like Neuromorphic MNIST datasets. Thus, SSNN-BP enables BP compatible with purely spike-based neuromorphic hardware.},
@@ -4436,7 +4436,7 @@
 	doi = {10.70675/a5f34c0ezcc3bz42c8z8a52z529a545221ca},
 	abstract = {Apprentissage neuromorphique en mémoire avec des circuits intégrés analogiques et des dispositifs mémoristifs à l’échelle nanométrique
           L'intégration de l'intelligence artificielle (IA) dans l'informatique en périphérie (EC) et les dispositifs portables présente des défis importants en raison des contraintes strictes en matière de puissance de calcul et de consommation d'énergie. L'informatique neuromorphique, inspirée par la conception économe en énergie du cerveau et ses capacités d'apprentissage continu, offre une solution prometteuse pour ces applications. Cette thèse propose un cadre flexible de co-conception algorithme-circuit qui aborde à la fois le développement des algorithmes et la conception matérielle, facilitant ainsi le déploiement efficace de l'IA sur du matériel spécialisé à ultra-basse consommation d'énergie.La première partie se concentre sur le développement d'algorithmes et introduit la plasticité synaptique dépendante de la tension (VDSP), une règle d'apprentissage non supervisée inspirée du cerveau. Le VDSP vise à mettre en œuvre en ligne le mécanisme de plasticité de Hebb en utilisant des synapses memristives à l'échelle nanométrique. Ces dispositifs imitent les synapses biologiques en ajustant leur résistance en fonction de l'activité électrique passée, permettant ainsi un apprentissage en ligne efficace. Le VDSP met à jour la conductance synaptique en fonction du potentiel de membrane du neurone, éliminant ainsi le besoin de mémoire supplémentaire pour stocker les timings des pics d'activité. Cette approche permet un apprentissage en ligne sans les circuits de formage d'impulsions complexes habituellement requis pour la plasticité dépendante du timing des pics (STDP) avec des memristors. Nous montrons comment le VDSP peut être avantageusement adapté à trois types de dispositifs memristifs (synapses à filament d'oxyde métallique et jonctions tunnel ferroélectriques) avec des caractéristiques de commutation analogiques distinctives. Les simulations au niveau du système de réseaux neuronaux à impulsions utilisant ces dispositifs ont validé leurs performances sur des tâches de reconnaissance de motifs sur MNIST, atteignant jusqu'à 90 \% de précision avec une meilleure adaptabilité et une réduction du réglage des hyperparamètres par rapport au STDP. De plus, nous avons évalué la variabilité des dispositifs et proposé des stratégies d'atténuation pour améliorer la robustesse.Dans la deuxième partie, nous implémentons un neurone analogique de type "leaky integrate-and-fire" (LIF), accompagné d'un régulateur de tension et d'un atténuateur de courant, afin d'interfacer sans heurts les neurones CMOS avec des synapses memristives. La conception du neurone inclut une fuite double, facilitant l'apprentissage local via le VDSP. Nous proposons également un mécanisme d'adaptation configurable qui permet de reconfigurer les neurones LIF adaptatifs en temps réel. Ces circuits polyvalents peuvent s'interfacer avec une gamme de dispositifs synaptiques, permettant ainsi le traitement de signaux avec une variété de dynamiques temporelles. En intégrant ces neurones dans un réseau, nous présentons un bloc de construction neuronal auto-apprenant CMOS-memristor (NBB), composé de circuits analogiques pour la lecture en croix et de neurones LIF, ainsi que de circuits numériques pour basculer entre les modes d'inférence et d'apprentissage. Des réseaux neuronaux compacts, capables de s'adapter eux-mêmes, d'apprendre en temps réel et de traiter des données environnementales, lorsqu'ils sont réalisés sur du matériel à ultra-basse consommation d'énergie, ouvrent de nouvelles perspectives pour l'IA dans l'informatique en périphérie. Les avancées à la fois en matériel (circuits) et en algorithmes (apprentissage en ligne) accéléreront considérablement le déploiement des applications d'IA en exploitant l'informatique analogique et les technologies de mémoire à l'échelle nanométrique.
-        , 
+        ,
           Integrating artificial intelligence (AI) into edge computing (EC) and portable devices presents significant challenges due to stringent constraints on computational power and energy consumption. Neuromorphic computing, inspired by the brain's energy-efficient design and continuous learning capabilities, offers a promising solution for these applications. This thesis proposes a flexible algorithm-circuit co-design framework that addresses both algorithm development and hardware design, facilitating the efficient deployment of AI on specialized, ultra-low-power hardware.The first part focuses on algorithm development and introduces voltage-dependent synaptic plasticity (VDSP), a brain-inspired unsupervised learning rule. VDSP is aimed at the online implementation of Hebb's plasticity mechanism using nanoscale memristive synapses. These devices mimic biological synapses by adjusting their resistance based on past electrical activity, enabling efficient online learning. VDSP updates synaptic conductance based on the membrane potential of the neuron, eliminating the need for additional memory to store spike timings. This approach allows for online learning without the complex pulse-shaping circuits typically required for spike-timing-dependent plasticity (STDP) with memristors. We show how VDSP can be advantageously adapted to three types of memristive devices (metal-oxide filamentary synapses, and ferroelectric tunnel junctions) with distinctive analog switching characteristics. System-level simulations of spiking neural networks using these devices validated their performance on MNIST pattern recognition tasks, achieving up to 90\% accuracy with improved adaptability and reduced hyperparameter tuning compared to STDP. Additionally, we evaluated device variability and proposed mitigation strategies to enhance robustness.In the second part, we implement an analog leaky integrate-and-fire (LIF) neuron, accompanied by a voltage regulator and current attenuator, to seamlessly interface CMOS neurons with memristive synapses. The neuron design features dual leakage, facilitating local learning through VDSP. We also propose a configurable adaptation mechanism that allows adaptive LIF neurons to be reconfigured in run-time. These versatile circuits can interface with a range of synaptic devices, allowing the processing of signals with a variety of temporal dynamics. Integrating these neurons into a network, we present a CMOS-memristor self-learning neural building block (NBB), consisting of analog circuits for crossbar reading and LIF neurons, along with digital circuits for switching between inference and learning modes. Compact neural networks that can self-adapt, learn in real time, and process environmental data, when realized on ultra-low-power hardware, open new possibilities for AI in edge computing. Advances in both hardware (circuits) and algorithms (online learning) will greatly accelerate the deployment of AI applications by leveraging analog computing and nanoscale memory technologies.},
 	language = {en},
 	urldate = {2026-08-18},
@@ -4563,7 +4563,7 @@
 	file = {Submitted Version:/Users/jamescarlyle/Zotero/storage/677HEWFR/Louis et al. - 2026 - A CMOS+X Spiking Neuron With On-Chip Machine Learning.pdf:application/pdf},
 }
 
-@article{mahowald_silicon_1991,
+@article{w,
 	title = {A silicon neuron},
 	volume = {354},
 	copyright = {http://www.springer.com/tdm},
@@ -4588,7 +4588,7 @@
 	url = {https://www.nature.com/articles/s41586-025-08742-4},
 	doi = {10.1038/s41586-025-08742-4},
 	abstract = {Abstract
-            
+
               Hardware implementations of artificial neural networks (ANNs)—the most advanced of which are made of millions of electronic neurons interconnected by hundreds of millions of electronic synapses—have achieved higher energy efficiency than classical computers in some small-scale data-intensive computing tasks
               1
               . State-of-the-art neuromorphic computers, such as Intel’s Loihi
@@ -4649,7 +4649,7 @@
 	url = {https://pubs.rsc.org/mh/article/12/9/2820-2839/855470},
 	doi = {10.1039/D4MH01676A},
 	abstract = {This review provides a systematic review and perspective of the challenges and opportunities in scaling memristive hardware for spiking neural networks (SNNs), focusing on device innovations, system integration, and algorithm-hardware co-design.
-          , 
+          ,
             Spiking neural networks (SNNs) represent a promising frontier in artificial intelligence (AI), offering event-driven, energy-efficient computation that mimics rich neural dynamics in the brain. However, running large-scale SNNs on mainstream computing hardware faces significant challenges to efficiently emulate these dynamical processes using synchronized and logical chips. Memristor based systems have recently demonstrated great potential for AI acceleration, sparking speculations and explorations of using these emerging devices for SNN tasks. This paper reviews the promises and challenges of memristive devices in SNN implementations, and our discussions are focused on the scaling and integration of neuronal and synaptic devices. We survey recent progress in device and circuit development, discuss possible pathways for chip-level integration, and finally probe into hardware-oriented algorithm designs. This review offers a system-level perspective on implementing scalable memristor based SNN platforms.},
 	language = {en},
 	number = {9},
