@@ -9,13 +9,23 @@ Marked Ag50 ZnO TiN60. Likely to be:
 4. Ag (50 nm) / Pt (10–20 nm) as top electrode. Deposition: thermal or e-beam evaporation, or off-axis sputtering. Example: Thickness: 100 nm Ag in one Ag/ZnO/TiN study; 20 nm Ag in diffusive HfO₂ devices. 50 nm Ag is within this range and would give a robust filament source while still allowing diffusion-dominated dynamics if the ZnO is thin and defective enough. Patterning: Lift-off through a shadow mask or standard lithography; typical lateral sizes 2.5–100 µm.
 5. Capping: 10–20 nm Pt or Au by evaporation or sputter to limit oxidation.
 
+## Volatile Behaviour Confirmation
+Ag/ZnO is a plausible and well-established platform for diffusive memristive dynamics, especially when operated at low compliance current with a thin, unstable Ag filament. It should be possible to push the same device into conventional nonvolatile filamentary switching by increasing the available current or stimulation energy.
+
+- Relaxation after a set pulse: apply a pulse, remove the bias, and measure conductance at low read voltage. A diffusive device should show a decay such as stretched-exponential/power-law relaxation.
+- Pulse-interval dependence: repeat identical pulses with increasing inter-pulse intervals. Potentiation should weaken as the interval becomes longer because the residual filament has more time to dissolve.
+- Compliance-current dependence: increasing compliance should lengthen the retention time and eventually produce nonvolatile switching.
+- Threshold and hold voltage: determine whether the device has a clear set threshold, followed by a lower hold or quench voltage.
+- Temperature dependence: ionic diffusion and filament relaxation should generally become faster at higher temperature.
+- Distinguish volatility from charge trapping: volatile behaviour alone does not prove Ag-filament diffusion. ZnO oxygen vacancies, interface traps, Schottky barriers, and Joule heating can also produce transient or threshold-like responses. The strongest evidence is the combination of Ag-electrode dependence, compliance-controlled volatility, pulse accumulation, and direct filamentary signatures.
+
 ## Volatile Filament Characterisation
 
 For studying volatile filament formation in an Ag/ZnO/TiN diffusive memristor, pulse parameters should:
 - Drive Ag⁺ migration and filament nucleation/growth, but
 - Stay below the energy/duration regime that produces a stable, non-volatile filament.
 
-Literature on Ag-based diffusive and threshold-switching devices gives a clear set of parameters.
+Literature on Ag-based diffusive and threshold-switching devices suggests the following set of parameters.
 
 ### Voltage Amplitudes
 For Ag/ZnO and related Ag-based volatile devices:
@@ -30,11 +40,29 @@ For a thin ZnO (10–30 nm) diffusive device, a good starting range is:
 - V_RESET pulse: −0.3 to −1.0 V (or more negative if needed)
 
 ### DC Sweep
+
+Step 1: Measure the relaxation time once with a simple pulse test on one device.
+- Apply a short set pulse just enough to turn it on (e.g. 1 V, 50 µs, with 10uA current compliance).
+- Switch to a small read voltage (e.g. 0.1 V) and record conductance vs time; sample every 10us for ~10ms..
+- Fit an approximate decay time constant tau (time to drop to ~37% of peak).
+
+Step 2: Choose sweep time relative to tau.
+- If sweep time ≪ tau (much faster than relaxation), the device doesn’t have time to relax during the sweep.
+  - Should see a large hysteresis loop, but not due to volatility, but because voltage drops faster than the filament can diffusively relax.
+- If sweep time ~ tau (comparable to relaxation):
+  - The filament forms near the peak and starts to dissolve as the sweep drops.
+  - A moderate hysteresis loop that shows tension between formation and rupture.
+- If sweep time ≫ tau (much slower than relaxation):
+  - The filament can form and then fully or mostly relax before the down-sweep is finished.
+  - Hysteresis shrinks; the I–V looks more single‑valued.
+
+However, because a long time is spent at high field, the device can gradually strengthen filaments over repeated sweeps, pushing it toward more non‑volatile behaviour.
+
 Define a voltage sweep:
 - Start: 0 V.
 - End: +1 to +2 V (or until compliance is hit).
 - Step size: 1–10 mV.
-- Dwell time per step: 10–100 ms (slow enough to be quasi-static, fast enough to avoid excessive stress).
+- Dwell time per step: 10–100 ms (slow enough to be quasi-static, fast enough to avoid excessive stress). 1–20 ms is usually “fast enough” to keep filaments thin and volatile.
 - Set a compliance current (e.g. 10 µA – 1 mA) to prevent hard breakdown.
 
 ### Pulse widths and timing

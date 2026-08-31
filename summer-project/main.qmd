@@ -1,5 +1,5 @@
 ---
-title: "Hardware-aware on-chip learning in an analog spiking neural network."
+title: "Hardware-aware in-situ learning in an analog spiking neural network."
 author:
   - name: "James Carlyle"
     orcid: "0009-0005-8332-7299"
@@ -22,7 +22,7 @@ format:
     number-sections: true
     journal: nature
 abstract: |
-  Hardware-aware on-chip learning in an analog spiking neural network using measured memristive synapses and neurons, with a compact device model and a small fabricated demonstrator.
+  Hardware-aware in-situ learning in an analog spiking neural network using measured memristive synapses and neurons, with a compact device model and a small fabricated demonstrator.
 bibliography: main.bib
 ---
 **Programme:** UKRI AI Centre for Doctoral Training in AI for Sustainability, University of Southampton
@@ -30,29 +30,481 @@ bibliography: main.bib
 # Scope of the summer transition project
 The goal of the summer project is to identify a reasonable scope for the PhD research. This report covers an introduction, literature review, proposed methodology, impact assessment, plan of future work, references, and a timeline.
 
-
 ## Suggested word budget
 | Section | Suggested words | Notes |
 |---|---:|---|
-| Introduction | 400–700 | Topic framing, motivation, scope. |
-| Literature Review | 1,500–2,000 | Critical review, gap identification, research objectives. |
-| Proposed Methodology | 800–1,200 | Methods, data, tools, feasibility, training needs. |
-| Impact Assessment | 600–900 | RRI, sustainability, SDGs, ethics, stakeholders. |
-| Plan of Future Work | 700–1,000 | 3-year PhD plan and first 9 months in detail. |
+| Introduction | 400-700 | Topic framing, motivation, scope. |
+| Literature Review | 1,500-2,000 | Critical review, gap identification, research objectives. |
+| Proposed Methodology | 800-1,200 | Methods, data, tools, feasibility, training needs. |
+| Impact Assessment | 600-900 | RRI, sustainability, SDGs, ethics, stakeholders. |
+| Plan of Future Work | 700-1,000 | 3-year PhD plan and first 9 months in detail. |
 | References | Variable | Not usually counted in the main word limit unless instructed otherwise. |
 
+# Introduction
 
-# Plan
+## Context
+The human brain is often quoted for its extraordinary efficiency, with consumption of 20w compared with the kilo- or mega-watts of power needed to operate a traditional computer of equivalent capability, where data transfers between CPU and external memory can consume approximately 10-100x more energy than the logic operation itself  [@khan_landscape_2024]. In-memory computing (IMC) reduces this Von-Neumann architecture cost by performing computation within to the memory array, thereby minimizing data movement.
 
-## First 9 months
-Goals:
+Neuromorphic computers have the potential to perform complex calculations more power-efficiently and on a smaller footprint than traditional von Neumann architectures. The early focus of research was on speed; neural networks offered faster computation with custom chips than was possible with traditional von Neumann architectures, exploiting natural parallelism and custom hardware to complete neural-style computations. This was used for real-time control, real-time digital image reconstruction, and autonomous robot control. Focus later moved to power consumption and efficiency.
+
+A key differentiator is the level of biological plausibility: whether biologically-plausible (seen in biological neural systems, e.g. Hodgkin-Huxley, Morris Lecar), biologically-inspired (replicate behavior of neural systems but not in a biologically-plausible way, e.g. Izhikevich), and neuron models such as integrate-and-fire (especially Leaky) and McCulloch-Pitts (activation functions, e.g. sigmoid, tanh).
+
+## Research context
+Neuromorphic computing seeks to emulate the brain's event-driven, massively parallel processing using energy-efficient hardware models such as spiking neural networks (SNNs) [@mead_neuromorphic_1990]. Memristor device architectures [@strukov_missing_2008] show promise as implementations with bio-plausible behaviour, because drift memristors naturally implement analog synaptic weights and non-volatile (long-term) plasticity, while diffusive memristors provides short term neuron firing behaviour [@hu_spice_2022; @kim_self-powered_2026].
+
+## Motivation and significance
+The Internet of Things (IOT) requires intelligent information processing in the field, away from powerful and energy-consuming cloud and datacentre-based AI capabilities. Without low-energy local AI inference, very large amounts of data need to be transmitted for central processing, requiring energy, reliable bandwidth and connectivity, latency, and the provision of land, energy grid and water supplies [@jiang_energy_2020].
+
+IOT devices are often disconnected from energy grids and consequently have a limited energy budget, constrained by energy harvesting and battery capacity. A lack of energy self-sufficiency requires ongoing human involvement in battery maintenance and replacement.
+
+Although the field of machine learning (ML) is considered to be mature, most of the current development assumes ever more powerful models running on centralised hardware, with the primary aim of improving accuracy against well-established benchmark datasets and problems[@thomas_reliance_2022]. Power demands of frontier models (especially for training) are rising exponentially and will become the limiting factor for further adoption; datacentres cannot be built because of the lack of energy grid and cooling water availability [@chen_electricity_2026].
+
+Recent work has demonstrated memristor CMOS neuromorphic devices with spike-timing-dependent-plasticity (STDP) learning at the synapse level [bianchi_compact_2020], and small-scale SNNs with in-situ adaptation [@wang_fully_2018], but most demonstrations either remain shallow [@covi_hfo2-based_2016], rely on ex-situ weight programming [@ijesinghe_all-memristor_2018], or requre tight integration with digital neuromorphic platforms such as FPGAs[@javanshir_advancements_2022].
+
+Power consumption per inference in extremely constrained environments is measured, but often only for single devices (synapses, neurons) [@chauhan_ultra_2025], not for complete systems [@zhang_anp-i_2024]. This project aims to bridge these developments by designing, fabricating, and evaluating a multilayer memristor-based SNN with in-situ learning. The focus will be on event-based vision or time-series tasks relevant to ultra-low-power, DVS-free neuromorphic hardware.
+
+# Literature Review
+This literature review surveys recent work at the intersection of analog spiking neural networks (SNNs), memristive and ferroelectric/antiferroelectric devices, and hardware-aware in-situ learning, with a focus on compact device models and fabricated demonstrators.
+It organizes the field into five main themes: 1. Device-level advances in memristive and ferroelectric synapses and neurons. 2. Analog and mixed-signal neuromorphic circuits for SNNs. 3. In-situ and hardware-aware learning rules. 4. System-level neuromorphic demonstrators and reservoir/edge systems. 5. Surveys and reviews that contextualize these developments.
+
+## Search strategy
+[Document how the literature search was performed: databases, keywords, time windows, inclusion/exclusion criteria, and any review logic used.]
+A literature search was performed using IEEE Xplore and Arxiv, based on publications and conference submissions from 2010 to 2026. The following keywords were used:
+
+Topic focus:
+- "spiking neural network" OR "SNN"
+- "neuromorphic computing" OR "neuromorphic hardware"
+- "in-situ learning" OR "in-situ learning" OR "hardware learning"
+- "memristor" OR "memristive synapse" OR "crossbar array"
+- "ReRAM" OR "ferroelectric" OR "antiferroelectric"
+
+Learning rules and algorithms:
+- "STDP" OR "spike-timing-dependent plasticity"
+- "VDSP" OR "voltage-dependent synapse plasticity"
+- "three-factor learning" OR "eligibility trace" OR "e-prop"
+- "Hebbian learning" OR "Oja's rule" in SNNs
+- "surrogate gradient" OR "direct feedback alignment" for SNN training
+
+Neuron and synapse models:
+- "leaky integrate-and-fire" OR "LIF"
+- "Izhikevich" OR "Hodgkin-Huxley"
+- "short-term plasticity" OR "long-term plasticity (LTP)" OR STP OR "LTP"
+- "potentiation" OR "depression"
+
+## Surveys
+## Surveys and Contextual Reviews
+
+Rajendran et al. determine the operating characteristics of novel nanoscale devices that could be used to fabricate neuromorphic systems and show that neuromorphic systems based on new nanoscale devices can potentially improve density and power consumption by at least a factor of 10, as compared with conventional CMOS [@rajendran_specifications_2013]. Later, Rajendran et al. review emerging memory technologies and how they can enable energy-efficient implementation of large neuromorphic computing systems. They highlight some of the key aspects of biological computation that are being mimicked in these novel nanoscale devices, and discuss various strategies employed to implement them efficiently [@rajendran_neuromorphic_2016].
+
+Schuman et al.'s survey of neuromorphic computing provides a long-range historical and thematic overview spanning neuro-inspired models, learning approaches, hardware/devices, supporting systems, and applications, clarifying how memristive and ferroelectric neuromorphic hardware fits into the broader landscape [@schuman_survey_2017]. A subsequent article on opportunities for neuromorphic computing algorithms and applications by the same group highlights open challenges in algorithm-hardware co-design, robustness, and application-driven benchmarks, such as a lack of readily accessible and usable software and hardware systems, a lack of clearly established benchmarks, and that no algorithm-application pairing yet shows neuromorphic computers outperforming deep learning in accuracy. [@schuman_opportunities_2022].
+
+Mehonic et al. discuss memristors from in-memory computing and deep learning acceleration to SNNs and future neuromorphic systems, emphasising the need for tailored learning and inference algorithms that exploit non-von-Neumann architectures [@mehonic_memristorsmemory_2020]. Javanshir et al. and other reviews on SNN algorithms, neuromorphic hardware platforms, and FPGA implementations complement device-centric surveys by providing algorithmic and architectural perspectives [@javanshir_advancements_2022].
+
+Chen et al. review the promises and challenges of memristive devices in SNN implementations, focusing on diffusive memristors (used to mimic short-term plasticity (STP) due to their volatility) and drift memristors (used for long-term potentiation (LTP) during neural network training due to their stable retention) [@ TODO]. They report that researchers developed fully memristive SNNs using diffusive memristors as stochastic leaky-integrate-and-fire (LIF) neurons and non-volatile memristors as synapses, achieving unsupervised learning for letter recognition.
+
+## Device-Level Memristive and Ferroelectric Synapses
+
+Memristor synapses provide non-volatile or semi-volatile conductance states with analog or multi-level programmability, enabling in-memory computing and synaptic plasticity in SNNs [@prodromakis_review_2010]. Recent device-level reviews emphasise short-term and long-term plasticity, spike timing-dependent plasticity (STDP), spike rate-dependent plasticity, and even optoelectronic control as critical behaviours for neuromorphic synapses.
+
+Chandrasekaran et al. present a device-level critical review of memristor synapses, combining a statistical survey of neuromorphic device publications (2018-2025) with detailed discussion of biomimetic properties such as STP, LTP, STDP, and SRDP in various material systems [@chandrasekaran_memristor_2026]. They highlight optical-stimulus-driven 2D-material optoelectronic synapses and application examples ranging from MNIST recognition to hardware pattern recognition and biomedical interfaces, underlining the diversity of physical mechanisms that can underpin synaptic plasticity.
+
+Jin et al. provide a broader review of memristor-based artificial neural networks for hardware neuromorphic computing, covering convolutional, recurrent, and spiking networks, and emphasising memristor in-memory computing as a way to overcome the von Neumann bottleneck[@jin_memristor-based_2025]. Their discussion of synaptic plasticity mechanisms (potentiation, depression, and emerging learning algorithms tailored to memristive dynamics) is directly relevant to hardware-aware learning rules in SNNs, especially when device non-idealities constrain achievable weight trajectories.
+
+## Ferroelectric and Antiferroelectric Synaptic Arrays
+
+Ferroelectric memristor crossbar arrays offer high-density, energy-efficient synaptic matrices with tunable tunnelling electroresistance and switching dynamics, enabling both short-term and long-term memory effects. Park et al. report a 24x24 ferroelectric memristor crossbar array based on a TiN/HAO/SiO2/n-Si structure that demonstrates scalable device characteristics, improved TER ratios in smaller cells, and neuromorphic functionalities such as paired-pulse facilitation and spike-duration/number-dependent plasticity [@park_ferroelectric_2025]. The same work uses the ferroelectric array as a reservoir layer in a reservoir computing system, achieving high accuracy on MNIST and Fashion-MNIST, and demonstrating associative learning and nociceptor-like behaviour, thereby validating the array as a multifunctional synaptic substrate. The reported device-to-device and cycle-to-cycle uniformity addresses a central challenge in memristive arrays, making these ferroelectric synapses particularly attractive for hardware-aware learning where variability and drift must be explicitly modelled.
+
+Lu et al. review ferroelectric-based leaky integrate-and-fire (LIF) neurons and outline device design and performance optimisation strategies, emphasising the realization of leak via depolarization or antiferroelectric phases [@lu_ferroelectric-based_2026]. Their identification of key metrics-hardware cost, energy consumption, endurance-and application examples provides a complementary perspective to ferroelectric synapses, highlighting co-design opportunities between devices implementing integrate/leak and those implementing synaptic weight storage.
+
+## Memristive and Ferroelectric Neurons
+
+A series of recent works demonstrate compact artificial neurons implemented directly in memristive or ferroelectric devices, avoiding large external capacitors and complex reset circuitry while achieving rich spiking dynamics. Zhang et al. realise a compact artificial memristive neuron with leaky integration, automatic threshold firing, and self-recovery in a single device with ultralow energy consumption, providing a device-level LIF neuron building block [@zhang_ferroelectricantiferroelectric_2025].
+
+Cao et al. introduce a compact neuron based on an antiferroelectric field-effect transistor (AFeFET) using Hf0.2Zr0.8O2, where intrinsic polarisation and spontaneous depolarisation implement integrate-and-leak behaviour, achieving low spike energy, high endurance, and strong uniformity [@cao_compact_2022]. They further construct a two-layer fully ferroelectric SNN combining AFeFET neurons with ferroelectric synapses, reaching high MNIST recognition accuracy and providing a fully ferroelectric neuromorphic demonstrator.
+
+Gao et al. extend antiferroelectric transistor concepts to reconfigurable neuromorphic functions via coupled polarisation switching and charge trapping, enabling multiple neuromorphic behaviours (e.g., synaptic and neuronal states) in the same device [@gao_reconfigurable_2025]. Shi et al. present coplanar floating-gate antiferroelectric transistors that unify volatile neuron-like responses, nonvolatile synaptic behaviour, and fading-memory reservoir dynamics in a single device architecture, culminating in an all-in-one analog reservoir computing system [@shi_coplanar_2026].
+
+Zhidkov et al. demonstrate multiple spiking modalities (time-to-first-spike, spike count, firing-rate coding) in annealing-optimised Ag/Hf0.5Zr0.5O2 memristive neurons, realised using filamentary switching and a simple series resistor, illustrating how process engineering can tune spiking behaviour [@zhidkov_multiple_2026]. Wang et al. focus on threshold-switching memristors and review their use as spiking neurons with oscillatory, LIF, Hodgkin-Huxley-like, and stochastic dynamics, directly linking device physics (Mott vs. redox switching) to neuron models and energy consumption [@wang_memristor-based_2025].
+
+Zhao et al. present a spiking artificial neuron based on one diffusive memristor, one transistor, and one resistor, realising compact neuron circuits with nanoscale footprint and integrating them within larger neuromorphic systems [@zhao_spiking_2025]. Kim et al. show self-powered analog neuromorphic systems for multimodal sensing and learning using diffusive and drift memristors, where neuromorphic sensing, encoding, and learning are all co-located in hardware, underscoring opportunities for fully integrated edge systems [@kim_self-powered_2026].
+
+## Memristive Crossbars and Mixed-Signal Perceptrons
+
+Passive memristive crossbars (0T1R) and active 1T1R arrays underpin many in-memory computing architectures for ANNs and SNNs, providing high-density weighted-sum operations and local update paths. Bayat et al. demonstrate a one-hidden-layer perceptron classifier implemented entirely in mixed-signal hardware using two passive 20x20 metal-oxide memristive crossbars, with ex-situ training and classification fidelity close to simulations despite device non-idealities [@bayat_implementation_2018].
+
+Poddar et al. report ultra-high density perovskite nanowire array memristors for multi-layer perceptron networks, emphasising nanowire crossbars as a path to extremely compact synaptic fabrics [@poddar_ultra-high_2026].
+Jin et al. and Mehonic et al. discuss memristor-based multilayer networks more generally, including full-memristive neural networks where both neurons and synapses are implemented in memristors, exploring algorithmic adaptations of delta rule and backpropagation to such hardware[@jin_memristor-based_2025; @mehonic_memristorsmemory_2020].
+
+A recent hybrid convolutional SNN architecture by Go and Kim combines digital non-leaky integrate-and-fire neurons with Knowm self-directed channel memristor-based synapses in a 1T1R crossbar, using a current-sense amplifier and 1-bit comparator as a minimal readout instead of high-resolution ADCs [@go_energy-_2026]. Their intensity-to-latency temporal coding scheme reduces spike counts and device stress, and they analytically compare energy usage of this minimalist readout versus conventional ADC-based designs, which is central to hardware-aware learning in edge contexts.
+
+## Analog and Mixed-Signal Neuron Circuits
+
+On the CMOS circuit side, Wu et al. present a reconfigurable leaky integrate-and-fire neuron with a single op-amp that accommodates a large number of memristor synapses and enables online STDP learning with optimised power consumption [@xinyu_wu_cmos_2015]. Their 180 nm CMOS design achieves high power-efficiency for STDP in large synapse populations and low integration current, making it a general-purpose building block for dense memristor-synapse neuromorphic systems.
+
+Earlier silicon neuron work such as the classical Mahowald and Douglas "A Silicon Neuron" [@https://doi.org/10.1038/354515a0 TODO] and compact neuron supplements [@zhang_highly_2018] in the bibliography provide historical context and baseline CMOS neuron architectures that current memristive and ferroelectric neuron designs build upon. These CMOS designs typically rely on capacitors and current-mode implementations, motivating the recent shift towards device-intrinsic capacitance and polarisation dynamics in ferroelectric neurons to reduce area and static energy.
+
+## Learning Rules and In-Situ Training in SNNs
+
+Biological and bio-inspired plasticity rules such as STDP, Hebbian learning, and voltage-dependent synaptic plasticity are central to in-situ learning in SNNs, especially when learning must be implemented locally using device physics. Diehl and Cook demonstrate unsupervised digit recognition using STDP, lateral inhibition, and adaptive thresholds without any labels or teacher signals, achieving high MNIST accuracy and showing the robustness of biologically plausible mechanisms across different learning rules [diehl_unsupervised_2015].
+
+Goupy et al. introduce Stabilized Supervised STDP (S2-STDP) combined with Paired Competing Neurons (PCN) for classification layers in SNNs, integrating error-modulated weight updates with local spike timing and intra-class competition [@goupy_paired_2024]. They show improved performance over previous supervised STDP rules across multiple vision datasets, and their architecture is particularly amenable to hardware implementation due to its locality and lack of global backpropagation.
+
+Recent work on Hebbian enrichment of SNNs proposes memory-augmented architectures where Hebbian synaptic plasticity acts as both memory and processor, improving out-of-distribution generalisation, one-shot learning, and reward-based learning [@limbacher_memory-dependent_2025]. These Hebbian-enriched SNNs underline the computational versatility that can be achieved when synaptic updates are tightly coupled to local spike statistics, which is attractive for analog in-situ learning with memristive devices.
+
+At the hardware level, energy- and endurance-aware co-design for neuromorphic edge intelligence highlights the need to tailor learning algorithms to device constraints such as limited endurance, stochastic switching, and restricted dynamic ranges [@go_energy-_2026]. Hybrid schemes split feature extraction (often unsupervised STDP) from supervised classification layers and minimise write operations to memristors to demonstrate hardware-aware learning strategies in a fully analog context [@kugele_hybrid_2021].
+
+## Threshold-Switching Memristors and Spiking Dynamics
+
+Threshold-switching memristors (TSMs) with volatile or semi-volatile dynamics naturally implement neuron-like behaviours such as oscillations, LIF spiking, and refractory periods through their intrinsic switching physics. Wang et al. review TSM-based spiking neuromorphic systems, cataloguing device materials (Mott insulators, valence-change memories, diffusive systems) and associated spiking modes, along with energy-per-spike figures and neuromorphic platform demonstrations [@wang_memristor-based_2025].
+
+Li et al. present Bi2Se3-based threshold-switching memristors with high switching ratios, low threshold voltages, and thermoelectric response, using HSPICE simulations to explore spiking oscillation responses to temperature variations and resistance states [@li_threshold-switching_2025]. This work targets neuromorphic thermoreception, illustrating how TSM neurons can be integrated with sensory modalities in hardware, and how compact device models capture combined electrical and thermal dynamics relevant to edge sensing.
+
+Wang et al. present an artificial neuron device using a Pt/Ag/ZnO/Pt volatile diffusive memristor that exhibits threshold switching characteristics. They use diffusive memristors to produce leaky integrate-and-fire functions with low energy consumption, and integrate these neurons into a two-layer spiking neural network for MNIST classification, achieving an 89.17% accuracy [@ TODO].
+
+## Neuromorphic Reservoirs and All-in-One Architectures
+
+Reservoir computing offers a flexible framework for temporal information processing using fixed recurrent substrates and trained readouts, which maps well onto analog device arrays with rich internal dynamics [@tan_dynamic_2023]. Ferroelectric memristor arrays and coplanar FG AFeFETs have been used as physical reservoirs, exploiting volatile and fading-memory behaviours to encode temporal input patterns, with external or in-situ readouts performing linear classification [@park_ferroelectric_2025].
+
+Shi et al.'s coplanar FG AFeFET architecture exemplifies an all-in-one analog reservoir computing system, where devices can be configured as neurons, synapses, or reservoir nodes depending on biasing and layout [@shi_coplanar_2026]. The reported recognition accuracies on MNIST and Fashion-MNIST, coupled with tunable volatility and non-volatility, show that single-device reservoirs can achieve competitive performance while remaining area-efficient and compatible with CMOS back-end integration.
+
+## Neuromorphic Edge and Embedded Applications
+
+- Several works in the bibliography focus on SNNs as controllers or embedded intelligence for resource-constrained platforms, such as FPGA-based neuromorphic systems and spiking neurocontrollers for UAVs. Qiu et al. evolve spiking neurocontrollers for full hexacopter control in six degrees of freedom, using modular decomposition and NEAT-style evolution, highlighting how spiking networks can be tailored to continuous control tasks [@qiu_evolving_2020].
+
+At the edge-intelligence level, Go and Kim's hybrid CSNN [@go_energy-_2026] and Kim et al.'s self-powered multimodal system [@kim_self-powered_2026] underline the importance of co-designing device physics, circuit architecture, and coding schemes to minimise energy while maintaining accuracy.
+
+
+### Fabrication of drift and diffusive memristors to construct a spiking neural network
+Kim et al. present a fully analogue, self-powered neuromorphic system that integrates multimodal sensing, spike encoding, and unsupervised learning using drift and diffusive memristors, operating without digital circuitry or external power. Uses a spiking neural network that directly receives multiple analogue inputs from physical sensors and converts these inputs into spike-like signals, which then modulate synaptic weights based on relative event timing [@kim_self-powered_2026].
+
+Tang et al. introduce a fully memristive spiking-neuron learning framework built only from one drift and one diffusion memristive model, which eliminates the need for other electronic devices like resistors or capacitors. They apply the framework to a feedforward multilayer perceptron, to demonstrate its simplicity and high processing speed on hardware [@ TODO].
+
+Chen et al. discuss artificial neurons based on diffusive memristors that emulate integrate-and-fire dynamics through field-accelerated drift and diffusion of metal atoms, which is closer to biological ionic dynamics. They show a multilayer perceptron network with one integrated hidden layer, consisting of two separated passive memristor crossbars, to address challenges in perceptron networks [@ TODO].
+
+
+## Current state of the art
+
+[Review the most relevant studies, methods, systems, datasets, benchmarks, policies, or theoretical approaches. Organise by theme rather than paper-by-paper where possible.]
+
+## Overview
+
+
+## Synthesis and Gaps Relative to the Target Topic
+
+- The attached bibliography shows strong activity in device-level memristive and ferroelectric neurons and synapses, ferroelectric LIF neuron design, threshold-switching memristor-based spiking dynamics, and mixed-signal memristive crossbar demonstrators.[1]
+- It also includes several hardware-aware learning schemes-unsupervised STDP, supervised STDP variants, Hebbian-enriched networks, and endurance-aware co-design-but these are typically studied either in simulation or with limited in-situ learning in small arrays.[1]
+
+- Compact device models are commonly used in circuit-level simulations (e.g., HSPICE models for Bi2Se3 TSMs, compact neuron models in memristive and ferroelectric devices), yet there remains a gap in unified compact models that simultaneously capture neuron dynamics, synaptic plasticity, and non-idealities for multi-layer analog SNNs.[1]
+- Fabricated demonstrators often focus either on device-level proof-of-concept (single neurons, small crossbars, reservoir layers) or on mixed-signal systems with ex-situ training; fully analog, multi-layer SNNs with hardware-aware in-situ learning remain comparatively underexplored.[1]
+
+- Your proposed subject-"hardware-aware in-situ learning in an analog SNN using measured memristive synapses and neurons, with a compact device model and a small fabricated demonstrator"-naturally builds on these strands by combining measured device characteristics, compact unified models, and in-situ learning rules tuned to device constraints.[1]
+- The literature indicates that key open problems include handling device variability and stochasticity, designing plasticity rules compatible with endurance limits, integrating ferroelectric and memristive devices in multi-layer analog SNNs, and demonstrating small yet complete hardware prototypes that close the loop between learning, device physics, and circuit behaviour.[1]
+
+# Proposed Methodology
+
+## Methodological overview
+
+[Describe the overall research design and justify why it is suitable for addressing the identified gaps.]
+
+## Proposed methods
+
+[Detail the methods, models, experiments, analytical techniques, simulations, fieldwork, datasets, case studies, or design processes you expect to use.]
+
+### Diffusive memristor characterisation
+Use existing fabricated diffusive memristors to characterise device behaviour, with a particular focus on device-to-device, cycle-to-cycle and stochastic variability ("variability statistical model").
+
+Implement variability model in software emulation of a single, simple neuron. Convert memristor variability into neuron behaviour variability.
+
+Implement simulation of in-situ learning (STDP and VDSP) in software, for single, simple neurons (pre/post-synaptic), initially without variability. Introduce the variability statistical model created earlier.
+
+Evaluate the impact of variability on learning speed and accuracy.
+
+Move to a larger network, where feature extraction and differentiation becomes important. Understand whether variability assists in feature / node differentiation is assisted/accelerated by variability, or whether there is a point at which excessive variability becomes catastrophic for network performance.
+
+Define an allowable variability specification.
+
+### Memdevice and circuit design
+Use existing memdevice expertise to select, design and fabricate CMOS-compatible memristor stacks with suitable characteristics (tuning, endurance, variability, and process compatibility).
+
+Design hybrid synapse cells (e.g. 1S1R) and neuron circuits (e.g. LIF 1M1T1R neurons) that operate at realistic voltage ranges and support pulse-based conductance updates implementing STDP/VDSP or supervised learning rules.
+
+Use SPICE/Verilog-A simulation to validate crossbar and neuron behaviour, including parasitic effects and sneak paths.
+
+### Compact modelling and multi-scale simulation
+Characterise fabricated devices and arrays to obtain IV curves, switching behaviour, endurance, retention, and variability, then fit compact models suitable for both circuit and network-level simulation.
+
+Integrate these models into a multi-scale simulation stack linking device-level dynamics to spiking network behaviour, using Python SNN frameworks for training and analysis.
+
+### In-Situ Learning Schemes
+Implement unsupervised STDP/VDSP-based learning using local timing and pulse protocols that update memristor conductances based on spike correlations and presynaptic potentials.
+
+Explore supervised learning schemes adapted to hardware, such as approximate backpropagation in the spiking domain, where error signals are encoded as additional spike trains or weight-update pulses orchestrated by the FPGA controller.
+
+Compare ex-situ training (software SNN trained first, then weights programmed into crossbars) to in-situ training (updates performed directly in hardware) under realistic device constraints.
+
+### Evaluation and analysis
+Evaluate accuracy, energy per event, latency, and robustness on chosen tasks; compare across analog SNN, FPGA SNN, and software baselines using consistent metrics and datasets.
+
+Perform sensitivity analyses to quantify the impact of device variability, limited conductance precision, and learning rule parameters on long-term performance and stability.
+
+## Data, resources, and infrastructure
+
+[Identify expected data sources, software, hardware, facilities, lab access, compute requirements, and any external dependencies.]
+
+## Evaluation strategy
+
+[Explain how success will be measured: metrics, baselines, validation strategy, comparison methods, robustness checks, or qualitative evaluation.]
+
+## Risks, assumptions, and limitations
+
+[Identify key risks and assumptions, then explain mitigation plans and fallback options.]
+
+## Skills audit and training needs
+
+[Identify technical or professional skills gaps. Link these to a training plan for the PhD phase.]
+
+| Skill / capability gap | Why it matters | Planned training or action | Indicative timing |
+|---|---|---|---|
+| Device measument | Needed to characterise devices for software simulation | B53 measurement lab induction, training | Sept 2026 |
+| Device fabrication | Needed to fabricate devices for physical evaluation | B53 nano fab lab induction, tool training | Oct-Dec 2026 |
+
+# Impact assessment
+
+## Overview of anticipated impact
+
+[Describe the potential academic, environmental, industrial, societal, and policy relevance of the proposed research.]
+
+This impact assessment evaluates the societal, ethical, and environmental implications of developing an analog spiking neural network (SNN) that integrates measured memristive synapses and neurons with a compact device model for hardware-aware in-situ learning.
+
+By 2030, AI global data centres using digital hardware are projected to consume around 945 TWh of electricity annually, while their associated water footprint could equal the basic domestic water needs of 1.3 billion people and their land footprint could exceed 14,500 km2 [@de vries TODO], loading power grids, competing with households and agriculture for scarce water, and consuming land for facilities, power generation and transmission networks.
+
+These impacts are unevenly distributed: communities hosting data centres may face higher utility costs, local water stress, noise and construction impacts, while the benefits of AI accrue disproportionately to technology companies and wealthier users. The problem is intensified by everyday inference and deployment, which the UN University analysis estimates account for roughly 80-90% of total AI energy demand, rather than training alone [@aczel_environmental_2026]. Consequently, without limits on efficiency, siting, disclosure and resource use, AI development could deepen environmental inequality by shifting the ecological costs of digital services onto regions least able to absorb them.
+
+By co-locating memory and processing into event-driven analog memristive crossbars, this research can address the "von-Neumann bottleneck", offering energy efficiency orders of magnitude higher than conventional digital hardware (GPUs/TPUs). Spiking neural networks process information sparsely and can potentially reduce computation, data movement and network traffic in applications such as continuous sensing and environmental monitoring. This could lower operational electricity demand and reliance on cloud infrastructure, and indirectly reduce associated cooling-water and data-centre land requirements. However, neuromorphic hardware manufacturing, preprocessing, communications and end-of-life impacts must also be included, and like-for-like measurements are needed before a net life-cycle advantage can be claimed [@Aral TODO].
+
+Additionally, making the transition of analog neuromorphic computing from lab prototypes to production deployment introduces complex trade-offs across sustainability, reliability, and governance. The benefit of memristive neuromorphic systems will depend as much on robust RRI governance, standardized testing, amelioration of device drift and variability, and sustainable material supply chains as it does on raw power efficiency gains.
+
+## Considerations under the 4Ps Framework
+
+The 4P dimensions cover Process, Product, Purpose and People. Considering these in turn:
+
+### Process
+The research is carried out predominantly in the Zepler cleanrooms of the university. The focus will be on developing a documented and repeatable device measurement and fabrication process, with minimum waste of rare earth minerals and metals, and devices fabricated only at the point of need (no stock waste). Established recipes will be used to maximise yield. There aren't considered to be any significant data management risks or ethical issues, and consent is not required. Widely-adopted test datasets will be used, which contain no personal information. The standard Zepler governance process and rules will be followed at all times. Lab safety is an extremely important consideration, since many of the fabrication chemicals can be harmful, so a full programme of safety induction and specific process training will be followed.
+
+In-situ learning enables local adaptation directly on edge hardware without transmitting raw sensor streams (video, audio, biomedical signals) to centralized servers. This "privacy-by-design" architecture aligns with strict data protection regulations (e.g., GDPR) by keeping sensitive personal data local and volatile.
+
+### Product
+The research outputs (algorithms, devices, platforms, datasets, papers) will be made public, with test specifications and results available through a Creative Commons license to enable reproducibility of experiments. A successful conclusion of research will lead to working prototypes at a low Technology Readiness level (likely TRL 3: Analytical and laboratory proof-of-concept tests are completed). A prototype may be capable of simple classification and other machine learning tasks, but will not outperform conventional digital artificial neural networks, and will not be directly usable.
+
+Longer term, it is anticipated that the technolgy may deliver AI to low-power edge devices, and this should be put to beneficial uses, such as environmental monitoring, but also undesirable ones, such as drone warfare. Low-power in-situ intelligence significantly expands the capabilities of untethered autonomous systems, including micro-drones and target-tracking sensors. The low thermal and power signature of memristive SNNs makes them inherently attractive for defense systems, raising non-proliferation concerns and ethical challenges regarding Lethal Autonomous Weapons Systems (LAWS). It's not possible to control the technology so that it could only be used in positive use-cases. Another consideration is the ability to audit or constrain behaviour, but neuromorphic systems face the same challenges as digital AI counterparts.
+
+### Purpose
+The research will align with the public-interest goals of improving health and increasing sustainability of human activity. The main driver is to seek a plausible reduction in the energy consumption of AI training and inference, and a consequent consumption of cooling water, although neuromorphic computing is as a whole at a very low readiness, and so the contribution may not emerge for a decade or more.
+
+### People
+The primary impact on people for the duration of this project is on researchers. It's premature to consider end-users or affected communities in detail (e.g. workers displaced by more capable automation, or people subject to always-on sensing), since the technology is at a very early readiness level, but the intention is to benefit communities through alignment with sustainable development goals.
+
+**Device physicists & chip designers** Responsible for characterization accuracy and compact model fidelity; must prioritize reproducible physical metrics over optimistic simulation benchmarks.
+
+**Semiconductor foundries** Require standardized back-end-of-line (BEOL) integration processes to ensure scalable manufacturing without introducing heavy-metal contamination to cleanrooms.
+
+**Edge application developers** Benefit from localized learning capabilities; must design compensations against analog drift and handle non-deterministic hardware behaviors.
+
+**Regulatory bodies & policy makers** Need to establish safety standards for analog/neuromorphic AI chips, ensuring hardware calibration and accountability in safety-critical deployments. Need to help policy makers (e.g. politians) understand the relevance of low-power AI in an era of increasing public scepticism of the environmental impact of AI.
+
+## Considerations under the AREA Framework
+
+### Anticipate
+The project proactively models hardware non-idealities-such as cycle-to-cycle conductance variation, random telegraph noise, and thermal drift, before physical scale-up. It is anticipated that device-to-device variability may lead to slow progress, and other neuromorphic research projects have remained in the examination of single devices rather than complete systems. To mitigate this, the project will use established recipes and work with what exists, rather than optimise the devices themselves.
+
+Memristive devices exhibit non-volatile state degradation over extended write cycles. If an analog SNN adapts continuously in-situ without strict stability bounds, device degradation could lead to unpredictable weight shifts. In safety-critical applications like bio-implantable medical monitors or driver-assist sensors, uncalibrated drift introduces severe safety hazards.
+
+### Reflect
+The project must reflect on the hype cycle surrounding neuromorphic engineering. Demonstrations on "small fabricated prototypes" must be evaluated critically regarding scalable yield, CMOS compatibility, and realistic manufacturing costs rather than assuming frictionless commercial adoption. Sustainability is embedded in the project, with a total focus on reducing the energy, water and land consumption of AI, and the associated carbon emission and climate change impacts.
+
+Analog SNNs offer transformative reductions in operational energy consumption, but their total environmental footprint includes embodied emissions and material toxicity from advanced fabrication.
+
+### Engage
+Development requires cross-disciplinary dialogue between material scientists, laboratory technicians, computer scientists, and domain-specific end users (e.g., medical device designers, environmental sensor operators) to align hardware constraints with human safety requirements.
+
+To make neuromophic computing a reality and advance it to the point of societal benefit, further funding will be required. Engagement with funding authorities such as UKRI and policy makers such as UK parlimentary committees is needed, at all times demonstrating that research monies are being spend responsibly.
+
+Outreach activities are being planned, such as the British Science Festival in Southampton in 2027, where the concepts of modelling computers on the human brain could be demonstrated (such as a LED-powered synapse, or a water-level neuron trigger model) to inspire future scientists.
+
+### Act
+Hardware-aware models must be adapted as fabrication of alternative material stacks (e.g., transition from $\text{HfO}_x$ to $\text{TaO}_x$ layers) becomes possible, or other devices (e.g. Anti Ferroelectric transistor devices for neurons) are proven, ensuring algorithms remain grounded in empirical physical behavior.
+
+## Relevant sustainable development goals
+
+| UN SDG | Title | Direct Impact | Key Mechanisms & considerations |
+|---|---|---|---|
+| SDG 7 | Affordable & Clean Energy | High Positive | Cuts compute energy by 10x to 100x via sparse, event-driven spike processing and local analog weight updates, reducing grid strain from AI workloads. |
+| SDG 9 | Industry, Innovation & Infrastructure | High Positive | Enables energy-harvesting edge IoT devices, autonomous sensors, and decentralized infrastructure monitoring without relying on power-hungry cloud data centers. |
+| SDG 12 | Responsible Consumption | Moderate Negative / Mixed | Memristor fabrication often utilizes novel transition metals (Hafnium, Tantalum, Titanium). Scaling requires strict e-waste lifecycle management and sustainable chemical etching protocols. |
+| SDG 13 | Climate Action | Positive | Mitigates the growing global carbon footprint of artificial intelligence training and continuous edge inference ecosystems. |
+
+Overall, responsible research and innovation (RRI) principles are being considered to ensure that technological advances in neuromorphic systems align with societal values and long-term risk management.
+
+# PhD Plan
+
+## Overview of Direction
+
+The overall trajectory of the PhD is to first measure and understand existing device behaviour, then construct simple end-to-end systems from them, then understand how local in-situ learning rules are affected by device variability.
+
+The approach is to reuse known device structures and fabrication recipes (supervisory knowledge), and NOT to experiment with novel fabrication layers or materials per se. Develop pulse characterisation, automation, data schemata, analysis, and circuit test groundwork should be completed before fabrication.
+
+In an ideal world, the learning rule evaluation should direct what devices are required, rather than the alternative (in which the availability of devices drives the rule evaluation).
+
+## First 9 Months
+
+### Goals:
 - Characterise pre-made drift (synapse) and diffusion (neuron) memristors using MEMS probe station. I/V DC tests, set / reset behaviour, pulse tests, spiking behaviour, device-to-device variability.
 - Define pulse specification for spiking dataset, e.g. N-MNIST.
 - Construct multilayer spiking neural network software model for laptop execution; 60,000 test samples, 5,000 events per sample. Model first level of device behaviour; e.g. spiking charge threshold, refractory behaviour, minimum and maximum conductance.
 - Device material choice, specification and recipe selection for fabrication of synapse and neuron devices.
 - Device packaging for breadboard deployment.
 - Design and construction of simple 2-synapse, 1-neuron model on breadboard.
-- Evaluation of on-board learning rules (spike timing dependent plasticity, voltage dependent synaptic plasticity).
+- Evaluation of in-situ learning rules (spike timing dependent plasticity, voltage dependent synaptic plasticity).
+
+### Detailed Plan
+| Month | Planned activities | Deliverables / milestones |
+|---|---|---|
+| 1 | Complete formal literature review on memristor neuromorphic devices, in-situ learning in SNNs | Review |
+| 1-2 | Measurement training (MEMS, Pulse, Cascade) | Ability to characterise devices |
+| 4-6 | Nano fab training | Ability to fabricate devices |
+| 3 | Poster / participation at Neumat London November 2026 | Poster |
+| 2-5 | Characterise synapse and neuron devices | Library of measurement settings and methods, and device behaviour data |
+| 5 | Internal presentation on Spiking Neural Networks to SustAI cohort | Presentation |
+| 3-6 | Build software simulation of 2 synapses / 1 neuron, incorporating actual device variability dimensions and data | Data for simulated behaviour of system |
+| 6-9 | Evaluate in-situ learning methods, showing device variation impact | Learning performance (accuracy, rates, energy consumption) |
+| 6 | Poster / participation at Neumat Winter School 2027 | Poster |
+| 8 | SustAI conference | Presentation |
+| 9 | Preparation for 9-month progression review | Review paper |
+
+## Year 1 Month 10-12 Goals
+- Extend 9-month work to simulation of multilayer network, in order to assess learning performance (accuracy, rates, energy consumption)
+- Complete all cleanroom training required for circuit fabrication.
+- Southampton Science Festival 2027
+- A publishable simulation/circuit paper that does not depend on successful fabrication (de-risk).
+
+## Year 2 Goals
+- Selection of crossbar array design to reduce sneak path currents (e.g. 1S1R, 1T1R etc.).
+- Design and simulation of larger, multilayer memristor synapse and neuron circuits, including layout of small crossbar synapse arrays.
+- Evaluation of alternative in-situ learning approaches (e.g. STDP, VDSP etc.).
+- Fabrication of test structures at Zepler.
+- Optional exploratory work on AFeFET-based synapse/neuron concepts as future extensions.
+- A publishable measured-device validation paper.
+
+## Year 3 Goals
+- Further development of in-situ learning schemes (STDP, VDSP and supervised variants) in the network.
+- Demonstration of learning on small edge-AI task aligned with sustainability, e.g. environmental sensing.
+- Comparative evaluation of in-situ learning against software SNN baselines.
+- Sensitivity and robustness studies; derivation of design guidelines and preparation of main publications.
+- A publishable paper describing an integrated demonstrator.
+- Consolidation of results and thesis write-up.
+
+## Gantt Chart
+
+```mermaid
+gantt
+    title PhD Research Timeline: Neuromorphic Memristor Systems
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %Y
+    tickInterval 3month
+
+    section Foundation (Months 1-9)
+    Literature Review           :         lit1, 2026-07-01, 2026-09-30
+    Measurement Training        :         meas1, 2026-08-01, 60d
+    Device Characterisation     :         char1, 2026-08-15, 120d
+    Software Simulation (2S1N)  :         sim1, 2026-09-01, 120d
+    Neumat London Poster        :         neum1, 2026-11-01, 2026-11-30
+    Nano Fab Training           :         fab1, 2027-01-01, 90d
+    Neumat Winter School        :         neum2, 2027-01-15, 2027-01-30
+    Internal SNN Presentation   :         pres1, 2027-02-01, 2027-02-28
+    Learning Rules Evaluation   :         learn1, 2027-03-01, 90d
+    SustAI Conference           :         sust1, 2027-06-01, 2027-06-30
+    9-Month Progression Review  :crit,    rev1, 2027-06-01, 2027-06-30
+
+    section Year 1 Extension (Months 10-12)
+    Multilayer Network Simulation :      mlsim1, 2027-07-01, 90d
+    Cleanroom Training Complete :        clean1, 2027-07-01, 2027-09-30
+    Southampton Science Festival :       scifest1, 2027-07-01, 2027-08-31
+    Simulation/Circuit Paper    :crit,   paper1, 2027-09-01, 2027-09-30
+
+    section Year 2: Fabrication & Validation
+    Crossbar Array Design       :         cross1, 2027-09-01, 60d
+    Multilayer Circuit Design   :         circ1, 2027-10-01, 90d
+    Alternative Learning Rules  :         learn2, 2028-01-01, 120d
+    Test Structure Fabrication  :         fabtest1, 2028-04-01, 2028-09-30
+    AFeFET Exploratory Work     :         afefet1, 2028-06-01, 120d
+    Measured-Device Paper       :crit,    paper2, 2028-09-01, 2028-09-30
+
+    section Year 3: Integration & Thesis
+    Advanced Learning Schemes   :         learn3, 2028-10-01, 120d
+    Edge-AI Sustainability Demo :crit,    demo1, 2029-01-01, 2029-06-30
+    Sensitivity & Robustness    :         sens1, 2029-02-01, 90d
+    Comparative Evaluation      :         comp1, 2029-03-01, 90d
+    Integrated Demonstrator Paper :crit,  paper3, 2029-04-01, 2029-05-31
+    Thesis Write-up            :crit,     thesis1, 2029-06-01, 2029-09-30
+```
+
+## Meeting and supervision plan
+
+Weekly face-to-face meeting with Dr. Firman Simanjuntak and Prof. Mark Zwolinski
+
+## Contingency planning
+
+By March 2027, evaluate whether reliable access to a device dataset exists which could support a publishable hardware-aware learning result by March 2028. If so, proceed with integrated device-circuit-algorithm development; if not, pivot from fabrication to variability-aware learning rules.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Characterisation detail.
 ### Synaptic behavior of drift memristors.
@@ -65,7 +517,7 @@ Goals:
 - Threshold voltage or threshold field.
 - Read disturbance caused by sub-threshold read pulses.
 - Current compliance effects.
-- Series resistance and parasitic capacitance if the device is to be simulated in a circuit-level setting.
+- Series resistance and parasitic capacitance because the device is to be simulated in a circuit-level setting.
 
 #### Pulse behaviour.
 Single-pulse response:
@@ -122,7 +574,7 @@ Drift:
 - Facilitation from closely spaced pulses.
 - Transition from volatile to effectively nonvolatile behaviour at high excitation.
 
-Diffusive characteristics:
+#### Diffusive characteristics:
 - Threshold for spike initiation.
 - Spike latency versus input amplitude.
 - Spike latency versus pulse number.
@@ -138,7 +590,7 @@ Diffusive characteristics:
 - Reset dynamics.
 - Dependence on temperature and bias history.
 
-#### variability
+#### Variability
 - Device-to-device variation.
 - Cycle-to-cycle variation.
 - Initial-state variation.
@@ -171,66 +623,41 @@ Neuron
 | Test | Protocol | Extract for the model |
 | --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1. DC or slow voltage sweep | Sweep voltage from 0 through the positive excitation range, then return to 0; repeat for several amplitudes and compliance limits | Threshold voltage, threshold current, hysteresis, ON-state conductance, switching polarity |
-| 2. Single-pulse spike test | Apply isolated voltage pulses with a grid of amplitudes and widths; return to zero after each pulse | Spike/no-spike probability, spike latency, peak current, spike width, energy, threshold surface Pspike(V,τ)P_{\\mathrm{spike}}(V,\\tau)Pspike​(V,τ) |
+| 2. Single-pulse spike test | Apply isolated voltage pulses with a grid of amplitudes and widths; return to zero after each pulse | Spike/no-spike probability, spike latency, peak current, spike width, energy, threshold surface Pspike(V,tau)P_{\\mathrm{spike}}(V,\\tau)Pspike_(V,tau) |
 | 3. Relaxation test | After a pulse that produces a conductive state, measure conductance/current at logarithmically spaced delays with zero bias   | Volatile decay law, relaxation time, residual conductance, dependence on pulse amplitude and width |
-| 4. Pulse-pair interval test | Apply two identical pulses with inter-pulse interval Δt\\Delta tΔt, varying Δt\\Delta tΔt over the intended SNN range | Temporal summation, paired-pulse facilitation/depression, effective memory kernel |
+| 4. Pulse-pair interval test | Apply two identical pulses with inter-pulse interval dt\\Delta tdt, varying dt\\Delta tdt over the intended SNN range | Temporal summation, paired-pulse facilitation/depression, effective memory kernel |
 | 5. Repeated-pulse train test | Apply trains at several frequencies and amplitudes | Frequency-dependent firing, accumulation, burst threshold, spike-rate response, transition between isolated and sustained spiking |
-| 6. Repetition and device-variation test | Repeat tests 2–5 over many cycles and multiple devices | Cycle-to-cycle and device-to-device distributions of threshold, latency, spike width, relaxation, and failure modes |
+| 6. Repetition and device-variation test | Repeat tests 2-5 over many cycles and multiple devices | Cycle-to-cycle and device-to-device distributions of threshold, latency, spike width, relaxation, and failure modes |
 
 Synapses
 
 | Test | Protocol | Extract for the model                                                                      |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| 1. Read linearity and state range | Read multiple programmed states using a low, non-disturbing voltage | Gmin⁡G_{\\min}Gmin​, Gmax⁡G_{\\max}Gmax​, read noise, read disturb, usable number of levels |
+| 1. Read linearity and state range | Read multiple programmed states using a low, non-disturbing voltage | Gmin_G_{\\min}Gmin_, Gmax_G_{\\max}Gmax_, read noise, read disturb, usable number of levels |
 | 2. Incremental potentiation | Start from a defined low-conductance state; apply identical SET or potentiation pulses, reading after every pulse | GGG-versus-pulse-number curve, update granularity, saturation, stochasticity |
 | 3. Incremental depression | Start from a defined high-conductance state; apply RESET or depression pulses, reading after every pulse | Depression curve, asymmetry relative to potentiation, saturation, stochasticity |
-| 4. Pulse-amplitude/width dependence | Repeat selected updates for several amplitudes and widths | Update rule ΔG(G,V,τ)\\Delta G(G,V,\\tau)ΔG(G,V,τ), programming threshold, energy per update |
+| 4. Pulse-amplitude/width dependence | Repeat selected updates for several amplitudes and widths | Update rule dG(G,V,tau)\\Delta G(G,V,\\tau)dG(G,V,tau), programming threshold, energy per update |
 | 5. Retention/drift | Program representative low, middle, and high conductance states; read over logarithmically spaced delays with no programming bias | Drift law, retention distribution, state-dependent drift, effective weight lifetime |
 | 6. Cycle-to-cycle and device-variation test | Repeat potentiation/depression cycles on several devices | Parameter distributions, update covariance, stuck states, device mismatch |
 | 7. Endurance subset | Repeatedly alternate potentiation and depression while periodically checking the conductance window | Cycle-induced degradation, failure probability, changing update curves |
 
 
-# Introduction
-
-## Context
-The human brain is often quoted for its extraordinary efficiency, with consumption of 20w compared with the kilo- or mega-watts of power needed to operate a traditional computer of equivalent capability, where data transfers between CPU and external memory can consume approximately 10–100× more energy than the logic operation itself  [@khan_landscape_2024]. In-memory computing (IMC) reduces this Von-Neumann architecture cost by performing computation within, or immediately adjacent to, the memory array, thereby minimizing data movement.
-
-Neuromorphic computers have the potential to perform complex calculations more power-efficiently and on a smaller footprint than traditional von Neumann architectures. The early focus of research was on speed; neural networks offered faster computation with custom chips than was possible with traditional von Neumann architectures, exploiting natural parallelism and custom hardware to complete neural-style computations. This was used for real-time control, real-time digital image reconstruction, and autonomous robot control. Focus later moved to power consumption and efficiency.
-
-
-A key differentiator is the level of biological plausibility: whether biologically-plausible (seen in biological neural systems, e.g. Hodgkin-Huxley, Morris Lecar), biologically-inspired (replicate behavior of neural systems but not in a biologically-plausible way, e.g. Izhikevich), and neuron models such as integrate-and-fire (especially Leaky) and McCulloch-Pitts (activation functions, e.g. sigmoid, tanh).
-
-## Research context
-Neuromorphic computing seeks to emulate the brain’s event‑driven, massively parallel processing using energy‑efficient hardware models such as spiking neural networks (SNNs) [@mead_neuromorphic_1990]. Memristor device architectures [@strukov_missing_2008] show promise as implementations with bio-plausible behaviour, because drift memristors naturally implement analog synaptic weights and non-volatile (long-term) plasticity, while diffusive memristors provides short term neuron firing behaviour [@hu_spice_2022; @kim_self-powered_2026].
-
-## Motivation and significance
-The Internet of Things (IOT) requires intelligent information processing in the field, away from powerful and energy-consuming cloud and datacentre-based AI capabilities. Without low-energy local AI inference, very large amounts of data need to be transmitted for central processing, requiring energy, reliable bandwidth and connectivity, latency, and the provision of land, energy grid and water supplies [@jiang_energy_2020].
-
-IOT devices are often disconnected from energy grids and consequently have a limited energy budget, constrained by energy harvesting and battery capacity. A lack of energy self-sufficiency requires ongoing human involvement in battery maintenance and replacement.
-
-Although the field of machine learning (ML) is considered to be mature, most of the current development assumes ever more powerful models running on centralised hardware, with the primary aim of improving accuracy against well-established benchmark datasets and problems[@thomas_reliance_2022]. Power demands of frontier models (especially for training) are rising exponentially and will become the limiting factor for further adoption; datacentres cannot be built because of the lack of energy grid and cooling water availability [@chen_electricity_2026].
-
-Recent work has demonstrated memristor CMOS neuromorphic devices with spike-timing-dependent-plasticity (STDP) learning at the synapse level [bianchi_compact_2020], and small‑scale SNNs with on‑chip adaptation [@wang_fully_2018], but most demonstrations either remain shallow [@covi_hfo2-based_2016], rely on ex‑situ weight programming [@ijesinghe_all-memristor_2018], or requre tight integration with digital neuromorphic platforms such as FPGAs[@javanshir_advancements_2022].
-
-Power consumption per inference in extremely constrained environments is measured, but often only for single devices (synapses, neurons) [@chauhan_ultra_2025], not for complete systems [@zhang_anp-i_2024].
-
-This project aims to bridge these developments by designing, fabricating, and evaluating a multilayer memristor-based SNN with on‑chip learning. The focus will be on event‑based vision or time‑series tasks relevant to ultra‑low‑power, DVS‑free neuromorphic hardware.
 
 ## Background and foundational concepts
 
-### Memristor–CMOS neuromorphic architectures
+### Memristor-CMOS neuromorphic architectures
 Memristor systems use memristive devices (e.g. ReRAM cells) to store synaptic weights in crossbar arrays [@kim_digital_2012; @wijesinghe_all-memristor_2018; @bayat_implementation_2018] and CMOS neuron circuits to implement spiking dynamics [@payvand_-chip_2020].
 
-Published memristor–CMOS neuromorphic chips have demonstrated on‑chip STDP learning in synapses [@karamimanesh_fully-cmos_2026], basic pattern recognition [@tavanaei_bp-stdp_2018], and small‑scale neural cores, often in 130 nm CMOS with sub‑micrometre memristor devices [@valentian_fully_2019].
+Published memristor-CMOS neuromorphic chips have demonstrated in-situ STDP learning in synapses [@karamimanesh_fully-cmos_2026], basic pattern recognition [@tavanaei_bp-stdp_2018], and small-scale neural cores, often in 130 nm CMOS with sub-micrometre memristor devices [@valentian_fully_2019].
 
-Reviews of CMOS‑compatible memristors emphasise analog tunability [@lee_crus_2022], endurance, and integration challenges, and point to neuromorphic computing as a key application area [@javanshir_advancements_2022; @jin_memristor-based_2025].
+Reviews of CMOS-compatible memristors emphasise analog tunability [@lee_crus_2022], endurance, and integration challenges, and point to neuromorphic computing as a key application area [@javanshir_advancements_2022; @jin_memristor-based_2025].
 
-### On‑chip learning in memristive neural networks
-Work on memristor‑based neural networks has explored both ex‑situ training (ANN/SNN training in software followed by weight programming into crossbars) and in‑situ training using local learning rules.
+### In-situ learning in memristive neural networks
+Work on memristor-based neural networks has explored both ex-situ training (ANN/SNN training in software followed by weight programming into crossbars) and in-situ training using local learning rules.
 
-On‑chip training schemes for SNNs include STDP variants and supervised approximations to backprop adapted to hardware, where timing and pulse‑based updates are critical to realising learning in physical synapses.
+In-situ training schemes for SNNs include STDP variants and supervised approximations to backprop adapted to hardware, where timing and pulse-based updates are critical to realising learning in physical synapses.
 
-Recent studies argue that robust on‑chip learning in memristor‑based networks requires careful handling of device variability, limited conductance precision, and non‑linear update dynamics.
+Recent studies argue that robust in-situ learning in memristor-based networks requires careful handling of device variability, limited conductance precision, and non-linear update dynamics.
 
 ### Key challenges indicated by research
 - **Device variability and imperfections** in memristive/analog crossbars cause weight noise, conductance drift, and cycle-to-cycle fluctuations that degrade inference accuracy and complicate training.
@@ -242,148 +669,12 @@ Recent studies argue that robust on‑chip learning in memristor‑based network
 - **No killer application** justifying neuromorphic large-scale production cost (>\$50M); edge AI applications served by low-power Microcontroller and Neural Processing Units, e.g. Texas Instruments TinyEngine NPU.
 
 ### Gaps and originality
-There is a clear gap in scalable multilayer memristor SNNs with on‑chip learning, particularly where analog synapses are tightly co‑designed with a digital neuromorphic platform that can both emulate and train them.
+There is a clear gap in scalable multilayer memristor SNNs with in-situ learning, particularly where analog synapses are tightly co-designed with a digital neuromorphic platform that can both emulate and train them.
 
-Existing memristor implementations tend to focus on single‑layer cores or small networks and rarely provide systematic comparisons against FPGA‑based SNN implementations under identical tasks and metrics.
+Existing memristor implementations tend to focus on single-layer cores or small networks and rarely provide systematic comparisons against FPGA-based SNN implementations under identical tasks and metrics.
 
-This project will address these gaps by designing a multilayer memristor–based SNN with on‑chip learning for experimentation, training, and system‑level evaluation on event‑based tasks.
+This project will address these gaps by designing a multilayer memristor-based SNN with in-situ learning for experimentation, training, and system-level evaluation on event-based tasks.
 
-# Literature Review
-This literature review surveys recent work at the intersection of analog spiking neural networks (SNNs), memristive and ferroelectric/antiferroelectric devices, and hardware-aware on-chip learning, with a focus on compact device models and fabricated demonstrators.
-It organizes the field into five main themes: 1. Device-level advances in memristive and ferroelectric synapses and neurons. 2. Analog and mixed-signal neuromorphic circuits for SNNs. 3. On-chip and hardware-aware learning rules. 4. System-level neuromorphic demonstrators and reservoir/edge systems. 5. Surveys and reviews that contextualize these developments.
-
-## Search strategy
-[Document how the literature search was performed: databases, keywords, time windows, inclusion/exclusion criteria, and any review logic used.]
-A literature search was performed using IEEE Xplore and Arxiv, based on publications and conference submissions from 2010 to 2026. The following keywords were used:
-
-Topic focus:
-- “spiking neural network” OR “SNN”
-- “neuromorphic computing” OR “neuromorphic hardware”
-- “on-chip learning” OR “in-situ learning” OR “hardware learning”
-- “memristor” OR “memristive synapse” OR “crossbar array”
-- "ReRAM" OR “ferroelectric” OR “antiferroelectric”
-
-Learning rules and algorithms:
-- “STDP” OR “spike-timing-dependent plasticity”
-- "VDSP" OR "voltage-dependent synapse plasticity"
-- “three-factor learning” OR “eligibility trace” OR “e-prop”
-- “Hebbian learning” OR “Oja’s rule” in SNNs
-- “surrogate gradient” OR “direct feedback alignment” for SNN training
-
-Neuron and synapse models:
-- “leaky integrate-and-fire” OR “LIF”
-- “Izhikevich” OR “Hodgkin–Huxley”
-- “short-term plasticity” OR “long-term plasticity (LTP)” OR STP OR "LTP"
-- "potentiation" OR "depression"
-
-## Surveys
-## Surveys and Contextual Reviews
-
-Rajendran et al. determine the operating characteristics of novel nanoscale devices that could be used to fabricate neuromorphic systems and show that neuromorphic systems based on new nanoscale devices can potentially improve density and power consumption by at least a factor of 10, as compared with conventional CMOS [@rajendran_specifications_2013]. Later, Rajendran et al. review emerging memory technologies and how they can enable energy-efficient implementation of large neuromorphic computing systems. They highlight some of the key aspects of biological computation that are being mimicked in these novel nanoscale devices, and discuss various strategies employed to implement them efficiently [@rajendran_neuromorphic_2016].
-
-Schuman et al.’s survey of neuromorphic computing provides a long-range historical and thematic overview spanning neuro-inspired models, learning approaches, hardware/devices, supporting systems, and applications, clarifying how memristive and ferroelectric neuromorphic hardware fits into the broader landscape [@schuman_survey_2017]. A subsequent article on opportunities for neuromorphic computing algorithms and applications by the same group highlights open challenges in algorithm–hardware co-design, robustness, and application-driven benchmarks, such as a lack of readily accessible and usable software and hardware systems, a lack of clearly established benchmarks, and that no algorithm-application pairing yet shows neuromorphic computers outperforming deep learning in accuracy. [@schuman_opportunities_2022].
-
-Mehonic et al. discuss memristors from in-memory computing and deep learning acceleration to SNNs and future neuromorphic systems, emphasising the need for tailored learning and inference algorithms that exploit non-von-Neumann architectures [@mehonic_memristorsmemory_2020]. Javanshir et al. and other reviews on SNN algorithms, neuromorphic hardware platforms, and FPGA implementations complement device-centric surveys by providing algorithmic and architectural perspectives [@javanshir_advancements_2022].
-
-Chen et al. review the promises and challenges of memristive devices in SNN implementations, focusing on diffusive memristors (used to mimic short-term plasticity (STP) due to their volatility) and drift memristors (used for long-term potentiation (LTP) during neural network training due to their stable retention) [@ TODO]. They report that researchers developed fully memristive SNNs using diffusive memristors as stochastic leaky-integrate-and-fire (LIF) neurons and non-volatile memristors as synapses, achieving unsupervised learning for letter recognition.
-
-## Device-Level Memristive and Ferroelectric Synapses
-
-Memristor synapses provide non-volatile or semi-volatile conductance states with analog or multi-level programmability, enabling in-memory computing and synaptic plasticity in SNNs [@prodromakis_review_2010]. Recent device-level reviews emphasise short-term and long-term plasticity, spike timing-dependent plasticity (STDP), spike rate-dependent plasticity, and even optoelectronic control as critical behaviours for neuromorphic synapses.
-
-Chandrasekaran et al. present a device-level critical review of memristor synapses, combining a statistical survey of neuromorphic device publications (2018–2025) with detailed discussion of biomimetic properties such as STP, LTP, STDP, and SRDP in various material systems [@chandrasekaran_memristor_2026]. They highlight optical-stimulus-driven 2D-material optoelectronic synapses and application examples ranging from MNIST recognition to hardware pattern recognition and biomedical interfaces, underlining the diversity of physical mechanisms that can underpin synaptic plasticity.
-
-Jin et al. provide a broader review of memristor-based artificial neural networks for hardware neuromorphic computing, covering convolutional, recurrent, and spiking networks, and emphasising memristor in-memory computing as a way to overcome the von Neumann bottleneck[@jin_memristor-based_2025]. Their discussion of synaptic plasticity mechanisms (potentiation, depression, and emerging learning algorithms tailored to memristive dynamics) is directly relevant to hardware-aware learning rules in SNNs, especially when device non-idealities constrain achievable weight trajectories.
-
-## Ferroelectric and Antiferroelectric Synaptic Arrays
-
-Ferroelectric memristor crossbar arrays offer high-density, energy-efficient synaptic matrices with tunable tunnelling electroresistance and switching dynamics, enabling both short-term and long-term memory effects. Park et al. report a 24×24 ferroelectric memristor crossbar array based on a TiN/HAO/SiO2/n-Si structure that demonstrates scalable device characteristics, improved TER ratios in smaller cells, and neuromorphic functionalities such as paired-pulse facilitation and spike-duration/number-dependent plasticity [@park_ferroelectric_2025]. The same work uses the ferroelectric array as a reservoir layer in a reservoir computing system, achieving high accuracy on MNIST and Fashion-MNIST, and demonstrating associative learning and nociceptor-like behaviour, thereby validating the array as a multifunctional synaptic substrate. The reported device-to-device and cycle-to-cycle uniformity addresses a central challenge in memristive arrays, making these ferroelectric synapses particularly attractive for hardware-aware learning where variability and drift must be explicitly modelled.
-
-Lu et al. review ferroelectric-based leaky integrate-and-fire (LIF) neurons and outline device design and performance optimisation strategies, emphasising the realization of leak via depolarization or antiferroelectric phases [@lu_ferroelectric-based_2026]. Their identification of key metrics—hardware cost, energy consumption, endurance—and application examples provides a complementary perspective to ferroelectric synapses, highlighting co-design opportunities between devices implementing integrate/leak and those implementing synaptic weight storage.
-
-## Memristive and Ferroelectric Neurons
-
-A series of recent works demonstrate compact artificial neurons implemented directly in memristive or ferroelectric devices, avoiding large external capacitors and complex reset circuitry while achieving rich spiking dynamics. Zhang et al. realise a compact artificial memristive neuron with leaky integration, automatic threshold firing, and self-recovery in a single device with ultralow energy consumption, providing a device-level LIF neuron building block [@zhang_ferroelectricantiferroelectric_2025].
-
-Cao et al. introduce a compact neuron based on an antiferroelectric field-effect transistor (AFeFET) using Hf0.2Zr0.8O2, where intrinsic polarisation and spontaneous depolarisation implement integrate-and-leak behaviour, achieving low spike energy, high endurance, and strong uniformity [@cao_compact_2022]. They further construct a two-layer fully ferroelectric SNN combining AFeFET neurons with ferroelectric synapses, reaching high MNIST recognition accuracy and providing a fully ferroelectric neuromorphic demonstrator.
-
-Gao et al. extend antiferroelectric transistor concepts to reconfigurable neuromorphic functions via coupled polarisation switching and charge trapping, enabling multiple neuromorphic behaviours (e.g., synaptic and neuronal states) in the same device [@gao_reconfigurable_2025]. Shi et al. present coplanar floating-gate antiferroelectric transistors that unify volatile neuron-like responses, nonvolatile synaptic behaviour, and fading-memory reservoir dynamics in a single device architecture, culminating in an all-in-one analog reservoir computing system [@shi_coplanar_2026].
-
-Zhidkov et al. demonstrate multiple spiking modalities (time-to-first-spike, spike count, firing-rate coding) in annealing-optimised Ag/Hf0.5Zr0.5O2 memristive neurons, realised using filamentary switching and a simple series resistor, illustrating how process engineering can tune spiking behaviour [@zhidkov_multiple_2026]. Wang et al. focus on threshold-switching memristors and review their use as spiking neurons with oscillatory, LIF, Hodgkin–Huxley-like, and stochastic dynamics, directly linking device physics (Mott vs. redox switching) to neuron models and energy consumption [@wang_memristor-based_2025].
-
-Zhao et al. present a spiking artificial neuron based on one diffusive memristor, one transistor, and one resistor, realising compact neuron circuits with nanoscale footprint and integrating them within larger neuromorphic systems [@zhao_spiking_2025]. Kim et al. show self-powered analog neuromorphic systems for multimodal sensing and learning using diffusive and drift memristors, where neuromorphic sensing, encoding, and learning are all co-located in hardware, underscoring opportunities for fully integrated edge systems [@kim_self-powered_2026].
-
-## Memristive Crossbars and Mixed-Signal Perceptrons
-
-Passive memristive crossbars (0T1R) and active 1T1R arrays underpin many in-memory computing architectures for ANNs and SNNs, providing high-density weighted-sum operations and local update paths. Bayat et al. demonstrate a one-hidden-layer perceptron classifier implemented entirely in mixed-signal hardware using two passive 20×20 metal-oxide memristive crossbars, with ex-situ training and classification fidelity close to simulations despite device non-idealities [@bayat_implementation_2018].
-
-Poddar et al. report ultra-high density perovskite nanowire array memristors for multi-layer perceptron networks, emphasising nanowire crossbars as a path to extremely compact synaptic fabrics [@poddar_ultra-high_2026].
-Jin et al. and Mehonic et al. discuss memristor-based multilayer networks more generally, including full-memristive neural networks where both neurons and synapses are implemented in memristors, exploring algorithmic adaptations of delta rule and backpropagation to such hardware[@jin_memristor-based_2025; @mehonic_memristorsmemory_2020].
-
-A recent hybrid convolutional SNN architecture by Go and Kim combines digital non-leaky integrate-and-fire neurons with Knowm self-directed channel memristor-based synapses in a 1T1R crossbar, using a current-sense amplifier and 1-bit comparator as a minimal readout instead of high-resolution ADCs [@go_energy-_2026]. Their intensity-to-latency temporal coding scheme reduces spike counts and device stress, and they analytically compare energy usage of this minimalist readout versus conventional ADC-based designs, which is central to hardware-aware learning in edge contexts.
-
-## Analog and Mixed-Signal Neuron Circuits
-
-On the CMOS circuit side, Wu et al. present a reconfigurable leaky integrate-and-fire neuron with a single op-amp that accommodates a large number of memristor synapses and enables online STDP learning with optimised power consumption [@xinyu_wu_cmos_2015]. Their 180 nm CMOS design achieves high power-efficiency for STDP in large synapse populations and low integration current, making it a general-purpose building block for dense memristor-synapse neuromorphic systems.
-
-Earlier silicon neuron work such as the classical Mahowald and Douglas “A Silicon Neuron” [@https://doi.org/10.1038/354515a0 TODO] and compact neuron supplements [@zhang_highly_2018] in the bibliography provide historical context and baseline CMOS neuron architectures that current memristive and ferroelectric neuron designs build upon. These CMOS designs typically rely on capacitors and current-mode implementations, motivating the recent shift towards device-intrinsic capacitance and polarisation dynamics in ferroelectric neurons to reduce area and static energy.
-
-## Learning Rules and On-Chip Training in SNNs
-
-Biological and bio-inspired plasticity rules such as STDP, Hebbian learning, and voltage-dependent synaptic plasticity are central to on-chip learning in SNNs, especially when learning must be implemented locally using device physics. Diehl and Cook demonstrate unsupervised digit recognition using STDP, lateral inhibition, and adaptive thresholds without any labels or teacher signals, achieving high MNIST accuracy and showing the robustness of biologically plausible mechanisms across different learning rules [diehl_unsupervised_2015].
-
-Goupy et al. introduce Stabilized Supervised STDP (S2-STDP) combined with Paired Competing Neurons (PCN) for classification layers in SNNs, integrating error-modulated weight updates with local spike timing and intra-class competition [@goupy_paired_2024]. They show improved performance over previous supervised STDP rules across multiple vision datasets, and their architecture is particularly amenable to hardware implementation due to its locality and lack of global backpropagation.
-
-Recent work on Hebbian enrichment of SNNs proposes memory-augmented architectures where Hebbian synaptic plasticity acts as both memory and processor, improving out-of-distribution generalisation, one-shot learning, and reward-based learning [@limbacher_memory-dependent_2025]. These Hebbian-enriched SNNs underline the computational versatility that can be achieved when synaptic updates are tightly coupled to local spike statistics, which is attractive for analog on-chip learning with memristive devices.
-
-At the hardware level, energy- and endurance-aware co-design for neuromorphic edge intelligence highlights the need to tailor learning algorithms to device constraints such as limited endurance, stochastic switching, and restricted dynamic ranges [@go_energy-_2026]. Hybrid schemes split feature extraction (often unsupervised STDP) from supervised classification layers and minimise write operations to memristors to demonstrate hardware-aware learning strategies in a fully analog context [@kugele_hybrid_2021].
-
-## Threshold-Switching Memristors and Spiking Dynamics
-
-Threshold-switching memristors (TSMs) with volatile or semi-volatile dynamics naturally implement neuron-like behaviours such as oscillations, LIF spiking, and refractory periods through their intrinsic switching physics. Wang et al. review TSM-based spiking neuromorphic systems, cataloguing device materials (Mott insulators, valence-change memories, diffusive systems) and associated spiking modes, along with energy-per-spike figures and neuromorphic platform demonstrations [@wang_memristor-based_2025].
-
-Li et al. present Bi2Se3-based threshold-switching memristors with high switching ratios, low threshold voltages, and thermoelectric response, using HSPICE simulations to explore spiking oscillation responses to temperature variations and resistance states [@li_threshold-switching_2025]. This work targets neuromorphic thermoreception, illustrating how TSM neurons can be integrated with sensory modalities in hardware, and how compact device models capture combined electrical and thermal dynamics relevant to edge sensing.
-
-Wang et al. present an artificial neuron device using a Pt/Ag/ZnO/Pt volatile diffusive memristor that exhibits threshold switching characteristics. They use diffusive memristors to produce leaky integrate-and-fire functions with low energy consumption, and integrate these neurons into a two-layer spiking neural network for MNIST classification, achieving an 89.17% accuracy [@ TODO].
-
-## Neuromorphic Reservoirs and All-in-One Architectures
-
-Reservoir computing offers a flexible framework for temporal information processing using fixed recurrent substrates and trained readouts, which maps well onto analog device arrays with rich internal dynamics [@tan_dynamic_2023]. Ferroelectric memristor arrays and coplanar FG AFeFETs have been used as physical reservoirs, exploiting volatile and fading-memory behaviours to encode temporal input patterns, with external or on-chip readouts performing linear classification [@park_ferroelectric_2025].
-
-Shi et al.’s coplanar FG AFeFET architecture exemplifies an all-in-one analog reservoir computing system, where devices can be configured as neurons, synapses, or reservoir nodes depending on biasing and layout [@shi_coplanar_2026]. The reported recognition accuracies on MNIST and Fashion-MNIST, coupled with tunable volatility and non-volatility, show that single-device reservoirs can achieve competitive performance while remaining area-efficient and compatible with CMOS back-end integration.
-
-## Neuromorphic Edge and Embedded Applications
-
-- Several works in the bibliography focus on SNNs as controllers or embedded intelligence for resource-constrained platforms, such as FPGA-based neuromorphic systems and spiking neurocontrollers for UAVs. Qiu et al. evolve spiking neurocontrollers for full hexacopter control in six degrees of freedom, using modular decomposition and NEAT-style evolution, highlighting how spiking networks can be tailored to continuous control tasks [@qiu_evolving_2020].
-
-At the edge-intelligence level, Go and Kim’s hybrid CSNN [@go_energy-_2026] and Kim et al.’s self-powered multimodal system [@kim_self-powered_2026] underline the importance of co-designing device physics, circuit architecture, and coding schemes to minimise energy while maintaining accuracy.
-
-
-### Fabrication of drift and diffusive memristors to construct a spiking neural network
-Kim et al. present a fully analogue, self-powered neuromorphic system that integrates multimodal sensing, spike encoding, and unsupervised learning using drift and diffusive memristors, operating without digital circuitry or external power. Uses a spiking neural network that directly receives multiple analogue inputs from physical sensors and converts these inputs into spike-like signals, which then modulate synaptic weights based on relative event timing [@kim_self-powered_2026].
-
-Tang et al. introduce a fully memristive spiking-neuron learning framework built only from one drift and one diffusion memristive model, which eliminates the need for other electronic devices like resistors or capacitors. They apply the framework to a feedforward multilayer perceptron, to demonstrate its simplicity and high processing speed on hardware [@ TODO].
-
-Chen et al. discuss artificial neurons based on diffusive memristors that emulate integrate-and-fire dynamics through field-accelerated drift and diffusion of metal atoms, which is closer to biological ionic dynamics. They show a multilayer perceptron network with one integrated hidden layer, consisting of two separated passive memristor crossbars, to address challenges in perceptron networks [@ TODO].
-
-
-## Current state of the art
-
-[Review the most relevant studies, methods, systems, datasets, benchmarks, policies, or theoretical approaches. Organise by theme rather than paper-by-paper where possible.]
-
-## Overview
-
-
-## Synthesis and Gaps Relative to the Target Topic
-
-- The attached bibliography shows strong activity in device-level memristive and ferroelectric neurons and synapses, ferroelectric LIF neuron design, threshold-switching memristor-based spiking dynamics, and mixed-signal memristive crossbar demonstrators.[1]
-- It also includes several hardware-aware learning schemes—unsupervised STDP, supervised STDP variants, Hebbian-enriched networks, and endurance-aware co-design—but these are typically studied either in simulation or with limited on-chip learning in small arrays.[1]
-
-- Compact device models are commonly used in circuit-level simulations (e.g., HSPICE models for Bi2Se3 TSMs, compact neuron models in memristive and ferroelectric devices), yet there remains a gap in unified compact models that simultaneously capture neuron dynamics, synaptic plasticity, and non-idealities for multi-layer analog SNNs.[1]
-- Fabricated demonstrators often focus either on device-level proof-of-concept (single neurons, small crossbars, reservoir layers) or on mixed-signal systems with ex-situ training; fully analog, multi-layer SNNs with hardware-aware on-chip learning remain comparatively underexplored.[1]
-
-- Your proposed subject—"hardware-aware on-chip learning in an analog SNN using measured memristive synapses and neurons, with a compact device model and a small fabricated demonstrator"—naturally builds on these strands by combining measured device characteristics, compact unified models, and on-chip learning rules tuned to device constraints.[1]
-- The literature indicates that key open problems include handling device variability and stochasticity, designing plasticity rules compatible with endurance limits, integrating ferroelectric and memristive devices in multi-layer analog SNNs, and demonstrating small yet complete hardware prototypes that close the loop between learning, device physics, and circuit behaviour.[1]
 
 ## Critical analysis of existing work
 
@@ -401,25 +692,25 @@ The project will successful if it demonstrates:
 - Mechanism insight: Why a device feature helps or harms learning, and how circuit or algorithm design mitigates it.
 - Practical evidence: at least one experiment updates physical states in response to spike-derived signals and improves a measurable task objective.
 
-### RQ1 – CMOS‑compatible scalable SNN architecture
-What memristor–CMOS co‑designs for synapses and neurons enable a scalable, multilayer spiking neural network that can be fabricated using the
+### RQ1 - CMOS-compatible scalable SNN architecture
+What memristor-CMOS co-designs for synapses and neurons enable a scalable, multilayer spiking neural network that can be fabricated using the
 CMOS processes available at Zepler? Within this constraint, which crossbar topologies, neuron circuit models (e.g. LIF variants),
-and spike‑routing schemes jointly optimise trainability, energy per spike, and silicon area for edge‑scale event‑based workloads?
+and spike-routing schemes jointly optimise trainability, energy per spike, and silicon area for edge-scale event-based workloads?
 
-### RQ2 – Efficient on‑chip learning for multilayer memristor SNNs
-Which on‑chip learning algorithms—such as STDP/VDSP and hardware‑feasible approximations to spiking backpropagation—can be implemented efficiently in
-multilayer memristor SNNs, and how do their accuracy, convergence speed, and energy per update compare to ex‑situ training
-with weight transfer under realistic device non‑idealities?
+### RQ2 - Efficient in-situ learning for multilayer memristor SNNs
+Which in-situ learning algorithms-such as STDP/VDSP and hardware-feasible approximations to spiking backpropagation-can be implemented efficiently in
+multilayer memristor SNNs, and how do their accuracy, convergence speed, and energy per update compare to ex-situ training
+with weight transfer under realistic device non-idealities?
 
-### RQ3 – Robustness and exploitation of device variability
-What levels of device‑to‑device and cycle‑to‑cycle variability in memristor synapses and neurons can a multilayer SNN tolerate before task accuracy
-degrades beyond a defined threshold, and how can on‑chip learning rules be designed so that such variability either remains harmless or
+### RQ3 - Robustness and exploitation of device variability
+What levels of device-to-device and cycle-to-cycle variability in memristor synapses and neurons can a multilayer SNN tolerate before task accuracy
+degrades beyond a defined threshold, and how can in-situ learning rules be designed so that such variability either remains harmless or
 actively improves training speed and final accuracy?
 
-### RQ4 – System‑level performance on event‑based tasks
-Can a multilayer memristor SNN with on‑chip learning achieve competitive task accuracy, energy per event, and latency on representative
-event‑based vision or time‑series benchmarks compared with state‑of‑the‑art software ANN/SNN baselines, when implemented under Zepler‑compatible
-CMOS and realistic memristor non‑idealities?
+### RQ4 - System-level performance on event-based tasks
+Can a multilayer memristor SNN with in-situ learning achieve competitive task accuracy, energy per event, and latency on representative
+event-based vision or time-series benchmarks compared with state-of-the-art software ANN/SNN baselines, when implemented under Zepler-compatible
+CMOS and realistic memristor non-idealities?
 
 
 
@@ -427,251 +718,6 @@ CMOS and realistic memristor non‑idealities?
 
 [Explain what is novel about the proposed direction and why it would matter if successful.]
 
-# Proposed Methodology
-
-## Methodological overview
-
-[Describe the overall research design and justify why it is suitable for addressing the identified gaps.]
-
-## Proposed methods
-
-[Detail the methods, models, experiments, analytical techniques, simulations, fieldwork, datasets, case studies, or design processes you expect to use.]
-
-### Diffusive memristor characterisation
-Use existing fabricated diffusive memristors to characterise device behaviour, with a particular focus on device-to-device, cycle-to-cycle and stochastic variability ("variability statistical model").
-
-Implement variability model in software emulation of a single, simple neuron. Convert memristor variability into neuron behaviour variability.
-
-Implement simulation of on-chip learning (STDP and VDSP) in software, for single, simple neurons (pre/post-synaptic), initially without variability. Introduce the variability statistical model created earlier.
-
-Evaluate the impact of variability on learning speed and accuracy.
-
-Move to a larger network, where feature extraction and differentiation becomes important. Understand whether variability assists in feature / node differentiation is assisted/accelerated by variability, or whether there is a point at which excessive variability becomes catastrophic for network performance.
-
-Define an allowable variability specification.
-
-### Memdevice and circuit design
-Use existing memdevice expertise to select, design and fabricate CMOS‑compatible memristor stacks with suitable characteristics (tuning, endurance, variability, and process compatibility).
-
-Design hybrid synapse cells (e.g. 1S1R) and neuron circuits (e.g. LIF 1M1T1R neurons) that operate at realistic voltage ranges and support pulse‑based conductance updates implementing STDP/VDSP or supervised learning rules.
-
-Use SPICE/Verilog‑A simulation to validate crossbar and neuron behaviour, including parasitic effects and sneak paths.
-
-### Compact modelling and multi‑scale simulation
-Characterise fabricated devices and arrays to obtain IV curves, switching behaviour, endurance, retention, and variability, then fit compact models suitable for both circuit and network‑level simulation.
-
-Integrate these models into a multi‑scale simulation stack linking device‑level dynamics to spiking network behaviour, using Python SNN frameworks for training and analysis.
-
-### On‑chip learning schemes
-Implement unsupervised STDP/VDSP‑based learning using local timing and pulse protocols that update memristor conductances based on spike correlations and presynaptic potentials.
-
-Explore supervised learning schemes adapted to hardware, such as approximate backpropagation in the spiking domain, where error signals are encoded as additional spike trains or weight‑update pulses orchestrated by the FPGA controller.
-
-Compare ex‑situ training (software SNN trained first, then weights programmed into crossbars) to in‑situ training (updates performed directly in hardware) under realistic device constraints.
-
-### Evaluation and analysis
-Evaluate accuracy, energy per event, latency, and robustness on chosen tasks; compare across analog SNN, FPGA SNN, and software baselines using consistent metrics and datasets.
-
-Perform sensitivity analyses to quantify the impact of device variability, limited conductance precision, and learning rule parameters on long‑term performance and stability.
-
-## Data, resources, and infrastructure
-
-[Identify expected data sources, software, hardware, facilities, lab access, compute requirements, and any external dependencies.]
-
-## Evaluation strategy
-
-[Explain how success will be measured: metrics, baselines, validation strategy, comparison methods, robustness checks, or qualitative evaluation.]
-
-## Risks, assumptions, and limitations
-
-[Identify key risks and assumptions, then explain mitigation plans and fallback options.]
-
-## Skills audit and training needs
-
-[Identify technical or professional skills gaps. Link these to a training plan for the PhD phase.]
-
-| Skill / capability gap | Why it matters | Planned training or action | Indicative timing |
-|---|---|---|---|
-| Device measument | Needed to characterise devices for software simulation | B53 measurement lab induction, training | Sept 2026 |
-| Device fabrication | Needed to fabricate devices for physical evaluation | B53 nano fab lab induction, tool training | Oct-Dec 2026 |
-
-
-
-
-
-
-
-
-
-
-
-
-# Impact assessment
-
-
-## Overview of anticipated impact
-
-[Describe the potential academic, environmental, industrial, societal, and policy relevance of the proposed research.]
-
-This impact assessment evaluates the societal, ethical, and environmental implications of developing an analog spiking neural network (SNN) that integrates measured memristive synapses and neurons with a compact device model for hardware-aware on-chip learning.
-
-By 2030, AI global data centres using digital hardware are projected to consume around 945 TWh of electricity annually, while their associated water footprint could equal the basic domestic water needs of 1.3 billion people and their land footprint could exceed 14,500 km² [@de vries TODO], loading power grids, competing with households and agriculture for scarce water, and consuming land for facilities, power generation and transmission networks.
-
-These impacts are unevenly distributed: communities hosting data centres may face higher utility costs, local water stress, noise and construction impacts, while the benefits of AI accrue disproportionately to technology companies and wealthier users. The problem is intensified by everyday inference and deployment, which the UN University analysis estimates account for roughly 80–90% of total AI energy demand, rather than training alone [@aczel_environmental_2026]. Consequently, without limits on efficiency, siting, disclosure and resource use, AI development could deepen environmental inequality by shifting the ecological costs of digital services onto regions least able to absorb them.
-
-By co-locating memory and processing into event-driven analog memristive crossbars, this research can address the "von-Neumann bottleneck", offering energy efficiency orders of magnitude higher than conventional digital hardware (GPUs/TPUs). Spiking neural networks process information sparsely and can potentially reduce computation, data movement and network traffic in applications such as continuous sensing and environmental monitoring. This could lower operational electricity demand and reliance on cloud infrastructure, and indirectly reduce associated cooling-water and data-centre land requirements. However, neuromorphic hardware manufacturing, preprocessing, communications and end-of-life impacts must also be included, and like-for-like measurements are needed before a net life-cycle advantage can be claimed [@Aral TODO].
-
-Additionally, making the transition of analog neuromorphic computing from lab prototypes to production deployment introduces complex trade-offs across sustainability, reliability, and governance. The benefit of memristive neuromorphic systems will depend as much on robust RRI governance, standardized testing, amelioration of device drift and variability, and sustainable material supply chains as it does on raw power efficiency gains.
-
-## Responsible research and innovation
-
-[Assess the project using the RRI ideas taught in SUST6001.]
-
-RRI principles are considered to ensure that technological advances in analog memristive systems align with societal values and long-term risk management.
-
-
-## 4Ps framework
-
-[Discuss the relevant 4Ps dimensions as taught in your programme, and explain how they apply to this project.]
-
-## AREA framework
-
-[Structure the discussion under Anticipate, Reflect, Engage, and Act/Respond, as appropriate to your course framing.]
-
-### Anticipate
-The project proactively models hardware non-idealities—such as cycle-to-cycle conductance variation, random telegraph noise, and thermal drift—before physical scale-up. Anticipatory modeling prevents deployment failures in critical edge infrastructure where analog drift could cause silent classification errors.
-
-### Reflect
-Researchers must reflect on the hype cycle surrounding neuromorphic engineering. Demonstrations on "small fabricated prototypes" must be evaluated critically regarding scalable yield, CMOS compatibility, and realistic manufacturing costs rather than assuming frictionless commercial adoption.
-
-### Engage
-Development requires cross-disciplinary dialogue between device physicists, computer scientists, ethicists, and domain-specific end users (e.g., medical device designers, environmental sensor operators) to align hardware constraints with human safety requirements.
-
-### Act
-Hardware-aware compact models must dynamically adapt as fabrication foundries alter material stacks (e.g., transition from $\text{HfO}_x$ to $\text{TaO}_x$ layers), ensuring algorithms remain grounded in empirical silicon behavior.
-
-## Sustainability considerations
-
-[Explain how sustainability is embedded in the project, including lifecycle, energy, materials, deployment, accessibility, social sustainability, or systems-level effects where relevant.]
-
-## Relevant sustainable development goals
-
-[Identify and justify the SDGs most relevant to the project.]
-
-Analog SNNs offer transformative reductions in operational energy consumption, but their total environmental footprint includes embodied emissions and material toxicity from advanced fabrication.
-
-| UN SDG | Title | Direct Impact | Key Mechanisms & considerations |
-|---|---|---|---|
-| SDG 7 | Affordable & Clean Energy | High Positive | Cuts compute energy by 10× to 100× via sparse, event-driven spike processing and local analog weight updates, reducing grid strain from AI workloads. |
-| SDG 9 | Industry, Innovation & Infrastructure | High Positive | Enables energy-harvesting edge IoT devices, autonomous sensors, and decentralized infrastructure monitoring without relying on power-hungry cloud data centers. |
-| SDG 12 | Responsible Consumption | Moderate Negative / Mixed | Memristor fabrication often utilizes novel transition metals (Hafnium, Tantalum, Titanium). Scaling requires strict e-waste lifecycle management and sustainable chemical etching protocols. |
-| SDG 13 | Climate Action | Positive | Mitigates the growing global carbon footprint of artificial intelligence training and continuous edge inference ecosystems. |
-
-## Ethics and governance
-
-[Note any ethical issues, regulatory requirements, governance concerns, data protection issues, safety implications, or approvals that may be needed.]
-
-### Data privacy & edge autonomy
-On-chip learning enables local adaptation directly on edge hardware without transmitting raw sensor streams (video, audio, biomedical signals) to centralized servers. This "privacy-by-design" architecture aligns with strict data protection regulations (e.g., GDPR) by keeping sensitive personal data local and volatile.
-
-### Autonomous weaponry & dual-use applications
-Ultra-low-power on-chip intelligence significantly expands the capabilities of untethered autonomous systems, including micro-drones and target-tracking sensors. The low thermal and power signature of memristive SNNs makes them inherently attractive for defense systems, raising non-proliferation concerns and ethical challenges regarding Lethal Autonomous Weapons Systems (LAWS).
-
-### Algorithmic reliability & safety
-Memristive devices exhibit non-volatile state degradation over extended write cycles. If an analog SNN adapts continuously on-chip without strict stability bounds, device degradation could lead to unpredictable weight shifts. In safety-critical applications like bio-implantable medical monitors or driver-assist sensors, uncalibrated drift introduces severe safety hazards.
-
-
-## Stakeholders and beneficiaries
-
-[Identify who may benefit, who may be affected, and how stakeholder perspectives may shape the research.]
-
-### Device physicists & chip designers
-Responsible for characterization accuracy and compact model fidelity; must prioritize reproducible physical metrics over optimistic simulation benchmarks.
-
-### Semiconductor foundries
-Require standardized back-end-of-line (BEOL) integration processes to ensure scalable manufacturing without introducing heavy-metal contamination to cleanrooms.
-
-### Edge application developers
-Benefit from localized learning capabilities; must design guardrails against analog drift and handle non-deterministic hardware behaviors.
-
-### Regulatory bodies & policy makers
-Need to establish safety standards for analog/neuromorphic AI chips, ensuring hardware calibration and accountability in safety-critical deployments.
-
-
-# Plan of future work
-
-## Overview of PhD direction
-
-[Summarise the intended overall trajectory of the PhD over the 3-year research phase.]
-
-## Detailed plan for the first 9 months
-
-[Provide a detailed plan leading up to the first progression report, including literature work, technical setup, pilot studies, methods development, supervisory engagement, and early outputs.]
-
-| Month | Planned activities | Deliverables / milestones |
-|---|---|---|
-| 1 | Complete formal literature review on memristor neuromorphic devices, on‑chip learning in SNNs | Review |
-| 2 | Measurement training] | [Outputs] |
-| 3 | Nano fab training | [Outputs] |
-| 3 | Poster at Neumat London November 2026 | Poster |
-| 4 | Characterise synapse and neuron devices | [Outputs] |
-| 5 | Build software simulation of 2 synapses / 1 neuron, with device variations | [Outputs] |
-| 6 | Evaluate on-chip learning methods, showing device variation impact | [Outputs] |
-| 7 | Extend simulation to multilayer network | [Outputs] |
-| 8 |  | [Outputs] |
-| 9 | [Activities] | [Outputs] |
-
-## Milestones for years 1 to 3
-
-[Set out major milestones across the full PhD period, including formal progression points and research outputs.]
-
-## Year 1
-
-Literature review.
-
-Device measurement and fabrication training completion.
-
-Device characterisation of drift memristors for synapses and diffusion memristors for neurons.
-
-Design and implementation of simple (single, 2 synapse/ 1 neuron) and multilayer SNN simulations; establishment of software evaluation pipeline.
-
-Architectural specification for the memristor SNN core and initial simulation models.
-
-## Year 2
-
-Design and simulation of memristor synapse and CMOS neuron circuits; layout of small crossbar arrays.
-
-Fabrication of test structures at Zepler; device and array‑level characterization; development of compact models.
-
-## Year 3
-
-Implementation of on‑chip learning schemes (STDP and supervised variants) in the memristor core; demonstration of learning on small tasks.
-
-Integration of FPGA platform and analog SNN core; end‑to‑end demonstrations with real inputs; comparative evaluation against FPGA‑only and software SNN baselines.
-
-Sensitivity and robustness studies; derivation of design guidelines and preparation of main publications.
-
-Consolidation of results into the thesis; further publications; optional exploratory work on AFeFET‑based synapse/neuron concepts as future extensions.
-
-| Period | Milestones | Notes |
-|---|---|---|
-| Year 1 | First progression review, pilot results, initial publication target | [Notes] |
-| Year 2 | [Confirmation review and major study completion] | [Notes] |
-| Year 3 | [Third progression review, thesis writing, publications, completion planning] | [Notes] |
-
-## Gantt chart notes
-
-[Insert or link the Gantt chart here, or explain where it is provided. The chart should cover the 3-year PhD period, include detailed planning for the first 9 months, and show key milestones such as progression reviews, publications, and major research stages.][1]
-
-## Meeting and supervision plan
-
-Weekly face-to-face meeting with Dr. Firman Simanjuntak and Prof. Mark Zwolinski
-
-## Contingency planning
-
-[Describe fallback plans if the original research route, data access, technical platform, or experimental setup changes.]
-
-By March 2027, evaluate whether reliable access to a device dataset exists which could anchor a publishable hardware-aware learning result by March 2028. If so, proceed with integrated device-circuit-algorithm development; if not, pivot from fabrication to variability-aware learning rules.
 
 # References
 
@@ -686,7 +732,7 @@ By March 2027, evaluate whether reliable access to a device dataset exists which
 - Start date: w/c 8 June 2026.[1]
 - Submission deadline: 11 September 2026.[1]
 - Duration: 12 weeks plus 2 weeks of holiday to be agreed with supervisors.[1]
-- Possible extensions: typically 1–2 weeks where justified by September exam resits or extenuating circumstances, subject to supervisory approval.[1]
+- Possible extensions: typically 1-2 weeks where justified by September exam resits or extenuating circumstances, subject to supervisory approval.[1]
 
 ## Appendix B. Submission and assessment notes
 

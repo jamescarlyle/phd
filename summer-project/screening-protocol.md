@@ -184,7 +184,7 @@ For each included study, extract:
 ### 4.6 Limitations and Notes
 
 - Main limitations acknowledged by authors:  
-- Limitations you observe (e.g., small datasets, idealised devices, no variability):  
+- Limitations observed (e.g., small datasets, idealised devices, no variability):  
 - Relevance to  project (1–3 sentences):  
 
 ---
