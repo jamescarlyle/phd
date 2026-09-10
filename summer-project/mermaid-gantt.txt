@@ -1,0 +1,42 @@
+```mermaid
+gantt
+    title PhD Research Timeline: Neuromorphic Memristor Systems
+    dateFormat  YYYY-MM-DD
+    axisFormat  %b %Y
+    tickInterval 3month
+
+    section Foundation (Months 1-9)
+    Literature Review           :         lit1, 2026-07-01, 2026-09-30
+    Measurement Training        :         meas1, 2026-08-01, 60d
+    Device Characterisation     :         char1, 2026-08-15, 120d
+    Software Simulation (2S1N)  :         sim1, 2026-09-01, 120d
+    Neumat London Poster        :         neum1, 2026-11-01, 2026-11-30
+    Nano Fab Training           :         fab1, 2027-01-01, 90d
+    Neumat Winter School        :         neum2, 2027-01-15, 2027-01-30
+    Internal SNN Presentation   :         pres1, 2027-02-01, 2027-02-28
+    Learning Rules Evaluation   :         learn1, 2027-03-01, 90d
+    SustAI Conference           :         sust1, 2027-06-01, 2027-06-30
+    9-Month Progression Review  :crit,    rev1, 2027-06-01, 2027-06-30
+
+    section Year 1 Extension (Months 10-12)
+    Multilayer Network Simulation :      mlsim1, 2027-07-01, 90d
+    Cleanroom Training Complete :        clean1, 2027-07-01, 2027-09-30
+    Southampton Science Festival :       scifest1, 2027-07-01, 2027-08-31
+    Simulation/Circuit Paper    :crit,   paper1, 2027-09-01, 2027-09-30
+
+    section Year 2: Fabrication & Validation
+    Crossbar Array Design       :         cross1, 2027-09-01, 60d
+    Multilayer Circuit Design   :         circ1, 2027-10-01, 90d
+    Alternative Learning Rules  :         learn2, 2028-01-01, 120d
+    Test Structure Fabrication  :         fabtest1, 2028-04-01, 2028-09-30
+    AFeFET Exploratory Work     :         afefet1, 2028-06-01, 120d
+    Measured-Device Paper       :crit,    paper2, 2028-09-01, 2028-09-30
+
+    section Year 3: Integration & Thesis
+    Advanced Learning Schemes   :         learn3, 2028-10-01, 120d
+    Edge-AI Sustainability Demo :crit,    demo1, 2029-01-01, 2029-06-30
+    Sensitivity & Robustness    :         sens1, 2029-02-01, 90d
+    Comparative Evaluation      :         comp1, 2029-03-01, 90d
+    Integrated Demonstrator Paper :crit,  paper3, 2029-04-01, 2029-05-31
+    Thesis Write-up            :crit,     thesis1, 2029-06-01, 2029-09-30
+```

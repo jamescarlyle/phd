@@ -337,7 +337,7 @@
 	url = {https://www.nature.com/articles/s41467-022-34774-9},
 	doi = {10.1038/s41467-022-34774-9},
 	abstract = {Abstract
-
+            
               Neuromorphic machines are intriguing for building energy-efficient intelligent systems, where spiking neurons are pivotal components. Recently, memristive neurons with promising bio-plausibility have been developed, but with limited reliability, bulky capacitors or additional reset circuits. Here, we propose an anti-ferroelectric field-effect transistor neuron based on the inherent polarization and depolarization of Hf
               0.2
               Zr
@@ -406,7 +406,7 @@
 	url = {https://advanced.onlinelibrary.wiley.com/doi/10.1002/adma.202502255},
 	doi = {10.1002/adma.202502255},
 	abstract = {Abstract
-
+            
               The human brain's efficiency and adaptability in processing information is largely attributed to spatiotemporal spiking activities and intrinsic plasticity—the ability of neurons to autonomously modulate their excitability. Mott memristors, with their threshold switching characteristics, have been effectively utilized as artificial neurons, or neuristors, to generate spiking activities. However, the implementation of intrinsic plasticity and its significance in neuromorphic computing has yet to be systematically explored. Here, a frequency switching (FS) neuristor is presented that emulates neuron's intrinsic plasticity characteristics. By combining a volatile Mott memristor with a non‐volatile valence change memory (VCM) memristor, the FS neuristor achieves programmable multi‐level frequency–voltage (
               f
               –V
@@ -515,7 +515,7 @@
 	url = {https://www.nature.com/articles/s41467-018-04482-4},
 	doi = {10.1038/s41467-018-04482-4},
 	abstract = {Abstract
-
+            
               The progress in the field of neural computation hinges on the use of hardware more efficient than the conventional microprocessors. Recent works have shown that mixed-signal integrated memristive circuits, especially their passive (0T1R) variety, may increase the neuromorphic network performance dramatically, leaving far behind their digital counterparts. The major obstacle, however, is immature memristor technology so that only limited functionality has been reported. Here we demonstrate operation of one-hidden layer perceptron classifier entirely in the mixed-signal integrated hardware, comprised of two passive 20 × 20 metal-oxide memristive crossbar arrays, board-integrated with discrete conventional components. The demonstrated network, whose hardware complexity is almost 10× higher as compared to previously reported functional classifier circuits based on passive memristive crossbars, achieves classification fidelity within 3\% of that obtained in simulations, when using ex-situ training. The successful demonstration was facilitated by improvements in fabrication technology of memristors, specifically by lowering variations in their
               I–V
               characteristics.},
@@ -1133,7 +1133,7 @@
 	url = {https://www.nature.com/articles/s43246-025-01033-5},
 	doi = {10.1038/s43246-025-01033-5},
 	abstract = {Abstract
-
+            
               The deployment of AI on edge computing devices faces significant challenges related to energy consumption and functionality. These devices could greatly benefit from brain-inspired learning mechanisms, allowing for real-time adaptation while using low-power. In-memory computing with nanoscale resistive memories may play a crucial role in enabling the execution of AI workloads on these edge devices. In this study, we introduce voltage-dependent synaptic plasticity (VDSP) as an efficient approach for unsupervised and local learning in memristive synapses based on Hebbian principles. This method enables online learning without requiring complex pulse-shaping circuits typically necessary for spike-timing-dependent plasticity (STDP). We show how VDSP can be advantageously adapted to three types of memristive devices (TiO
               2
               , HfO
@@ -4415,7 +4415,7 @@
 	url = {https://iopscience.iop.org/article/10.1088/2634-4386/acf1c5},
 	doi = {10.1088/2634-4386/acf1c5},
 	abstract = {Abstract
-
+            
               Spiking neural networks (SNNs) have emerged as a hardware efficient architecture for classification tasks. The challenge of spike-based encoding has been the lack of a universal training mechanism performed entirely using spikes. There have been several attempts to adopt the powerful backpropagation (BP) technique used in non-spiking artificial neural networks (ANNs): (1) SNNs can be trained by externally computed numerical gradients. (2) A major advancement towards native spike-based learning has been the use of approximate BP using spike-time dependent plasticity with phased forward/backward passes. However, the transfer of information between such phases for gradient and weight update calculation necessitates external memory and computational access. This is a challenge for standard neuromorphic hardware implementations. In this paper, we propose a stochastic SNN based back-prop (SSNN-BP) algorithm that utilizes a composite neuron to
               simultaneously
               compute the forward pass activations and backward pass gradients explicitly with spikes. Although signed gradient values are a challenge for spike-based representation, we tackle this by splitting the gradient signal into positive and negative streams. The composite neuron encodes information in the form of stochastic spike-trains and converts BP weight updates into temporally and spatially local spike coincidence updates compatible with hardware-friendly resistive processing units. Furthermore, we characterize the quantization effect of discrete spike-based weight update to show that our method approaches BP ANN baseline with sufficiently long spike-trains. Finally, we show that the well-performing softmax cross-entropy loss function can be implemented through inhibitory lateral connections enforcing a winner take all rule. Our SNN with a two-layer network shows excellent generalization through comparable performance to ANNs with equivalent architecture and regularization parameters on static image datasets like MNIST, Fashion-MNIST, Extended MNIST, and temporally encoded image datasets like Neuromorphic MNIST datasets. Thus, SSNN-BP enables BP compatible with purely spike-based neuromorphic hardware.},
@@ -4436,7 +4436,7 @@
 	doi = {10.70675/a5f34c0ezcc3bz42c8z8a52z529a545221ca},
 	abstract = {Apprentissage neuromorphique en mémoire avec des circuits intégrés analogiques et des dispositifs mémoristifs à l’échelle nanométrique
           L'intégration de l'intelligence artificielle (IA) dans l'informatique en périphérie (EC) et les dispositifs portables présente des défis importants en raison des contraintes strictes en matière de puissance de calcul et de consommation d'énergie. L'informatique neuromorphique, inspirée par la conception économe en énergie du cerveau et ses capacités d'apprentissage continu, offre une solution prometteuse pour ces applications. Cette thèse propose un cadre flexible de co-conception algorithme-circuit qui aborde à la fois le développement des algorithmes et la conception matérielle, facilitant ainsi le déploiement efficace de l'IA sur du matériel spécialisé à ultra-basse consommation d'énergie.La première partie se concentre sur le développement d'algorithmes et introduit la plasticité synaptique dépendante de la tension (VDSP), une règle d'apprentissage non supervisée inspirée du cerveau. Le VDSP vise à mettre en œuvre en ligne le mécanisme de plasticité de Hebb en utilisant des synapses memristives à l'échelle nanométrique. Ces dispositifs imitent les synapses biologiques en ajustant leur résistance en fonction de l'activité électrique passée, permettant ainsi un apprentissage en ligne efficace. Le VDSP met à jour la conductance synaptique en fonction du potentiel de membrane du neurone, éliminant ainsi le besoin de mémoire supplémentaire pour stocker les timings des pics d'activité. Cette approche permet un apprentissage en ligne sans les circuits de formage d'impulsions complexes habituellement requis pour la plasticité dépendante du timing des pics (STDP) avec des memristors. Nous montrons comment le VDSP peut être avantageusement adapté à trois types de dispositifs memristifs (synapses à filament d'oxyde métallique et jonctions tunnel ferroélectriques) avec des caractéristiques de commutation analogiques distinctives. Les simulations au niveau du système de réseaux neuronaux à impulsions utilisant ces dispositifs ont validé leurs performances sur des tâches de reconnaissance de motifs sur MNIST, atteignant jusqu'à 90 \% de précision avec une meilleure adaptabilité et une réduction du réglage des hyperparamètres par rapport au STDP. De plus, nous avons évalué la variabilité des dispositifs et proposé des stratégies d'atténuation pour améliorer la robustesse.Dans la deuxième partie, nous implémentons un neurone analogique de type "leaky integrate-and-fire" (LIF), accompagné d'un régulateur de tension et d'un atténuateur de courant, afin d'interfacer sans heurts les neurones CMOS avec des synapses memristives. La conception du neurone inclut une fuite double, facilitant l'apprentissage local via le VDSP. Nous proposons également un mécanisme d'adaptation configurable qui permet de reconfigurer les neurones LIF adaptatifs en temps réel. Ces circuits polyvalents peuvent s'interfacer avec une gamme de dispositifs synaptiques, permettant ainsi le traitement de signaux avec une variété de dynamiques temporelles. En intégrant ces neurones dans un réseau, nous présentons un bloc de construction neuronal auto-apprenant CMOS-memristor (NBB), composé de circuits analogiques pour la lecture en croix et de neurones LIF, ainsi que de circuits numériques pour basculer entre les modes d'inférence et d'apprentissage. Des réseaux neuronaux compacts, capables de s'adapter eux-mêmes, d'apprendre en temps réel et de traiter des données environnementales, lorsqu'ils sont réalisés sur du matériel à ultra-basse consommation d'énergie, ouvrent de nouvelles perspectives pour l'IA dans l'informatique en périphérie. Les avancées à la fois en matériel (circuits) et en algorithmes (apprentissage en ligne) accéléreront considérablement le déploiement des applications d'IA en exploitant l'informatique analogique et les technologies de mémoire à l'échelle nanométrique.
-        ,
+        , 
           Integrating artificial intelligence (AI) into edge computing (EC) and portable devices presents significant challenges due to stringent constraints on computational power and energy consumption. Neuromorphic computing, inspired by the brain's energy-efficient design and continuous learning capabilities, offers a promising solution for these applications. This thesis proposes a flexible algorithm-circuit co-design framework that addresses both algorithm development and hardware design, facilitating the efficient deployment of AI on specialized, ultra-low-power hardware.The first part focuses on algorithm development and introduces voltage-dependent synaptic plasticity (VDSP), a brain-inspired unsupervised learning rule. VDSP is aimed at the online implementation of Hebb's plasticity mechanism using nanoscale memristive synapses. These devices mimic biological synapses by adjusting their resistance based on past electrical activity, enabling efficient online learning. VDSP updates synaptic conductance based on the membrane potential of the neuron, eliminating the need for additional memory to store spike timings. This approach allows for online learning without the complex pulse-shaping circuits typically required for spike-timing-dependent plasticity (STDP) with memristors. We show how VDSP can be advantageously adapted to three types of memristive devices (metal-oxide filamentary synapses, and ferroelectric tunnel junctions) with distinctive analog switching characteristics. System-level simulations of spiking neural networks using these devices validated their performance on MNIST pattern recognition tasks, achieving up to 90\% accuracy with improved adaptability and reduced hyperparameter tuning compared to STDP. Additionally, we evaluated device variability and proposed mitigation strategies to enhance robustness.In the second part, we implement an analog leaky integrate-and-fire (LIF) neuron, accompanied by a voltage regulator and current attenuator, to seamlessly interface CMOS neurons with memristive synapses. The neuron design features dual leakage, facilitating local learning through VDSP. We also propose a configurable adaptation mechanism that allows adaptive LIF neurons to be reconfigured in run-time. These versatile circuits can interface with a range of synaptic devices, allowing the processing of signals with a variety of temporal dynamics. Integrating these neurons into a network, we present a CMOS-memristor self-learning neural building block (NBB), consisting of analog circuits for crossbar reading and LIF neurons, along with digital circuits for switching between inference and learning modes. Compact neural networks that can self-adapt, learn in real time, and process environmental data, when realized on ultra-low-power hardware, open new possibilities for AI in edge computing. Advances in both hardware (circuits) and algorithms (online learning) will greatly accelerate the deployment of AI applications by leveraging analog computing and nanoscale memory technologies.},
 	language = {en},
 	urldate = {2026-08-18},
@@ -4563,7 +4563,7 @@
 	file = {Submitted Version:/Users/jamescarlyle/Zotero/storage/677HEWFR/Louis et al. - 2026 - A CMOS+X Spiking Neuron With On-Chip Machine Learning.pdf:application/pdf},
 }
 
-@article{w,
+@article{mahowald_silicon_1991,
 	title = {A silicon neuron},
 	volume = {354},
 	copyright = {http://www.springer.com/tdm},
@@ -4588,7 +4588,7 @@
 	url = {https://www.nature.com/articles/s41586-025-08742-4},
 	doi = {10.1038/s41586-025-08742-4},
 	abstract = {Abstract
-
+            
               Hardware implementations of artificial neural networks (ANNs)—the most advanced of which are made of millions of electronic neurons interconnected by hundreds of millions of electronic synapses—have achieved higher energy efficiency than classical computers in some small-scale data-intensive computing tasks
               1
               . State-of-the-art neuromorphic computers, such as Intel’s Loihi
@@ -4649,7 +4649,7 @@
 	url = {https://pubs.rsc.org/mh/article/12/9/2820-2839/855470},
 	doi = {10.1039/D4MH01676A},
 	abstract = {This review provides a systematic review and perspective of the challenges and opportunities in scaling memristive hardware for spiking neural networks (SNNs), focusing on device innovations, system integration, and algorithm-hardware co-design.
-          ,
+          , 
             Spiking neural networks (SNNs) represent a promising frontier in artificial intelligence (AI), offering event-driven, energy-efficient computation that mimics rich neural dynamics in the brain. However, running large-scale SNNs on mainstream computing hardware faces significant challenges to efficiently emulate these dynamical processes using synchronized and logical chips. Memristor based systems have recently demonstrated great potential for AI acceleration, sparking speculations and explorations of using these emerging devices for SNN tasks. This paper reviews the promises and challenges of memristive devices in SNN implementations, and our discussions are focused on the scaling and integration of neuronal and synaptic devices. We survey recent progress in device and circuit development, discuss possible pathways for chip-level integration, and finally probe into hardware-oriented algorithm designs. This review offers a system-level perspective on implementing scalable memristor based SNN platforms.},
 	language = {en},
 	number = {9},
@@ -4743,4 +4743,202 @@
 	author = {Aczel, Miriam and Chamanara, Sanaz and Matin, Mir and Farsi, Aria and Marwala, Tshilidzi and Madani, Kaveh},
 	month = jun,
 	year = {2026},
+}
+
+@article{de_vries-gao_carbon_2026,
+	title = {The carbon and water footprints of data centers and what this could mean for artificial intelligence},
+	volume = {7},
+	issn = {26663899},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S2666389925002788},
+	doi = {10.1016/j.patter.2025.101430},
+	language = {en},
+	number = {1},
+	urldate = {2026-08-25},
+	journal = {Patterns},
+	author = {De Vries-Gao, Alex},
+	month = jan,
+	year = {2026},
+	pages = {101430},
+}
+
+@article{aral_promise_2024,
+	title = {The promise of neuromorphic edge {AI} for rural environmental monitoring},
+	volume = {3},
+	copyright = {http://creativecommons.org/licenses/by/4.0},
+	issn = {2634-4602},
+	url = {https://www.cambridge.org/core/product/identifier/S2634460224000360/type/journal_article},
+	doi = {10.1017/eds.2024.36},
+	abstract = {Abstract
+            Edge AI is the fusion of edge computing and artificial intelligence (AI). It promises responsiveness, privacy preservation, and fault tolerance by moving parts of the AI workflow from centralized cloud data centers to geographically dispersed edge servers, which are located at the source of the data. The scale of edge AI can vary from simple data preprocessing tasks to the whole machine learning stack. However, most edge AI implementations so far are limited to urban areas, where the infrastructure is highly dependable. This work instead focuses on a class of applications involved in environmental monitoring in remote, rural areas such as forests and rivers. Such applications have additional challenges, including failure proneness and access to the electricity grid and communication networks. We propose neuromorphic computing as a promising solution to the energy, communication, and computation constraints in such scenarios and identify directions for future research in neuromorphic edge AI for rural environmental monitoring. Proposed directions are distributed model synchronization, edge-only learning, aerial networks, spiking neural networks, and sensor integration.},
+	language = {en},
+	urldate = {2026-08-25},
+	journal = {Environmental Data Science},
+	author = {Aral, Atakan},
+	year = {2024},
+	pages = {e34},
+	file = {Full Text:/Users/jamescarlyle/Zotero/storage/D6AWG4SI/Aral - 2024 - The promise of neuromorphic edge AI for rural environmental monitoring.pdf:application/pdf},
+}
+
+@article{yik_neurobench_2025,
+	title = {The neurobench framework for benchmarking neuromorphic computing algorithms and systems},
+	volume = {16},
+	issn = {2041-1723},
+	url = {https://www.nature.com/articles/s41467-025-56739-4},
+	doi = {10.1038/s41467-025-56739-4},
+	abstract = {Abstract
+            
+              Neuromorphic computing shows promise for advancing computing efficiency and capabilities of AI applications using brain-inspired principles. However, the neuromorphic research field currently lacks standardized benchmarks, making it difficult to accurately measure technological advancements, compare performance with conventional methods, and identify promising future research directions. This article presents NeuroBench, a benchmark framework for neuromorphic algorithms and systems, which is collaboratively designed from an open community of researchers across industry and academia. NeuroBench introduces a common set of tools and systematic methodology for inclusive benchmark measurement, delivering an objective reference framework for quantifying neuromorphic approaches in both hardware-independent and hardware-dependent settings. For latest project updates, visit the project website (
+              neurobench.ai
+              ).},
+	language = {en},
+	number = {1},
+	urldate = {2026-08-25},
+	journal = {Nature Communications},
+	author = {Yik, Jason and Van Den Berghe, Korneel and Den Blanken, Douwe and Bouhadjar, Younes and Fabre, Maxime and Hueber, Paul and Ke, Weijie and Khoei, Mina A. and Kleyko, Denis and Pacik-Nelson, Noah and Pierro, Alessandro and Stratmann, Philipp and Sun, Pao-Sheng Vincent and Tang, Guangzhi and Wang, Shenqi and Zhou, Biyan and Ahmed, Soikat Hasan and Vathakkattil Joseph, George and Leto, Benedetto and Micheli, Aurora and Mishra, Anurag Kumar and Lenz, Gregor and Sun, Tao and Ahmed, Zergham and Akl, Mahmoud and Anderson, Brian and Andreou, Andreas G. and Bartolozzi, Chiara and Basu, Arindam and Bogdan, Petrut and Bohte, Sander and Buckley, Sonia and Cauwenberghs, Gert and Chicca, Elisabetta and Corradi, Federico and De Croon, Guido and Danielescu, Andreea and Daram, Anurag and Davies, Mike and Demirag, Yigit and Eshraghian, Jason and Fischer, Tobias and Forest, Jeremy and Fra, Vittorio and Furber, Steve and Furlong, P. Michael and Gilpin, William and Gilra, Aditya and Gonzalez, Hector A. and Indiveri, Giacomo and Joshi, Siddharth and Karia, Vedant and Khacef, Lyes and Knight, James C. and Kriener, Laura and Kubendran, Rajkumar and Kudithipudi, Dhireesha and Liu, Shih-Chii and Liu, Yao-Hong and Ma, Haoyuan and Manohar, Rajit and Margarit-Taulé, Josep Maria and Mayr, Christian and Michmizos, Konstantinos and Muir, Dylan R. and Neftci, Emre and Nowotny, Thomas and Ottati, Fabrizio and Ozcelikkale, Ayca and Panda, Priyadarshini and Park, Jongkil and Payvand, Melika and Pehle, Christian and Petrovici, Mihai A. and Posch, Christoph and Renner, Alpha and Sandamirskaya, Yulia and Schaefer, Clemens J. S. and Van Schaik, André and Schemmel, Johannes and Schmidgall, Samuel and Schuman, Catherine and Seo, Jae-sun and Sheik, Sadique and Shrestha, Sumit Bam and Sifalakis, Manolis and Sironi, Amos and Stewart, Kenneth and Stewart, Matthew and Stewart, Terrence C. and Timcheck, Jonathan and Tömen, Nergis and Urgese, Gianvito and Verhelst, Marian and Vineyard, Craig M. and Vogginger, Bernhard and Yousefzadeh, Amirreza and Zohora, Fatima Tuz and Frenkel, Charlotte and Reddi, Vijay Janapa},
+	month = feb,
+	year = {2025},
+	pages = {1545},
+	file = {Full Text:/Users/jamescarlyle/Zotero/storage/YVN3T6HI/Yik et al. - 2025 - The neurobench framework for benchmarking neuromorphic computing algorithms and systems.pdf:application/pdf},
+}
+
+@article{dutta_unraveling_2024,
+	title = {Unraveling the {Roles} of {Switching} and {Relaxation} {Times} in {Volatile} {Electrochemical} {Memristors} to {Mimic} {Neuromorphic} {Dynamical} {Features}},
+	volume = {10},
+	issn = {2199-160X, 2199-160X},
+	url = {https://advanced.onlinelibrary.wiley.com/doi/10.1002/aelm.202400221},
+	doi = {10.1002/aelm.202400221},
+	abstract = {Abstract
+            
+              Computing through ensembles of interacting dynamical elements is the next frontier of the diverse field of neuromorphic computing. Spiking neural networks are one of the possible examples. Computation through dynamics and through time requires the development of novel technologies for devices with rich dynamics. Among the various candidates, the most promising ones are volatile electrochemical memristive systems that switch from high to low resistance state by voltage application and self‐recover the high resistance state after a tunable relaxation time. Such devices can perform a wide variety of computational primitives. However, a clear comprehensive picture of their possible dynamics and their physical interpretation is still missing. In the present manuscript, prototypical electrochemical silver/silicon oxide/platinum (Ag/SiO
+              x
+              /Pt) memristive devices are characterized to identify dynamical aspects, like integrative effects and stochastic switching. Integrative effects are evidenced both in high and low resistance states, associated to wake‐up phase and cumulative switching. All the dynamical aspects are related to characteristic switching times and relaxation times, and with reference to the electrochemical and physical processes involved in device operation. The various dynamical aspects are linked to short‐term memory effects and basic temporal processing functions based on paired‐pulse effects that are relevant for neuromorphic applications.},
+	language = {en},
+	number = {12},
+	urldate = {2026-08-26},
+	journal = {Advanced Electronic Materials},
+	author = {Dutta, Mrinmoy and Brivio, Stefano and Spiga, Sabina},
+	month = dec,
+	year = {2024},
+	pages = {2400221},
+	file = {Adv Elect Materials - 2024 - Dutta - Unraveling the Roles of Switching and Relaxation Times in Volatile Electrochemical:/Users/jamescarlyle/Zotero/storage/H7MQ8H7D/Adv Elect Materials - 2024 - Dutta - Unraveling the Roles of Switching and Relaxation Times in Volatile Electrochemical.pdf:application/pdf;aelm865-sup-0001-suppmat:/Users/jamescarlyle/Zotero/storage/659UYEQY/aelm865-sup-0001-suppmat.pdf:application/pdf},
+}
+
+@inproceedings{wang_physics-based_2018,
+	address = {San Francisco, CA},
+	title = {Physics-based modeling of volatile resistive switching memory ({RRAM}) for crosspoint selector and neuromorphic computing},
+	isbn = {978-1-7281-1987-8},
+	url = {https://ieeexplore.ieee.org/document/8614556/},
+	doi = {10.1109/IEDM.2018.8614556},
+	urldate = {2026-08-26},
+	booktitle = {2018 {IEEE} {International} {Electron} {Devices} {Meeting} ({IEDM})},
+	publisher = {IEEE},
+	author = {Wang, W. and Bricalli, A. and Laudato, M. and Ambrosi, E. and Covi, E. and Ielmini, D.},
+	month = dec,
+	year = {2018},
+	pages = {40.3.1--40.3.4},
+	file = {PDF:/Users/jamescarlyle/Zotero/storage/HMRXF43Y/Wang et al. - 2018 - Physics-based modeling of volatile resistive switching memory (RRAM) for crosspoint selector and neu.pdf:application/pdf},
+}
+
+@article{park_experimental_2022,
+	title = {Experimental demonstration of highly reliable dynamic memristor for artificial neuron and neuromorphic computing},
+	volume = {13},
+	issn = {2041-1723},
+	url = {https://www.nature.com/articles/s41467-022-30539-6},
+	doi = {10.1038/s41467-022-30539-6},
+	abstract = {Abstract
+            Neuromorphic computing, a computing paradigm inspired by the human brain, enables energy-efficient and fast artificial neural networks. To process information, neuromorphic computing directly mimics the operation of biological neurons in a human brain. To effectively imitate biological neurons with electrical devices, memristor-based artificial neurons attract attention because of their simple structure, energy efficiency, and excellent scalability. However, memristor’s non-reliability issues have been one of the main obstacles for the development of memristor-based artificial neurons and neuromorphic computings. Here, we show a memristor 1R cross-bar array without transistor devices for individual memristor access with low variation, 100\% yield, large dynamic range, and fast speed for artificial neuron and neuromorphic computing. Based on the developed memristor, we experimentally demonstrate a memristor-based neuron with leaky-integrate and fire property with excellent reliability. Furthermore, we develop a neuro-memristive computing system based on the short-term memory effect of the developed memristor for efficient processing of sequential data. Our neuro-memristive computing system successfully trains and generates bio-medical sequential data (antimicrobial peptides) while using a small number of training parameters. Our results open up the possibility of memristor-based artificial neurons and neuromorphic computing systems, which are essential for energy-efficient edge computing devices.},
+	language = {en},
+	number = {1},
+	urldate = {2026-08-26},
+	journal = {Nature Communications},
+	author = {Park, See-On and Jeong, Hakcheon and Park, Jongyong and Bae, Jongmin and Choi, Shinhyun},
+	month = jun,
+	year = {2022},
+	pages = {2888},
+	file = {Full Text:/Users/jamescarlyle/Zotero/storage/XC62SD35/Park et al. - 2022 - Experimental demonstration of highly reliable dynamic memristor for artificial neuron and neuromorph.pdf:application/pdf},
+}
+
+@article{yoon_artificial_2018,
+	title = {An artificial nociceptor based on a diffusive memristor},
+	volume = {9},
+	issn = {2041-1723},
+	url = {https://www.nature.com/articles/s41467-017-02572-3},
+	doi = {10.1038/s41467-017-02572-3},
+	abstract = {Abstract
+            A nociceptor is a critical and special receptor of a sensory neuron that is able to detect noxious stimulus and provide a rapid warning to the central nervous system to start the motor response in the human body and humanoid robotics. It differs from other common sensory receptors with its key features and functions, including the “no adaptation” and “sensitization” phenomena. In this study, we propose and experimentally demonstrate an artificial nociceptor based on a diffusive memristor with critical dynamics for the first time. Using this artificial nociceptor, we further built an artificial sensory alarm system to experimentally demonstrate the feasibility and simplicity of integrating such novel artificial nociceptor devices in artificial intelligence systems, such as humanoid robots.},
+	language = {en},
+	number = {1},
+	urldate = {2026-08-27},
+	journal = {Nature Communications},
+	author = {Yoon, Jung Ho and Wang, Zhongrui and Kim, Kyung Min and Wu, Huaqiang and Ravichandran, Vignesh and Xia, Qiangfei and Hwang, Cheol Seong and Yang, J. Joshua},
+	month = jan,
+	year = {2018},
+	pages = {417},
+	file = {Full Text:/Users/jamescarlyle/Zotero/storage/HZUUM3A3/Yoon et al. - 2018 - An artificial nociceptor based on a diffusive memristor.pdf:application/pdf},
+}
+
+@misc{otieno_stochastic_2026,
+	title = {Stochastic {Dynamics} of {Diffusive} {Memristor} {Blocks} for {Neuromorphic} {Computing}},
+	url = {http://arxiv.org/abs/2602.03700},
+	doi = {10.48550/arXiv.2602.03700},
+	abstract = {Biological systems use neural circuits to integrate input information and produce outputs. Synaptic convergence, where multiple neurons converge their inputs onto a single downstream neuron, is common in natural neural circuits. However, understanding specific computations performed by such neural blocks and implementating them in hardware requires further research. This work focuses on synaptic convergence in a simplified circuit of three spiking artificial neurons based on diffusive memristors. Numerical modelling and experiments reveal input voltage combinations that enable targeted activation of spiking for specific neuron configurations. We analyse the statistical characteristics of spiking patterns and interpret them from a computational perspective. The numerical simulations match experimental measurements. Our findings contribute to development of universal functional blocks for neuromorphic systems.},
+	urldate = {2026-08-27},
+	publisher = {arXiv},
+	author = {Otieno, Wendy and Gabbitas, Alex and Pattnaik, Debi and Borisov, Pavel and Savel'ev, Sergey and Balanov, Alexander G.},
+	month = feb,
+	year = {2026},
+	note = {arXiv:2602.03700 [cond-mat.mes-hall]},
+	keywords = {Physics - Applied Physics, Condensed Matter - Mesoscale and Nanoscale Physics},
+	file = {Preprint PDF:/Users/jamescarlyle/Zotero/storage/FJM9LB65/Otieno et al. - 2026 - Stochastic Dynamics of Diffusive Memristor Blocks for Neuromorphic Computing.pdf:application/pdf;Snapshot:/Users/jamescarlyle/Zotero/storage/6FZBKEXU/2602.html:text/html},
+}
+
+@article{maass_networks_1997,
+	title = {Networks of spiking neurons: {The} third generation of neural network models},
+	volume = {10},
+	copyright = {https://www.elsevier.com/tdm/userlicense/1.0/},
+	issn = {08936080},
+	shorttitle = {Networks of spiking neurons},
+	url = {https://linkinghub.elsevier.com/retrieve/pii/S0893608097000117},
+	doi = {10.1016/S0893-6080(97)00011-7},
+	language = {en},
+	number = {9},
+	urldate = {2026-08-31},
+	journal = {Neural Networks},
+	author = {Maass, Wolfgang},
+	month = dec,
+	year = {1997},
+	pages = {1659--1671},
+	file = {PDF:/Users/jamescarlyle/Zotero/storage/5B5RH952/Maass - 1997 - Networks of spiking neurons The third generation of neural network models.pdf:application/pdf},
+}
+
+@article{lee_predictive_2024,
+	title = {Predictive coding with spiking neurons and feedforward gist signaling},
+	volume = {18},
+	issn = {1662-5188},
+	url = {https://www.frontiersin.org/articles/10.3389/fncom.2024.1338280/full},
+	doi = {10.3389/fncom.2024.1338280},
+	abstract = {Predictive coding (PC) is an influential theory in neuroscience, which suggests the existence of a cortical architecture that is constantly generating and updating predictive representations of sensory inputs. Owing to its hierarchical and generative nature, PC has inspired many computational models of perception in the literature. However, the biological plausibility of existing models has not been sufficiently explored due to their use of artificial neurons that approximate neural activity with firing rates in the continuous time domain and propagate signals synchronously. Therefore, we developed a spiking neural network for predictive coding (SNN-PC), in which neurons communicate using event-driven and asynchronous spikes. Adopting the hierarchical structure and Hebbian learning algorithms from previous PC neural network models, SNN-PC introduces two novel features: (1) a fast feedforward sweep from the input to higher areas, which generates a spatially reduced and abstract representation of input (i.e., a neural code for the gist of a scene) and provides a neurobiological alternative to an arbitrary choice of priors; and (2) a separation of positive and negative error-computing neurons, which counters the biological implausibility of a bi-directional error neuron with a very high baseline firing rate. After training with the MNIST handwritten digit dataset, SNN-PC developed hierarchical internal representations and was able to reconstruct samples it had not seen during training. SNN-PC suggests biologically plausible mechanisms by which the brain may perform perceptual inference and learning in an unsupervised manner. In addition, it may be used in neuromorphic applications that can utilize its energy-efficient, event-driven, local learning, and parallel information processing nature.},
+	urldate = {2026-08-31},
+	journal = {Frontiers in Computational Neuroscience},
+	author = {Lee, Kwangjun and Dora, Shirin and Mejias, Jorge F. and Bohte, Sander M. and Pennartz, Cyriel M. A.},
+	month = apr,
+	year = {2024},
+	pages = {1338280},
+	file = {Full Text:/Users/jamescarlyle/Zotero/storage/9CIYRDV9/Lee et al. - 2024 - Predictive coding with spiking neurons and feedforward gist signaling.pdf:application/pdf},
+}
+
+@article{pfeiffer_deep_2018,
+	title = {Deep {Learning} {With} {Spiking} {Neurons}: {Opportunities} and {Challenges}},
+	volume = {12},
+	issn = {1662-453X},
+	shorttitle = {Deep {Learning} {With} {Spiking} {Neurons}},
+	url = {https://www.frontiersin.org/article/10.3389/fnins.2018.00774/full},
+	doi = {10.3389/fnins.2018.00774},
+	urldate = {2026-08-31},
+	journal = {Frontiers in Neuroscience},
+	author = {Pfeiffer, Michael and Pfeil, Thomas},
+	month = oct,
+	year = {2018},
+	pages = {774},
+	file = {Full Text:/Users/jamescarlyle/Zotero/storage/VLPUACSA/Pfeiffer and Pfeil - 2018 - Deep Learning With Spiking Neurons Opportunities and Challenges.pdf:application/pdf},
 }
