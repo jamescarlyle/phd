@@ -10,25 +10,25 @@ end
 # A four-level hierarchical timing wheel with a one-microsecond base tick.
 # current_time is always the tick currently being processed by #tick.
 class HierarchicalWheel
+  BITS_0 = 8
   BITS_1 = 8
   BITS_2 = 8
   BITS_3 = 8
-  BITS_4 = 8
 
-  SHIFT_1 = 0
-  SHIFT_2 = BITS_1
-  SHIFT_3 = BITS_1 + BITS_2
-  SHIFT_4 = BITS_1 + BITS_2 + BITS_3
+  SHIFT_0 = 0
+  SHIFT_1 = BITS_0
+  SHIFT_2 = BITS_0 + BITS_1
+  SHIFT_3 = BITS_0 + BITS_1 + BITS_2
 
+  MASK_0 = (1_u64 << BITS_0) - 1
   MASK_1 = (1_u64 << BITS_1) - 1
   MASK_2 = (1_u64 << BITS_2) - 1
   MASK_3 = (1_u64 << BITS_3) - 1
-  MASK_4 = (1_u64 << BITS_4) - 1
 
+  TIER_0_RANGE = 1_u64 << SHIFT_1
   TIER_1_RANGE = 1_u64 << SHIFT_2
   TIER_2_RANGE = 1_u64 << SHIFT_3
-  TIER_3_RANGE = 1_u64 << SHIFT_4
-  MAX_DELAY = (1_u64 << (SHIFT_4 + BITS_4)) - 1
+  MAX_DELAY = (1_u64 << (SHIFT_3 + BITS_3)) - 1
 
   getter current_time : UInt64
 
@@ -38,10 +38,10 @@ class HierarchicalWheel
   @tier4 : Array(Array(Event))
 
   def initialize(@current_time : UInt64 = 0_u64)
-    @tier1 = Array(Array(Event)).new(1 << BITS_1) { Array(Event).new }
-    @tier2 = Array(Array(Event)).new(1 << BITS_2) { Array(Event).new }
-    @tier3 = Array(Array(Event)).new(1 << BITS_3) { Array(Event).new }
-    @tier4 = Array(Array(Event)).new(1 << BITS_4) { Array(Event).new }
+    @tier1 = Array(Array(Event)).new(1 << BITS_0) { Array(Event).new }
+    @tier2 = Array(Array(Event)).new(1 << BITS_1) { Array(Event).new }
+    @tier3 = Array(Array(Event)).new(1 << BITS_2) { Array(Event).new }
+    @tier4 = Array(Array(Event)).new(1 << BITS_3) { Array(Event).new }
   end
 
   # Schedules an event delay microseconds after current_time.
@@ -74,19 +74,19 @@ class HierarchicalWheel
 
   private def insert(event : Event) : Void
     delay = event.expires_at - @current_time
-    if delay < TIER_1_RANGE
-      @tier1[(event.expires_at & MASK_1).to_i] << event
+    if delay < TIER_0_RANGE
+      @tier1[(event.expires_at & MASK_0).to_i] << event
+    elsif delay < TIER_1_RANGE
+      @tier2[((event.expires_at >> SHIFT_1) & MASK_1).to_i] << event
     elsif delay < TIER_2_RANGE
-      @tier2[((event.expires_at >> SHIFT_2) & MASK_2).to_i] << event
-    elsif delay < TIER_3_RANGE
-      @tier3[((event.expires_at >> SHIFT_3) & MASK_3).to_i] << event
+      @tier3[((event.expires_at >> SHIFT_2) & MASK_2).to_i] << event
     else
-      @tier4[((event.expires_at >> SHIFT_4) & MASK_4).to_i] << event
+      @tier4[((event.expires_at >> SHIFT_3) & MASK_3).to_i] << event
     end
   end
 
   private def run_current_slot(&block : Event -> Void) : Void
-    slot = (@current_time & MASK_1).to_i
+    slot = (@current_time & MASK_0).to_i
     bucket = @tier1[slot]
     return if bucket.empty?
 
@@ -106,11 +106,11 @@ class HierarchicalWheel
 
   private def advance_one_tick : Void
     @current_time += 1
-    if (@current_time & MASK_1) == 0
+    if (@current_time & MASK_0) == 0
       cascade_tier2
-      if (@current_time & ((1_u64 << SHIFT_3) - 1)) == 0
+      if (@current_time & ((1_u64 << SHIFT_2) - 1)) == 0
         cascade_tier3
-        if (@current_time & ((1_u64 << SHIFT_4) - 1)) == 0
+        if (@current_time & ((1_u64 << SHIFT_3) - 1)) == 0
           cascade_tier4
         end
       end
@@ -118,15 +118,15 @@ class HierarchicalWheel
   end
 
   private def cascade_tier2 : Void
-    cascade(@tier2[((@current_time >> SHIFT_2) & MASK_2).to_i])
+    cascade(@tier2[((@current_time >> SHIFT_1) & MASK_1).to_i])
   end
 
   private def cascade_tier3 : Void
-    cascade(@tier3[((@current_time >> SHIFT_3) & MASK_3).to_i])
+    cascade(@tier3[((@current_time >> SHIFT_2) & MASK_2).to_i])
   end
 
   private def cascade_tier4 : Void
-    cascade(@tier4[((@current_time >> SHIFT_4) & MASK_4).to_i])
+    cascade(@tier4[((@current_time >> SHIFT_3) & MASK_3).to_i])
   end
 
   private def cascade(bucket : Array(Event)) : Void
