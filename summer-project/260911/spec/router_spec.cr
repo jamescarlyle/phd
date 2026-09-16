@@ -4,6 +4,7 @@ require "../src/cross_worker_comm"
 require "../src/worker"
 require "../src/node"
 require "../src/router"
+require "../src/network"
 
 TEST_WORKER_COUNT = 2
 
@@ -26,8 +27,8 @@ describe Router do
     end
 
     received.size.should eq 4
-    received.map(&.target_node).sort.should eq [2_u32, 3_u32, 4_u32, 5_u32]
-    received.each { |event| event.payload.should eq 3.5 }
+    received.map(&.target_node).sort!.should eq [2_u32, 3_u32, 4_u32, 5_u32]
+    received.each &.payload.should eq 3.5
   end
 
   it "schedules local targets directly on the current worker" do

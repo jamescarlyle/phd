@@ -2,6 +2,10 @@ require "spec"
 require "../src/wheel"
 require "../src/cross_worker_comm"
 require "../src/worker"
+require "../src/event"
+
+event_1 = Event.new(12_u32, 1_u64, 2.5)
+event_2 = Event.new(13_u32, 2_u64, -1.0)
 
 describe LayerBounds do
   it "stores the layer boundaries" do
@@ -12,27 +16,27 @@ describe LayerBounds do
   end
 end
 
-describe CrossWorkerMessage do
-  it "stores its fields" do
-    message = CrossWorkerMessage.new(12_u32, 8_u64, 2.5)
+# describe CrossWorkerMessage do
+#   it "stores its fields" do
+#     message = CrossWorkerMessage.new(12_u32, 8_u64, 2.5)
 
-    message.target_node.should eq 12_u32
-    message.delay.should eq 8_u64
-    message.payload.should eq 2.5
-  end
-end
+#     message.target_node.should eq 12_u32
+#     message.delay.should eq 8_u64
+#     message.payload.should eq 2.5
+#   end
+# end
 
 describe CrossWorkerQueue do
   it "drains messages into a wheel" do
     queue = CrossWorkerQueue.new
-    wheel = HierarchicalWheel.new
+    wheel = HierarchicalWheel.new(0_u64)
     received = [] of Event
 
-    queue.push(12_u32, 1_u64, 2.5)
-    queue.push(13_u32, 1_u64, -1.0)
+    queue.push(event_1)
+    queue.push(event_2)
     queue.drain_into(wheel)
 
-    2.times { wheel.tick { |event| received << event } }
+    3.times { wheel.tick { |event| received << event } }
 
     received.size.should eq 2
     received.map(&.target_node).should contain 12_u32
@@ -46,7 +50,7 @@ describe CrossWorkerQueue do
     wheel = HierarchicalWheel.new
     received = [] of Event
 
-    queue.push(1_u32, 1_u64, 1.0)
+    queue.push(event_1)
     queue.drain_into(wheel)
     queue.drain_into(wheel)
 
@@ -70,7 +74,7 @@ describe Worker do
     worker = Worker.new(id: 0, current_time: 0_u64, worker_count: 2)
     received = [] of Event
 
-    worker.enqueue_from(source_id: 1, target_node: 123_u32, delay: 1_u64, payload: 4.5)
+    worker.enqueue(from_worker_id: 1, target_node_id: 123_u32, delay: 1_u64, payload: 4.5)
     worker.drain_all_incoming
     worker.wheel.tick { |event| received << event }
 

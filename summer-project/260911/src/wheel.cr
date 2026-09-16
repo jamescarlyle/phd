@@ -1,11 +1,4 @@
-struct Event
-  getter target_node : UInt32
-  getter expires_at : UInt64
-  getter payload : Float64
-
-  def initialize(@target_node : UInt32 = 0_u32, @expires_at : UInt64 = 0_u64, @payload : Float64 = 0.0)
-  end
-end
+require "./event"
 
 # A four-level hierarchical timing wheel with a one-microsecond base tick.
 # current_time is always the tick currently being processed by #tick.
@@ -46,15 +39,20 @@ class HierarchicalWheel
 
   # Schedules an event delay microseconds after current_time.
   # A zero delay is due on the currently processed tick.
-  def schedule(target : UInt32, delay : UInt64, payload : Float64 = 0.0) : Void
+  def schedule(target_node_id : UInt32, delay : UInt64, payload : Float64 = 0.0) : Void
     raise RuntimeError.new("Delay exceeds wheel capacity") if delay > MAX_DELAY
-    schedule_at(target, @current_time + delay, payload)
+    schedule(Event.new(target_node_id, @current_time + delay, payload))
   end
 
+  # def schedule_at(target : UInt32, process_at : UInt64, payload : Float64 = 0.0) : Void
+  #   raise RuntimeError.new("Cannot schedule an event in the past") if process_at < @current_time
+  #   insert(Event.new(target, process_at, payload))
+  # end
+
   # Schedules an event for an absolute microsecond timestamp.
-  def schedule_at(target : UInt32, expires_at : UInt64, payload : Float64 = 0.0) : Void
-    raise RuntimeError.new("Cannot schedule an event in the past") if expires_at < @current_time
-    insert(Event.new(target, expires_at, payload))
+  def schedule(event : Event) : Void
+    raise RuntimeError.new("Cannot schedule an event in the past") if event.process_at < @current_time
+    insert(event)
   end
 
   # Processes events due at current_time, then advances current_time by one tick.
@@ -73,15 +71,15 @@ class HierarchicalWheel
   end
 
   private def insert(event : Event) : Void
-    delay = event.expires_at - @current_time
+    delay = event.process_at - @current_time
     if delay < TIER_0_RANGE
-      @tier1[(event.expires_at & MASK_0).to_i] << event
+      @tier1[(event.process_at & MASK_0).to_i] << event
     elsif delay < TIER_1_RANGE
-      @tier2[((event.expires_at >> SHIFT_1) & MASK_1).to_i] << event
+      @tier2[((event.process_at >> SHIFT_1) & MASK_1).to_i] << event
     elsif delay < TIER_2_RANGE
-      @tier3[((event.expires_at >> SHIFT_2) & MASK_2).to_i] << event
+      @tier3[((event.process_at >> SHIFT_2) & MASK_2).to_i] << event
     else
-      @tier4[((event.expires_at >> SHIFT_3) & MASK_3).to_i] << event
+      @tier4[((event.process_at >> SHIFT_3) & MASK_3).to_i] << event
     end
   end
 
@@ -94,12 +92,12 @@ class HierarchicalWheel
     bucket.clear
 
     events.each do |event|
-      if event.expires_at == @current_time
+      if event.process_at == @current_time
         block.call(event)
-      elsif event.expires_at > @current_time
+      elsif event.process_at > @current_time
         insert(event)
       else
-        raise "Expired event encountered at #{event.expires_at}; current time is #{@current_time}"
+        raise "Expired event encountered at #{event.process_at}; current time is #{@current_time}"
       end
     end
   end

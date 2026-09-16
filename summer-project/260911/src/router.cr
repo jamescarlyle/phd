@@ -11,21 +11,21 @@ class Router
     return if next_layer_idx >= @layer_bounds.size
 
     bounds = @layer_bounds[next_layer_idx]
-    target_id = bounds.start_id
+    target_node_id = bounds.start_id
 
-    while target_id <= bounds.end_id
-      target_worker_id = (target_id % @worker_count).to_i
+    while target_node_id <= bounds.end_id
+      target_worker_id = (target_node_id % @worker_count).to_i
       delay = 1_u64
 
       if target_worker_id == current_worker_id
         # Local event: schedule directly on this worker's wheel.
-        @workers[current_worker_id].wheel.schedule(target_id, delay, state)
+        @workers[current_worker_id].wheel.schedule(target_node_id, delay, state)
       else
         # Cross-worker: use the dedicated queue from current_worker_id -> target_worker_id.
-        @workers[target_worker_id].enqueue_from(current_worker_id, target_id, delay, state)
+        @workers[target_worker_id].enqueue(current_worker_id, target_node_id, delay, state)
       end
 
-      target_id += 1_u32
+      target_node_id += 1_u32
     end
   end
 end

@@ -1,0 +1,12 @@
+G_MIN = 0.01
+G_MAX = 1.0
+V_THRESHOLD = 1.0           # Threshold voltage
+V_REST = 0.0                # Resting voltage
+V_RESET = -1.0              # Reset voltage
+TAU_US = 10_000.0           # Time constant
+TRAIN_DATA = "./data/Train"
+TEST_DATA = "./data/Test"
+SYNAPTIC_DELAY_US = 1_000
+LEARNING_RATE = 0.01
+VDSP_THRESHOLD = 0.1
+LAYER_SIZES = [2312, 200, 200, 10]

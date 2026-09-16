@@ -1,14 +1,6 @@
 require "./wheel"
 require "./cross_worker_comm"
 
-struct LayerBounds
-  getter start_id : UInt32
-  getter end_id : UInt32
-
-  def initialize(@start_id : UInt32, @end_id : UInt32)
-  end
-end
-
 class Worker
   getter id : Int32
   getter wheel : HierarchicalWheel
@@ -21,9 +13,14 @@ class Worker
     end
   end
 
-  # Called by another worker (source_id) to send a message to this worker.
-  def enqueue_from(source_id : Int32, target_node : UInt32, delay : UInt64, payload : Float64) : Void
-    @incoming_queues[source_id].push(target_node, delay, payload)
+  # Called by externally (from_worker_id) to send a message to this worker.
+  def enqueue(from_worker_id : Int32, target_node_id : UInt32, delay : UInt64, payload : Float64) : Void
+    process_at = @wheel.current_time + delay
+    enqueue_at(from_worker_id, target_node_id, process_at, payload)
+  end
+
+  def enqueue_at(from_worker_id : Int32, target_node_id : UInt32, process_at : UInt64, payload : Float64) : Void
+    @incoming_queues[from_worker_id].push(Event.new(target_node_id, process_at, payload))
   end
 
   # Drain all incoming queues into this worker's wheel

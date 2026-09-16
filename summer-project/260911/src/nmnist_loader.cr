@@ -1,4 +1,4 @@
-record AddressEvent, x : Int32, y : Int32, p : Int32, t : Int32
+record AddressEvent, x : UInt32, y : UInt32, p : UInt32, t : UInt64
 record NMnistSample, events : Array(AddressEvent), label : Int32
 
 module NMnistLoader
@@ -40,16 +40,15 @@ module NMnistLoader
       files_to_load.each do |(path, label)|
         events = [] of AddressEvent
         File.open(path, "rb") do |file|
-          # N-MNIST files are stored as 5-byte chunks.
           buffer = Bytes.new(5)
           while file.read_fully?(buffer)
             # Byte 0: X, Byte 1: Y
-            x = buffer[0].to_i32
-            y = buffer[1].to_i32
+            x = buffer[0].to_u32
+            y = buffer[1].to_u32
             # Byte 2: Bit 7 is Polarity, Bits 0-6 form the MSB of Timestamp.
-            p = (buffer[2] >> 7).to_i32
+            p = (buffer[2] >> 7).to_u32
             # Byte 2 (masked), 3, and 4 form the 23-bit timestamp in microseconds.
-            t = (((buffer[2] & 0x7F).to_i32 << 16) | (buffer[3].to_i32 << 8) | buffer[4].to_i32)
+            t = (((buffer[2] & 0x7F).to_u64 << 16) | (buffer[3].to_u64 << 8) | buffer[4].to_u64)
             events << AddressEvent.new(x, y, p, t)
           end
         end

@@ -1,6 +1,6 @@
 require "spec"
 require "file_utils"
-require "../src/n_mnist_loader"
+require "../src/nmnist_loader"
 
 include NMnistLoader
 
