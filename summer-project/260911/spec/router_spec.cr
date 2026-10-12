@@ -1,5 +1,5 @@
 require "spec"
-require "../src/wheel"
+require "../src/hierarchical_clock"
 require "../src/cross_worker_comm"
 require "../src/worker"
 require "../src/node"
@@ -23,7 +23,7 @@ describe Router do
     received = [] of Event
     workers.each do |worker|
       worker.drain_all_incoming
-      2.times { worker.wheel.tick { |event| received << event } }
+      2.times { worker.clock.tick { |event| received << event } }
     end
 
     received.size.should eq 4
@@ -43,7 +43,7 @@ describe Router do
     router.dispatch(source, 7.0, 0)
 
     received = [] of Event
-    2.times { workers[0].wheel.tick { |event| received << event } }
+    2.times { workers[0].clock.tick { |event| received << event } }
 
     received.size.should eq 1
     received[0].target_node.should eq 2_u32
@@ -62,12 +62,12 @@ describe Router do
     router.dispatch(source, 2.0, 0)
 
     local_events = [] of Event
-    2.times { workers[0].wheel.tick { |event| local_events << event } }
+    2.times { workers[0].clock.tick { |event| local_events << event } }
     local_events.should be_empty
 
     received = [] of Event
     workers[1].drain_all_incoming
-    2.times { workers[1].wheel.tick { |event| received << event } }
+    2.times { workers[1].clock.tick { |event| received << event } }
 
     received.size.should eq 1
     received[0].target_node.should eq 1_u32
@@ -83,7 +83,7 @@ describe Router do
     router.dispatch(source, 1.0, 0)
 
     received = [] of Event
-    2.times { workers[0].wheel.tick { |event| received << event } }
+    2.times { workers[0].clock.tick { |event| received << event } }
     received.should be_empty
   end
 end

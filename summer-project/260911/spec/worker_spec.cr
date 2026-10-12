@@ -1,5 +1,5 @@
 require "spec"
-require "../src/wheel"
+require "../src/hierarchical_clock"
 require "../src/cross_worker_comm"
 require "../src/worker"
 require "../src/event"
@@ -27,16 +27,16 @@ end
 # end
 
 describe CrossWorkerQueue do
-  it "drains messages into a wheel" do
+  it "drains messages into a clock" do
     queue = CrossWorkerQueue.new
-    wheel = HierarchicalWheel.new(0_u64)
+    clock = HierarchicalClock.new(0_u64)
     received = [] of Event
 
     queue.push(event_1)
     queue.push(event_2)
-    queue.drain_into(wheel)
+    queue.drain_into(clock)
 
-    3.times { wheel.tick { |event| received << event } }
+    3.times { clock.tick { |event| received << event } }
 
     received.size.should eq 2
     received.map(&.target_node).should contain 12_u32
@@ -47,14 +47,14 @@ describe CrossWorkerQueue do
 
   it "clears messages after draining" do
     queue = CrossWorkerQueue.new
-    wheel = HierarchicalWheel.new
+    clock = HierarchicalClock.new
     received = [] of Event
 
     queue.push(event_1)
-    queue.drain_into(wheel)
-    queue.drain_into(wheel)
+    queue.drain_into(clock)
+    queue.drain_into(clock)
 
-    2.times { wheel.tick { |event| received << event } }
+    2.times { clock.tick { |event| received << event } }
     received.size.should eq 1
   end
 end
@@ -64,25 +64,32 @@ describe Worker do
     worker = Worker.new(3, 42_u64, 1)
 
     worker.id.should eq 3
-    worker.wheel.current_time.should eq 42_u64
+    worker.clock.current_time.should eq 42_u64
     worker.incoming_queues.should_not be_empty
     worker.incoming_queues.should be_a(Array(CrossWorkerQueue))
     worker.incoming_queues.size.should eq(1)
   end
 
   it "forwards enqueued events to its queue" do
-    worker = Worker.new(id: 0, current_time: 0_u64, worker_count: 2)
+    worker = Worker.new(id: 0, initial_time: 0_u64, worker_count: 2)
     received = [] of Event
 
     worker.enqueue(from_worker_id: 1, target_node_id: 123_u32, delay: 1_u64, payload: 4.5)
     worker.drain_all_incoming
-    worker.wheel.tick { |event| received << event }
+    worker.clock.tick { |event| received << event }
 
     received.size.should eq 0
-    worker.wheel.tick { |event| received << event }
+    worker.clock.tick { |event| received << event }
 
     received.size.should eq 1
     received[0].target_node.should eq 123_u32
     received[0].payload.should eq 4.5
+  end
+
+  it "resets the time of its clock" do
+      worker = Worker.new(id: 0, initial_time: 10_u64, worker_count: 1)
+      worker.clock.current_time.should eq 10_u64
+      worker.reset(5_u64)
+      worker.clock.current_time.should eq 5_u64
   end
 end

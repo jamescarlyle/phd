@@ -11,12 +11,9 @@ module TestFixtures
 
     files.each do |(label, add_path, filename, data)|
       path = File.join(root, add_path, label.to_s, filename)
-      puts path
       # Extract directory containing the file and create it recursively.
       parent_dir = File.dirname(path)
-      puts parent_dir
       Dir.mkdir_p(parent_dir)
-      puts "wrting file #{path}"
       File.write(path, data)
     end
   end

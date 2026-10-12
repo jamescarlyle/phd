@@ -1,0 +1,281 @@
+# Process Flow: Crossbar TiN / SiNx / TiN Memristive Devices
+
+- **Substrate**: 100 mm or 150 mm p-type Si (100) prime wafer with 200–500 nm thermally grown wet thermal SiO2.
+- **Active Area**: Metal-Insulator-Metal (MIM) junction defined by bottom electrode (BE) and top electrode (TE) overlap.
+- **Switching Layer**: 5 nm stoichiometric/sub-stoichiometric PECVD silicon nitride (SiNx).
+
+---
+
+## Process Overview & Mask Levels
+
+| Mask Level | Layer Name | Polarity | Description |
+| :--- | :--- | :--- | :--- |
+| **Mask 01** | Bottom Electrode (BE) | Dark Field / Inverted | Defines bottom TiN wire and probe pads (Lift-off). |
+| **Mask 02** | Contact Via (BE Opening) | Clear Field | Opens bottom TiN pad window through blanket SiNx. |
+| **Mask 03** | Top Electrode (TE) | Dark Field / Inverted | Defines top TiN lines crossing BE to form junctions (Lift-off). |
+
+---
+
+## Module 1: Substrate Preparation & Pre-Clean
+
+### Step 1.1: Solvent Degrease
+- **Objective**: Eliminate organic residues, particles, and hydrocarbons from wafer surface.
+- **Equipment / Tool**: Wet Chemical Bench (Solvent Hood) with ultrasonic / megasonic bath.
+- **Recipe / Operating Parameters**:
+  - Ultrasonic bath in Acetone: 5 min at 45 °C (or ambient with 40 kHz sonication).
+  - Ultrasonic bath in Isopropanol (IPA): 5 min at ambient.
+  - Cascade Deionized (DI) Water Rinse: Resistivity > 18.2 MΩ·cm until dump rinse cycle completes.
+  - Blow dry under filtered high-purity N2 gun.
+
+### Step 1.2: Piranha / RCA Clean (Optional / Baseline Clean)
+- **Objective**: Complete organic stripping and particulate removal on thermal oxide.
+- **Equipment / Tool**: Acid Bench with quartz bath.
+- **Recipe / Operating Parameters**:
+  - H2SO4 (96%) : H2O2 (30%) in 3:1 volumetric ratio.
+  - Temperature: 80–100 °C (self-heating), immersion for 10 min.
+  - Cascade DI water rinse until bath resistivity reaches > 15 MΩ·cm.
+  - Spin-Rinse-Dryer (SRD) run.
+
+### Step 1.3: Dehydration Bake
+- **Objective**: Desorb surface moisture to promote photoresist and primer adhesion.
+- **Equipment / Tool**: Cleanroom Contact Hotplate or Convection Vacuum Oven.
+- **Recipe / Operating Parameters**:
+  - Hotplate: 150 °C for 5 min (or vacuum oven at 120 °C for 30 min).
+  - Cool down to room temperature on a cold aluminium chill plate for 60 s.
+
+---
+
+## Module 2: Lithography 1 – Bottom Electrode (BE) Lift-Off Patterning
+
+### Step 2.1: Surface Priming (Vapour Prime)
+- **Objective**: Improve interfacial adhesion and avoid resist lift during aqueous development.
+- **Equipment / Tool**: Dedicated HMDS Priming Oven (e.g., YES-310TA) or manual spin chuck.
+- **Recipe / Operating Parameters**:
+  - HMDS gas phase deposition at 150 °C for 5 min (or spin HDMS primer at 4000 rpm for 30 s, bake at 110 °C for 60 s).
+
+### Step 2.2: Resist Coating (AZ 2070 Negative Photoresist)
+- **Objective**: Dispense negative-tone crosslinking resist yielding a re-entrant (negative) undercut profile for clean lift-off.
+- **Equipment / Tool**: Automated Spin Coater (e.g., Brewer Science Cee 200X / Süss Delta 80).
+- **Recipe / Operating Parameters**:
+  - Dynamic dispense: ~3–4 mL of AZ 2070.
+  - Spread cycle: 500 rpm for 5 s (ramp: 500 rpm/s).
+  - Spin cycle: 3000–4000 rpm for 45 s (ramp: 3000 rpm/s) to target film thickness ~6.5–7.0 µm.
+  - Dynamic backside and edge bead removal (EBR) with PGMEA / AZ EBR solvent: 10 s.
+
+### Step 2.3: Soft Bake
+- **Objective**: Evaporate casting solvent (PGMEA) to stabilise resist film without initiating thermal crosslinking.
+- **Equipment / Tool**: Precision Vacuum Contact Hotplate.
+- **Recipe / Operating Parameters**:
+  - Temperature: 110 °C (± 0.5 °C).
+  - Duration: 60 s (contact mode).
+  - Chill plate: 20 °C for 30 s.
+
+### Step 2.4: Photolithographic Exposure (Mask 01)
+- **Objective**: Expose BE track and contact geometry to activate photoacid generator (PAG).
+- **Equipment / Tool**: Mask Aligner (e.g., Süss MicroTec MA6 / BA6) or DUV/i-line Stepper.
+- **Recipe / Operating Parameters**:
+  - Light Source: Mercury arc lamp, i-line filtered (λ = 365 nm).
+  - Contact Mode: Vacuum contact mode.
+  - Dose: 140–180 mJ/cm² (calibrated to undercut target).
+
+### Step 2.5: Post-Exposure Bake (PEB)
+- **Objective**: Catalyse acid-catalysed crosslinking in UV-exposed areas (insolubilising them).
+- **Equipment / Tool**: Precision Vacuum Contact Hotplate.
+- **Recipe / Operating Parameters**:
+  - Temperature: 110 °C.
+  - Duration: 60 s.
+  - Chill plate: 20 °C for 30 s.
+
+### Step 2.6: Development
+- **Objective**: Selectively dissolve unexposed (uncrosslinked) resist to produce retrograde sidewall undercuts.
+- **Equipment / Tool**: Wet Bench / Developer Puddle Cup.
+- **Recipe / Operating Parameters**:
+  - Developer: Metal-Ion-Free developer (TMAH-based, e.g., AZ 726 MIF or AZ 300 MIF, 2.38% normality).
+  - Mode: Double puddle or spray/immersion with mild agitation: 60–75 s at 21 °C.
+  - Rinse: Quench immediately in overflow DI water bath for 60 s.
+  - Dry: High-purity N2 blow-dry.
+  - Metrology: Optical microscope check / SEM cross-section inspection for lift-off overhang profiles.
+
+### Step 2.7: Descum / Surface Activation (RIE)
+- **Objective**: Clear residual resist scum from open SiO2 areas to ensure reproducible metal adhesion and low contact resistance.
+- **Equipment / Tool**: Reactive Ion Etcher (RIE) or Downstream Asher (e.g., Oxford Plasmalab 80 Plus / March CS1701).
+- **Recipe / Operating Parameters**:
+  - Gas: O2 = 30 sccm (optional: Ar = 5 sccm).
+  - Chamber Pressure: 50–100 mTorr.
+  - RF Power: 50 W.
+  - Etch Time: 30–45 s.
+
+---
+
+## Module 3: Bottom Electrode Metallisation & Lift-Off
+
+### Step 3.1: In-situ Pre-Clean
+- **Objective**: Remove adsorbed ambient species and native oxide prior to deposition.
+- **Equipment / Tool**: Sputter Cluster Tool (in-situ load lock / etch chamber).
+- **Recipe / Operating Parameters**:
+  - Ar ion milling / reverse bias RF sputter clean: 50 W, 5 mTorr Ar, 60 s.
+
+### Step 3.2: Bottom TiN Sputtering (60 nm)
+- **Objective**: Deposit dense, smooth, metallic conductive bottom electrode layer.
+- **Equipment / Tool**: DC Magnetron Sputter System (e.g., AJA Orion, Kurt J. Lesker LAB 18, or Singulus).
+- **Recipe / Operating Parameters**:
+  - Target: Pure Titanium (99.995%) reactive sputtering (or compound TiN target with RF).
+  - Base Pressure: < 5 × 10⁻⁷ Torr.
+  - Process Pressure: 3.0 mTorr.
+  - Working Gases: Ar = 20 sccm, N2 = 4–6 sccm (poisoned / transition mode tuned for stoichiometry).
+  - DC Sputter Power: 250–300 W.
+  - Substrate Temperature: Ambient to 150 °C.
+  - Substrate Rotation: 20 rpm (ensures uniform thickness across wafer).
+  - Deposition Rate: ~0.15 nm/s → Total time: ~400 s to reach **60 nm TiN**.
+
+### Step 3.3: Bottom Metal Lift-Off
+- **Objective**: Strip AZ 2070 and discard unwanted TiN film atop resist, retaining only bottom tracks.
+- **Equipment / Tool**: Solvent Lift-Off Bench with heated tank and ultrasonic transducer.
+- **Recipe / Operating Parameters**:
+  - Stripper: NMP (N-Methyl-2-pyrrolidone) or dedicated lift-off solvent (Microposit 1165 / TechniStrip NI555).
+  - Temperature: 70–80 °C.
+  - Soak time: 30–60 min static soak, followed by low-power ultrasonic agitation (20–40 kHz) for 2–5 min to detach metal flakes.
+  - High-pressure solvent spray wand (IPA) to wash away suspended TiN ribbons.
+  - Intermediate IPA bath rinse (prevent redeposition) → DI water cascade rinse.
+  - Spin dry under N2.
+  - Metrology: Profilometry / AFM to verify BE step height (60 nm) and absence of burrs/rabbit-ears.
+
+---
+
+## Module 4: Functional Switching Layer Deposition (5 nm Blanket SiNx)
+
+### Step 4.1: Pre-Deposition Surface Preparation
+- **Objective**: Clean BE surface prior to critical dielectric interface growth.
+- **Equipment / Tool**: Solvent rinse (IPA/DI water), followed by mild in-situ H2/Ar or N2 plasma passivate (removes superficial Ti-oxide).
+
+### Step 4.2: Blanket SiNx Deposition (5 nm)
+- **Objective**: Deposit high-precision, low-defect, sub-stoichiometric/stoichiometric silicon nitride switching medium.
+- **Equipment / Tool**: Plasma Enhanced Chemical Vapour Deposition (PECVD) system (e.g., Oxford Instruments PlasmaPro 100 / STS Multiplex).
+- **Recipe / Operating Parameters**:
+  - Temperature: 250–300 °C (low thermal budget to avoid TiN stress relaxation/oxidation).
+  - Precursor Gases:
+    - 2% or 5% Silane in He/N2 balance (SiH4): 10–20 sccm
+    - Ammonia (NH3): 5–15 sccm
+    - Nitrogen (N2): 200–400 sccm
+  - Chamber Pressure: 600–1000 mTorr.
+  - RF Power (High Frequency, 13.56 MHz): 20–40 W (low-power regime to minimize ion bombardment damage).
+  - Calibrated Deposition Rate: ~0.08–0.12 nm/s (strictly calibrated using spectroscopic ellipsometry dummy runs).
+  - Deposition Time: ~45–60 s to target **5.0 nm (± 0.2 nm)**.
+  - Metrology: In-situ or post Spectroscopic Ellipsometry (measure film thickness $t$ and refractive index $n \approx 1.85\text{--}2.05$ at 633 nm).
+
+---
+
+## Module 5: Lithography 2 & RIE – Bottom Contact Via Opening
+
+### Step 5.1: Resist Coating (Positive Tone or AZ 2070 used in direct mode)
+- **Objective**: Create etch mask protecting the active junction while exposing the BE landing pad area.
+- **Equipment / Tool**: Automated Spin Coater.
+- **Recipe / Operating Parameters**:
+  - Spin standard positive resist (e.g., AZ 1512 or Megaposit SPR 220) at 3000 rpm (thickness ~1.2 µm).
+  - Soft bake: 100 °C for 60 s.
+
+### Step 5.2: Photolithographic Alignment & Exposure (Mask 02)
+- **Objective**: Align via mask relative to underlying BE fiducial marks.
+- **Equipment / Tool**: Mask Aligner (Süss MA6).
+- **Recipe / Operating Parameters**:
+  - Layer-to-layer optical alignment (tolerance < 0.5 µm).
+  - Exposure Dose: 80–120 mJ/cm² (calibrated for thin positive resist).
+  - Development: AZ 726 MIF for 45 s, DI cascade rinse, N2 blow-dry.
+  - Inspection: Verify via opening directly over BE pad extension.
+
+### Step 5.3: Reactive Ion Etching (RIE) of 5 nm SiNx
+- **Objective**: Anisotropically etch 5 nm SiNx to expose TiN bottom electrode contact pad with high selectivity to TiN.
+- **Equipment / Tool**: Fluorine RIE / ICP-RIE System (e.g., Oxford Plasmalab 80 Plus).
+- **Recipe / Operating Parameters**:
+  - Etch Gases: CHF3 = 30 sccm, O2 = 2–5 sccm (or CF4/Ar chemistry: 25 sccm CF4 / 10 sccm Ar).
+  - Chamber Pressure: 30–40 mTorr.
+  - RF Power: 30–50 W (DC bias ~80–120 V).
+  - Etch Rate: ~0.4–0.6 nm/s.
+  - Process Time: 12–15 s (includes 20% over-etch to clear interfacial layer; TiN acts as an etch stop).
+
+### Step 5.4: Resist Strip & Clean
+- **Objective**: Strip via patterning resist without chemically altering the exposed 5 nm SiNx active area.
+- **Equipment / Tool**: Wet Solvent Bench + Mild Downstream O2 Asher.
+- **Recipe / Operating Parameters**:
+  - Solvent strip in Acetone (ambient) followed by IPA rinse (avoid prolonged aggressive oxidizing piranha to protect TiN and thin SiNx).
+  - Quick O2 descum in barrel asher: 30 W for 30 s.
+
+---
+
+## Module 6: Lithography 3 – Top Electrode (TE) Lift-Off Patterning
+
+### Step 6.1: Dehydration Bake
+- **Equipment / Tool**: Vacuum Hotplate.
+- **Recipe / Operating Parameters**: 110 °C for 2 min, chill plate for 30 s.
+
+### Step 6.2: Resist Coating (AZ 2070 Negative Photoresist)
+- **Equipment / Tool**: Automated Spin Coater.
+- **Recipe / Operating Parameters**:
+  - Dispense AZ 2070; spin at 3000–4000 rpm for 45 s (thickness ~6.5–7.0 µm).
+  - Automated backside rinse & EBR.
+
+### Step 6.3: Soft Bake
+- **Equipment / Tool**: Precision Vacuum Contact Hotplate.
+- **Recipe / Operating Parameters**: 110 °C for 60 s; cool down on chill plate.
+
+### Step 6.4: Photolithographic Alignment & Exposure (Mask 03)
+- **Objective**: Align top electrode tracks perpendicularly across bottom lines (forming crossbar nanodevices) and cover open bottom pad.
+- **Equipment / Tool**: Mask Aligner (Süss MA6).
+- **Recipe / Operating Parameters**:
+  - Multi-layer mask alignment to Mask 01 fiducials.
+  - Mode: Vacuum contact.
+  - i-line exposure dose: 140–180 mJ/cm².
+
+### Step 6.5: Post-Exposure Bake (PEB)
+- **Equipment / Tool**: Precision Vacuum Contact Hotplate.
+- **Recipe / Operating Parameters**: 110 °C for 60 s; chill plate for 30 s.
+
+### Step 6.6: Development & Descum
+- **Equipment / Tool**: Wet Bench & Downstream Asher.
+- **Recipe / Operating Parameters**:
+  - Immersion/puddle development in AZ 726 MIF for 65 s.
+  - DI cascade rinse > 60 s, N2 dry.
+  - Mild O2 plasma descum: 30 W, 50 mTorr, 20 s (removes scum from junction window without punching through the 5 nm SiNx barrier).
+
+---
+
+## Module 7: Top Electrode Metallisation & Final Device Release
+
+### Step 7.1: Top TiN Sputtering (60 nm)
+- **Objective**: Deposit pristine top electrode layer directly capping the active 5 nm SiNx barrier.
+- **Equipment / Tool**: DC Magnetron Sputter System.
+- **Recipe / Operating Parameters**:
+  - Target: Pure Ti (99.995%) reactive sputter with N2 (identical baseline to Step 3.2).
+  - Base Pressure: < 5 × 10⁻⁷ Torr.
+  - Working Pressure: 3.0 mTorr (Ar = 20 sccm, N2 = 4–6 sccm).
+  - DC Sputter Power: 250 W (keep substrate near ambient to prevent dielectric breakdown or elemental interdiffusion).
+  - Deposition Time: ~400 s to reach **60 nm TiN**.
+
+### Step 7.2: Final Lift-Off & Resist Removal
+- **Objective**: Dissolve AZ 2070 to leave behind isolated TE lines and probe bonding pads.
+- **Equipment / Tool**: Solvent Bench with heated ultrasonic immersion bath.
+- **Recipe / Operating Parameters**:
+  - Heated NMP or TechniStrip NI555 at 75 °C for 45–90 min.
+  - Gentle sonication (intermittent 10-second pulses at low power) to assist flake separation.
+  - Thorough flush with fresh IPA to prevent redeposition of particulate metal flakes.
+  - Cascade DI water rinse.
+  - Controlled blow-dry under dry N2.
+
+---
+
+## Module 8: Quality Control & Electrical Metrology
+
+### Step 8.1: Physical Inspection
+- **Optical Inspection**: Check alignment tolerances (BE/Via, BE/TE overlap), confirm edge clearance and absence of metal flagging.
+- **Atomic Force Microscopy (AFM)**: Inspect top electrode roughness ($R_q < 1.0\text{ nm}$) and BE-to-SiNx step coverage profile.
+- **Cross-Sectional Focused Ion Beam / SEM (FIB-SEM)**: Validate junction layer integrity:
+  - $\text{TiN (BE)} \approx 60\text{ nm}$
+  - $\text{SiN}_x \approx 5\text{ nm}$
+  - $\text{TiN (TE)} \approx 60\text{ nm}$
+
+### Step 8.2: Initial Electrical Screening
+- **Equipment / Tool**: Semi-automated Cryogenic/Ambient Probe Station coupled to a Semiconductor Parameter Analyser (e.g., Keysight B1500A / Keithley 4200A-SCS).
+- **Test Sequence**:
+  1. Low-voltage ohmic continuity verification on BE and TE line monitors.
+  2. DC IV sweep (0 V → $+V_{\text{form}} \to -V_{\text{reset}}$) with strict compliance current ($I_{\text{CC}} = 10\text{--}100\ \mu\text{A}$) to test electroforming and non-volatile resistive switching.
+  3. Pulsed potentiation/depression testing to evaluate analog synaptic weight updates for neuromorphic applications.

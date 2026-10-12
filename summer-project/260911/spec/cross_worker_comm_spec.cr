@@ -1,5 +1,5 @@
 require "spec"
-require "../src/wheel"
+require "../src/hierarchical_clock"
 require "../src/cross_worker_comm"
 require "../src/event"
 
@@ -28,25 +28,25 @@ event_3 = Event.new(30_u32, 2_u64, 3.0)
 describe CrossWorkerQueue do
   it "initializes with an empty buffer" do
     queue = CrossWorkerQueue.new
-    wheel = HierarchicalWheel.new
+    clock = HierarchicalClock.new
     received = [] of Event
 
-    queue.drain_into(wheel)
-    1.times { wheel.tick { |event| received << event } }
+    queue.drain_into(clock)
+    1.times { clock.tick { |event| received << event } }
 
     received.should be_empty
   end
 
   it "pushes messages into its internal buffer" do
     queue = CrossWorkerQueue.new
-    wheel = HierarchicalWheel.new
+    clock = HierarchicalClock.new
     received = [] of Event
 
     queue.push(event_1)
     queue.push(event_2)
-    queue.drain_into(wheel)
+    queue.drain_into(clock)
 
-    2.times { wheel.tick { |event| received << event } }
+    2.times { clock.tick { |event| received << event } }
 
     received.size.should eq 2
     received.map(&.target_node).should contain 10_u32
@@ -55,29 +55,29 @@ describe CrossWorkerQueue do
 
   it "clears the buffer after draining" do
     queue = CrossWorkerQueue.new
-    wheel = HierarchicalWheel.new
+    clock = HierarchicalClock.new
     received = [] of Event
 
     queue.push(event_1)
-    queue.drain_into(wheel)
-    queue.drain_into(wheel)
+    queue.drain_into(clock)
+    queue.drain_into(clock)
 
-    2.times { wheel.tick { |event| received << event } }
+    2.times { clock.tick { |event| received << event } }
 
     received.size.should eq 1
   end
 
   it "schedules drained messages at the correct delays" do
     queue = CrossWorkerQueue.new
-    wheel = HierarchicalWheel.new
+    clock = HierarchicalClock.new
     received = [] of Event
 
     queue.push(event_1)
     queue.push(event_2)
     queue.push(event_3)
-    queue.drain_into(wheel)
+    queue.drain_into(clock)
 
-    3.times { wheel.tick { |event| received << event } }
+    3.times { clock.tick { |event| received << event } }
 
     received.size.should eq 3
     received.map(&.target_node).should contain 10_u32

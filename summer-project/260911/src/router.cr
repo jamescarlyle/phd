@@ -15,14 +15,15 @@ class Router
 
     while target_node_id <= bounds.end_id
       target_worker_id = (target_node_id % @worker_count).to_i
-      delay = 1_u64
 
       if target_worker_id == current_worker_id
-        # Local event: schedule directly on this worker's wheel.
-        @workers[current_worker_id].wheel.schedule(target_node_id, delay, state)
+        # Local event: schedule directly on this worker's clock.
+        @workers[current_worker_id].clock.schedule(target_node_id, LAYER_DELAY, state)
       else
+        sender_time = @workers[current_worker_id].clock.current_time
+        process_at = sender_time + LAYER_DELAY
         # Cross-worker: use the dedicated queue from current_worker_id -> target_worker_id.
-        @workers[target_worker_id].enqueue(current_worker_id, target_node_id, delay, state)
+        @workers[target_worker_id].enqueue_at(current_worker_id, target_node_id, process_at, state)
       end
 
       target_node_id += 1_u32

@@ -1,8 +1,8 @@
 require "./event"
 
-# A four-level hierarchical timing wheel with a one-microsecond base tick.
+# A four-level hierarchical timing clock with a one-microsecond base tick.
 # current_time is always the tick currently being processed by #tick.
-class HierarchicalWheel
+class HierarchicalClock
   BITS_0 = 8
   BITS_1 = 8
   BITS_2 = 8
@@ -21,7 +21,7 @@ class HierarchicalWheel
   TIER_0_RANGE = 1_u64 << SHIFT_1
   TIER_1_RANGE = 1_u64 << SHIFT_2
   TIER_2_RANGE = 1_u64 << SHIFT_3
-  MAX_DELAY = (1_u64 << (SHIFT_3 + BITS_3)) - 1
+  WHEEL_CAPACITY = (1_u64 << (SHIFT_3 + BITS_3)) - 1
 
   getter current_time : UInt64
 
@@ -37,37 +37,37 @@ class HierarchicalWheel
     @tier4 = Array(Array(Event)).new(1 << BITS_3) { Array(Event).new }
   end
 
+  def reset(timestamp : UInt64) : Void
+    @current_time = timestamp
+  end
+
   # Schedules an event delay microseconds after current_time.
   # A zero delay is due on the currently processed tick.
   def schedule(target_node_id : UInt32, delay : UInt64, payload : Float64 = 0.0) : Void
-    raise RuntimeError.new("Delay exceeds wheel capacity") if delay > MAX_DELAY
+    raise RuntimeError.new("Delay exceeds clock capacity") if delay > WHEEL_CAPACITY
     schedule(Event.new(target_node_id, @current_time + delay, payload))
   end
 
-  # def schedule_at(target : UInt32, process_at : UInt64, payload : Float64 = 0.0) : Void
-  #   raise RuntimeError.new("Cannot schedule an event in the past") if process_at < @current_time
-  #   insert(Event.new(target, process_at, payload))
-  # end
-
   # Schedules an event for an absolute microsecond timestamp.
   def schedule(event : Event) : Void
-    raise RuntimeError.new("Cannot schedule an event in the past") if event.process_at < @current_time
+    if event.process_at < @current_time
+      raise RuntimeError.new("Clock time #{@current_time}: Cannot schedule an event with time #{event.process_at}")
+    end
     insert(event)
+  end
+
+  # Processes every tick through target_time, exclusively i.e. start <= t < end.
+  def advance_to(target_time : UInt64, &block : Event -> Void) : Void
+    raise RuntimeError.new("Cannot move backwards: target=#{target_time}, current=#{@current_time}") if target_time < @current_time
+    while @current_time < target_time
+      tick { |event| block.call(event) }
+    end
   end
 
   # Processes events due at current_time, then advances current_time by one tick.
   def tick(&block : Event -> Void) : Void
     run_current_slot { |event| block.call(event) }
     advance_one_tick
-  end
-
-  # Processes every tick through target_time, inclusively.
-  # After returning, current_time is target_time + 1.
-  def advance_to(target_time : UInt64, &block : Event -> Void) : Void
-    raise RuntimeError.new("Cannot move backwards") if target_time < @current_time
-    while @current_time <= target_time
-      tick { |event| block.call(event) }
-    end
   end
 
   private def insert(event : Event) : Void

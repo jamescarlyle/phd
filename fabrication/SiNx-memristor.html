@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>sinx-memristor</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="SiNx-memristor_files/libs/clipboard/clipboard.min.js"></script>
+<script src="SiNx-memristor_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="SiNx-memristor_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="SiNx-memristor_files/libs/quarto-html/popper.min.js"></script>
+<script src="SiNx-memristor_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="SiNx-memristor_files/libs/quarto-html/anchor.min.js"></script>
+<link href="SiNx-memristor_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="SiNx-memristor_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="SiNx-memristor_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="SiNx-memristor_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="SiNx-memristor_files/libs/bootstrap/bootstrap-917079515d91bccb85b543faf8aa8bb6.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<section id="process-flow-crossbar-tin-sinx-tin-memristive-devices" class="level1">
+<h1>Process Flow: Crossbar TiN / SiNx / TiN Memristive Devices</h1>
+<ul>
+<li><strong>Substrate</strong>: 100 mm or 150 mm p-type Si (100) prime wafer with 200–500 nm thermally grown wet thermal SiO2.</li>
+<li><strong>Active Area</strong>: Metal-Insulator-Metal (MIM) junction defined by bottom electrode (BE) and top electrode (TE) overlap.</li>
+<li><strong>Switching Layer</strong>: 5 nm stoichiometric/sub-stoichiometric PECVD silicon nitride (SiNx).</li>
+</ul>
+<hr>
+<section id="process-overview-mask-levels" class="level2">
+<h2 class="anchored" data-anchor-id="process-overview-mask-levels">Process Overview &amp; Mask Levels</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Mask Level</th>
+<th style="text-align: left;">Layer Name</th>
+<th style="text-align: left;">Polarity</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Mask 01</strong></td>
+<td style="text-align: left;">Bottom Electrode (BE)</td>
+<td style="text-align: left;">Dark Field / Inverted</td>
+<td style="text-align: left;">Defines bottom TiN wire and probe pads (Lift-off).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Mask 02</strong></td>
+<td style="text-align: left;">Contact Via (BE Opening)</td>
+<td style="text-align: left;">Clear Field</td>
+<td style="text-align: left;">Opens bottom TiN pad window through blanket SiNx.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Mask 03</strong></td>
+<td style="text-align: left;">Top Electrode (TE)</td>
+<td style="text-align: left;">Dark Field / Inverted</td>
+<td style="text-align: left;">Defines top TiN lines crossing BE to form junctions (Lift-off).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="module-1-substrate-preparation-pre-clean" class="level2">
+<h2 class="anchored" data-anchor-id="module-1-substrate-preparation-pre-clean">Module 1: Substrate Preparation &amp; Pre-Clean</h2>
+<section id="step-1.1-solvent-degrease" class="level3">
+<h3 class="anchored" data-anchor-id="step-1.1-solvent-degrease">Step 1.1: Solvent Degrease</h3>
+<ul>
+<li><strong>Objective</strong>: Eliminate organic residues, particles, and hydrocarbons from wafer surface.</li>
+<li><strong>Equipment / Tool</strong>: Wet Chemical Bench (Solvent Hood) with ultrasonic / megasonic bath.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Ultrasonic bath in Acetone: 5 min at 45 °C (or ambient with 40 kHz sonication).</li>
+<li>Ultrasonic bath in Isopropanol (IPA): 5 min at ambient.</li>
+<li>Cascade Deionized (DI) Water Rinse: Resistivity &gt; 18.2 MΩ·cm until dump rinse cycle completes.</li>
+<li>Blow dry under filtered high-purity N2 gun.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-1.2-piranha-rca-clean-optional-baseline-clean" class="level3">
+<h3 class="anchored" data-anchor-id="step-1.2-piranha-rca-clean-optional-baseline-clean">Step 1.2: Piranha / RCA Clean (Optional / Baseline Clean)</h3>
+<ul>
+<li><strong>Objective</strong>: Complete organic stripping and particulate removal on thermal oxide.</li>
+<li><strong>Equipment / Tool</strong>: Acid Bench with quartz bath.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>H2SO4 (96%) : H2O2 (30%) in 3:1 volumetric ratio.</li>
+<li>Temperature: 80–100 °C (self-heating), immersion for 10 min.</li>
+<li>Cascade DI water rinse until bath resistivity reaches &gt; 15 MΩ·cm.</li>
+<li>Spin-Rinse-Dryer (SRD) run.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-1.3-dehydration-bake" class="level3">
+<h3 class="anchored" data-anchor-id="step-1.3-dehydration-bake">Step 1.3: Dehydration Bake</h3>
+<ul>
+<li><strong>Objective</strong>: Desorb surface moisture to promote photoresist and primer adhesion.</li>
+<li><strong>Equipment / Tool</strong>: Cleanroom Contact Hotplate or Convection Vacuum Oven.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Hotplate: 150 °C for 5 min (or vacuum oven at 120 °C for 30 min).</li>
+<li>Cool down to room temperature on a cold aluminium chill plate for 60 s.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="module-2-lithography-1-bottom-electrode-be-lift-off-patterning" class="level2">
+<h2 class="anchored" data-anchor-id="module-2-lithography-1-bottom-electrode-be-lift-off-patterning">Module 2: Lithography 1 – Bottom Electrode (BE) Lift-Off Patterning</h2>
+<section id="step-2.1-surface-priming-vapour-prime" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.1-surface-priming-vapour-prime">Step 2.1: Surface Priming (Vapour Prime)</h3>
+<ul>
+<li><strong>Objective</strong>: Improve interfacial adhesion and avoid resist lift during aqueous development.</li>
+<li><strong>Equipment / Tool</strong>: Dedicated HMDS Priming Oven (e.g., YES-310TA) or manual spin chuck.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>HMDS gas phase deposition at 150 °C for 5 min (or spin HDMS primer at 4000 rpm for 30 s, bake at 110 °C for 60 s).</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2.2-resist-coating-az-2070-negative-photoresist" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.2-resist-coating-az-2070-negative-photoresist">Step 2.2: Resist Coating (AZ 2070 Negative Photoresist)</h3>
+<ul>
+<li><strong>Objective</strong>: Dispense negative-tone crosslinking resist yielding a re-entrant (negative) undercut profile for clean lift-off.</li>
+<li><strong>Equipment / Tool</strong>: Automated Spin Coater (e.g., Brewer Science Cee 200X / Süss Delta 80).</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Dynamic dispense: ~3–4 mL of AZ 2070.</li>
+<li>Spread cycle: 500 rpm for 5 s (ramp: 500 rpm/s).</li>
+<li>Spin cycle: 3000–4000 rpm for 45 s (ramp: 3000 rpm/s) to target film thickness ~6.5–7.0 µm.</li>
+<li>Dynamic backside and edge bead removal (EBR) with PGMEA / AZ EBR solvent: 10 s.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2.3-soft-bake" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.3-soft-bake">Step 2.3: Soft Bake</h3>
+<ul>
+<li><strong>Objective</strong>: Evaporate casting solvent (PGMEA) to stabilise resist film without initiating thermal crosslinking.</li>
+<li><strong>Equipment / Tool</strong>: Precision Vacuum Contact Hotplate.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Temperature: 110 °C (± 0.5 °C).</li>
+<li>Duration: 60 s (contact mode).</li>
+<li>Chill plate: 20 °C for 30 s.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2.4-photolithographic-exposure-mask-01" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.4-photolithographic-exposure-mask-01">Step 2.4: Photolithographic Exposure (Mask 01)</h3>
+<ul>
+<li><strong>Objective</strong>: Expose BE track and contact geometry to activate photoacid generator (PAG).</li>
+<li><strong>Equipment / Tool</strong>: Mask Aligner (e.g., Süss MicroTec MA6 / BA6) or DUV/i-line Stepper.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Light Source: Mercury arc lamp, i-line filtered (λ = 365 nm).</li>
+<li>Contact Mode: Vacuum contact mode.</li>
+<li>Dose: 140–180 mJ/cm² (calibrated to undercut target).</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2.5-post-exposure-bake-peb" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.5-post-exposure-bake-peb">Step 2.5: Post-Exposure Bake (PEB)</h3>
+<ul>
+<li><strong>Objective</strong>: Catalyse acid-catalysed crosslinking in UV-exposed areas (insolubilising them).</li>
+<li><strong>Equipment / Tool</strong>: Precision Vacuum Contact Hotplate.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Temperature: 110 °C.</li>
+<li>Duration: 60 s.</li>
+<li>Chill plate: 20 °C for 30 s.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2.6-development" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.6-development">Step 2.6: Development</h3>
+<ul>
+<li><strong>Objective</strong>: Selectively dissolve unexposed (uncrosslinked) resist to produce retrograde sidewall undercuts.</li>
+<li><strong>Equipment / Tool</strong>: Wet Bench / Developer Puddle Cup.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Developer: Metal-Ion-Free developer (TMAH-based, e.g., AZ 726 MIF or AZ 300 MIF, 2.38% normality).</li>
+<li>Mode: Double puddle or spray/immersion with mild agitation: 60–75 s at 21 °C.</li>
+<li>Rinse: Quench immediately in overflow DI water bath for 60 s.</li>
+<li>Dry: High-purity N2 blow-dry.</li>
+<li>Metrology: Optical microscope check / SEM cross-section inspection for lift-off overhang profiles.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-2.7-descum-surface-activation-rie" class="level3">
+<h3 class="anchored" data-anchor-id="step-2.7-descum-surface-activation-rie">Step 2.7: Descum / Surface Activation (RIE)</h3>
+<ul>
+<li><strong>Objective</strong>: Clear residual resist scum from open SiO2 areas to ensure reproducible metal adhesion and low contact resistance.</li>
+<li><strong>Equipment / Tool</strong>: Reactive Ion Etcher (RIE) or Downstream Asher (e.g., Oxford Plasmalab 80 Plus / March CS1701).</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Gas: O2 = 30 sccm (optional: Ar = 5 sccm).</li>
+<li>Chamber Pressure: 50–100 mTorr.</li>
+<li>RF Power: 50 W.</li>
+<li>Etch Time: 30–45 s.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="module-3-bottom-electrode-metallisation-lift-off" class="level2">
+<h2 class="anchored" data-anchor-id="module-3-bottom-electrode-metallisation-lift-off">Module 3: Bottom Electrode Metallisation &amp; Lift-Off</h2>
+<section id="step-3.1-in-situ-pre-clean" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.1-in-situ-pre-clean">Step 3.1: In-situ Pre-Clean</h3>
+<ul>
+<li><strong>Objective</strong>: Remove adsorbed ambient species and native oxide prior to deposition.</li>
+<li><strong>Equipment / Tool</strong>: Sputter Cluster Tool (in-situ load lock / etch chamber).</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Ar ion milling / reverse bias RF sputter clean: 50 W, 5 mTorr Ar, 60 s.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-3.2-bottom-tin-sputtering-60-nm" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.2-bottom-tin-sputtering-60-nm">Step 3.2: Bottom TiN Sputtering (60 nm)</h3>
+<ul>
+<li><strong>Objective</strong>: Deposit dense, smooth, metallic conductive bottom electrode layer.</li>
+<li><strong>Equipment / Tool</strong>: DC Magnetron Sputter System (e.g., AJA Orion, Kurt J. Lesker LAB 18, or Singulus).</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Target: Pure Titanium (99.995%) reactive sputtering (or compound TiN target with RF).</li>
+<li>Base Pressure: &lt; 5 × 10⁻⁷ Torr.</li>
+<li>Process Pressure: 3.0 mTorr.</li>
+<li>Working Gases: Ar = 20 sccm, N2 = 4–6 sccm (poisoned / transition mode tuned for stoichiometry).</li>
+<li>DC Sputter Power: 250–300 W.</li>
+<li>Substrate Temperature: Ambient to 150 °C.</li>
+<li>Substrate Rotation: 20 rpm (ensures uniform thickness across wafer).</li>
+<li>Deposition Rate: ~0.15 nm/s → Total time: ~400 s to reach <strong>60 nm TiN</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-3.3-bottom-metal-lift-off" class="level3">
+<h3 class="anchored" data-anchor-id="step-3.3-bottom-metal-lift-off">Step 3.3: Bottom Metal Lift-Off</h3>
+<ul>
+<li><strong>Objective</strong>: Strip AZ 2070 and discard unwanted TiN film atop resist, retaining only bottom tracks.</li>
+<li><strong>Equipment / Tool</strong>: Solvent Lift-Off Bench with heated tank and ultrasonic transducer.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Stripper: NMP (N-Methyl-2-pyrrolidone) or dedicated lift-off solvent (Microposit 1165 / TechniStrip NI555).</li>
+<li>Temperature: 70–80 °C.</li>
+<li>Soak time: 30–60 min static soak, followed by low-power ultrasonic agitation (20–40 kHz) for 2–5 min to detach metal flakes.</li>
+<li>High-pressure solvent spray wand (IPA) to wash away suspended TiN ribbons.</li>
+<li>Intermediate IPA bath rinse (prevent redeposition) → DI water cascade rinse.</li>
+<li>Spin dry under N2.</li>
+<li>Metrology: Profilometry / AFM to verify BE step height (60 nm) and absence of burrs/rabbit-ears.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="module-4-functional-switching-layer-deposition-5-nm-blanket-sinx" class="level2">
+<h2 class="anchored" data-anchor-id="module-4-functional-switching-layer-deposition-5-nm-blanket-sinx">Module 4: Functional Switching Layer Deposition (5 nm Blanket SiNx)</h2>
+<section id="step-4.1-pre-deposition-surface-preparation" class="level3">
+<h3 class="anchored" data-anchor-id="step-4.1-pre-deposition-surface-preparation">Step 4.1: Pre-Deposition Surface Preparation</h3>
+<ul>
+<li><strong>Objective</strong>: Clean BE surface prior to critical dielectric interface growth.</li>
+<li><strong>Equipment / Tool</strong>: Solvent rinse (IPA/DI water), followed by mild in-situ H2/Ar or N2 plasma passivate (removes superficial Ti-oxide).</li>
+</ul>
+</section>
+<section id="step-4.2-blanket-sinx-deposition-5-nm" class="level3">
+<h3 class="anchored" data-anchor-id="step-4.2-blanket-sinx-deposition-5-nm">Step 4.2: Blanket SiNx Deposition (5 nm)</h3>
+<ul>
+<li><strong>Objective</strong>: Deposit high-precision, low-defect, sub-stoichiometric/stoichiometric silicon nitride switching medium.</li>
+<li><strong>Equipment / Tool</strong>: Plasma Enhanced Chemical Vapour Deposition (PECVD) system (e.g., Oxford Instruments PlasmaPro 100 / STS Multiplex).</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Temperature: 250–300 °C (low thermal budget to avoid TiN stress relaxation/oxidation).</li>
+<li>Precursor Gases:
+<ul>
+<li>2% or 5% Silane in He/N2 balance (SiH4): 10–20 sccm</li>
+<li>Ammonia (NH3): 5–15 sccm</li>
+<li>Nitrogen (N2): 200–400 sccm</li>
+</ul></li>
+<li>Chamber Pressure: 600–1000 mTorr.</li>
+<li>RF Power (High Frequency, 13.56 MHz): 20–40 W (low-power regime to minimize ion bombardment damage).</li>
+<li>Calibrated Deposition Rate: ~0.08–0.12 nm/s (strictly calibrated using spectroscopic ellipsometry dummy runs).</li>
+<li>Deposition Time: ~45–60 s to target <strong>5.0 nm (± 0.2 nm)</strong>.</li>
+<li>Metrology: In-situ or post Spectroscopic Ellipsometry (measure film thickness <span class="math inline">\(t\)</span> and refractive index <span class="math inline">\(n \approx 1.85\text{--}2.05\)</span> at 633 nm).</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="module-5-lithography-2-rie-bottom-contact-via-opening" class="level2">
+<h2 class="anchored" data-anchor-id="module-5-lithography-2-rie-bottom-contact-via-opening">Module 5: Lithography 2 &amp; RIE – Bottom Contact Via Opening</h2>
+<section id="step-5.1-resist-coating-positive-tone-or-az-2070-used-in-direct-mode" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.1-resist-coating-positive-tone-or-az-2070-used-in-direct-mode">Step 5.1: Resist Coating (Positive Tone or AZ 2070 used in direct mode)</h3>
+<ul>
+<li><strong>Objective</strong>: Create etch mask protecting the active junction while exposing the BE landing pad area.</li>
+<li><strong>Equipment / Tool</strong>: Automated Spin Coater.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Spin standard positive resist (e.g., AZ 1512 or Megaposit SPR 220) at 3000 rpm (thickness ~1.2 µm).</li>
+<li>Soft bake: 100 °C for 60 s.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-5.2-photolithographic-alignment-exposure-mask-02" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.2-photolithographic-alignment-exposure-mask-02">Step 5.2: Photolithographic Alignment &amp; Exposure (Mask 02)</h3>
+<ul>
+<li><strong>Objective</strong>: Align via mask relative to underlying BE fiducial marks.</li>
+<li><strong>Equipment / Tool</strong>: Mask Aligner (Süss MA6).</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Layer-to-layer optical alignment (tolerance &lt; 0.5 µm).</li>
+<li>Exposure Dose: 80–120 mJ/cm² (calibrated for thin positive resist).</li>
+<li>Development: AZ 726 MIF for 45 s, DI cascade rinse, N2 blow-dry.</li>
+<li>Inspection: Verify via opening directly over BE pad extension.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-5.3-reactive-ion-etching-rie-of-5-nm-sinx" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.3-reactive-ion-etching-rie-of-5-nm-sinx">Step 5.3: Reactive Ion Etching (RIE) of 5 nm SiNx</h3>
+<ul>
+<li><strong>Objective</strong>: Anisotropically etch 5 nm SiNx to expose TiN bottom electrode contact pad with high selectivity to TiN.</li>
+<li><strong>Equipment / Tool</strong>: Fluorine RIE / ICP-RIE System (e.g., Oxford Plasmalab 80 Plus).</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Etch Gases: CHF3 = 30 sccm, O2 = 2–5 sccm (or CF4/Ar chemistry: 25 sccm CF4 / 10 sccm Ar).</li>
+<li>Chamber Pressure: 30–40 mTorr.</li>
+<li>RF Power: 30–50 W (DC bias ~80–120 V).</li>
+<li>Etch Rate: ~0.4–0.6 nm/s.</li>
+<li>Process Time: 12–15 s (includes 20% over-etch to clear interfacial layer; TiN acts as an etch stop).</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-5.4-resist-strip-clean" class="level3">
+<h3 class="anchored" data-anchor-id="step-5.4-resist-strip-clean">Step 5.4: Resist Strip &amp; Clean</h3>
+<ul>
+<li><strong>Objective</strong>: Strip via patterning resist without chemically altering the exposed 5 nm SiNx active area.</li>
+<li><strong>Equipment / Tool</strong>: Wet Solvent Bench + Mild Downstream O2 Asher.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Solvent strip in Acetone (ambient) followed by IPA rinse (avoid prolonged aggressive oxidizing piranha to protect TiN and thin SiNx).</li>
+<li>Quick O2 descum in barrel asher: 30 W for 30 s.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="module-6-lithography-3-top-electrode-te-lift-off-patterning" class="level2">
+<h2 class="anchored" data-anchor-id="module-6-lithography-3-top-electrode-te-lift-off-patterning">Module 6: Lithography 3 – Top Electrode (TE) Lift-Off Patterning</h2>
+<section id="step-6.1-dehydration-bake" class="level3">
+<h3 class="anchored" data-anchor-id="step-6.1-dehydration-bake">Step 6.1: Dehydration Bake</h3>
+<ul>
+<li><strong>Equipment / Tool</strong>: Vacuum Hotplate.</li>
+<li><strong>Recipe / Operating Parameters</strong>: 110 °C for 2 min, chill plate for 30 s.</li>
+</ul>
+</section>
+<section id="step-6.2-resist-coating-az-2070-negative-photoresist" class="level3">
+<h3 class="anchored" data-anchor-id="step-6.2-resist-coating-az-2070-negative-photoresist">Step 6.2: Resist Coating (AZ 2070 Negative Photoresist)</h3>
+<ul>
+<li><strong>Equipment / Tool</strong>: Automated Spin Coater.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Dispense AZ 2070; spin at 3000–4000 rpm for 45 s (thickness ~6.5–7.0 µm).</li>
+<li>Automated backside rinse &amp; EBR.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-6.3-soft-bake" class="level3">
+<h3 class="anchored" data-anchor-id="step-6.3-soft-bake">Step 6.3: Soft Bake</h3>
+<ul>
+<li><strong>Equipment / Tool</strong>: Precision Vacuum Contact Hotplate.</li>
+<li><strong>Recipe / Operating Parameters</strong>: 110 °C for 60 s; cool down on chill plate.</li>
+</ul>
+</section>
+<section id="step-6.4-photolithographic-alignment-exposure-mask-03" class="level3">
+<h3 class="anchored" data-anchor-id="step-6.4-photolithographic-alignment-exposure-mask-03">Step 6.4: Photolithographic Alignment &amp; Exposure (Mask 03)</h3>
+<ul>
+<li><strong>Objective</strong>: Align top electrode tracks perpendicularly across bottom lines (forming crossbar nanodevices) and cover open bottom pad.</li>
+<li><strong>Equipment / Tool</strong>: Mask Aligner (Süss MA6).</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Multi-layer mask alignment to Mask 01 fiducials.</li>
+<li>Mode: Vacuum contact.</li>
+<li>i-line exposure dose: 140–180 mJ/cm².</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-6.5-post-exposure-bake-peb" class="level3">
+<h3 class="anchored" data-anchor-id="step-6.5-post-exposure-bake-peb">Step 6.5: Post-Exposure Bake (PEB)</h3>
+<ul>
+<li><strong>Equipment / Tool</strong>: Precision Vacuum Contact Hotplate.</li>
+<li><strong>Recipe / Operating Parameters</strong>: 110 °C for 60 s; chill plate for 30 s.</li>
+</ul>
+</section>
+<section id="step-6.6-development-descum" class="level3">
+<h3 class="anchored" data-anchor-id="step-6.6-development-descum">Step 6.6: Development &amp; Descum</h3>
+<ul>
+<li><strong>Equipment / Tool</strong>: Wet Bench &amp; Downstream Asher.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Immersion/puddle development in AZ 726 MIF for 65 s.</li>
+<li>DI cascade rinse &gt; 60 s, N2 dry.</li>
+<li>Mild O2 plasma descum: 30 W, 50 mTorr, 20 s (removes scum from junction window without punching through the 5 nm SiNx barrier).</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="module-7-top-electrode-metallisation-final-device-release" class="level2">
+<h2 class="anchored" data-anchor-id="module-7-top-electrode-metallisation-final-device-release">Module 7: Top Electrode Metallisation &amp; Final Device Release</h2>
+<section id="step-7.1-top-tin-sputtering-60-nm" class="level3">
+<h3 class="anchored" data-anchor-id="step-7.1-top-tin-sputtering-60-nm">Step 7.1: Top TiN Sputtering (60 nm)</h3>
+<ul>
+<li><strong>Objective</strong>: Deposit pristine top electrode layer directly capping the active 5 nm SiNx barrier.</li>
+<li><strong>Equipment / Tool</strong>: DC Magnetron Sputter System.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Target: Pure Ti (99.995%) reactive sputter with N2 (identical baseline to Step 3.2).</li>
+<li>Base Pressure: &lt; 5 × 10⁻⁷ Torr.</li>
+<li>Working Pressure: 3.0 mTorr (Ar = 20 sccm, N2 = 4–6 sccm).</li>
+<li>DC Sputter Power: 250 W (keep substrate near ambient to prevent dielectric breakdown or elemental interdiffusion).</li>
+<li>Deposition Time: ~400 s to reach <strong>60 nm TiN</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="step-7.2-final-lift-off-resist-removal" class="level3">
+<h3 class="anchored" data-anchor-id="step-7.2-final-lift-off-resist-removal">Step 7.2: Final Lift-Off &amp; Resist Removal</h3>
+<ul>
+<li><strong>Objective</strong>: Dissolve AZ 2070 to leave behind isolated TE lines and probe bonding pads.</li>
+<li><strong>Equipment / Tool</strong>: Solvent Bench with heated ultrasonic immersion bath.</li>
+<li><strong>Recipe / Operating Parameters</strong>:
+<ul>
+<li>Heated NMP or TechniStrip NI555 at 75 °C for 45–90 min.</li>
+<li>Gentle sonication (intermittent 10-second pulses at low power) to assist flake separation.</li>
+<li>Thorough flush with fresh IPA to prevent redeposition of particulate metal flakes.</li>
+<li>Cascade DI water rinse.</li>
+<li>Controlled blow-dry under dry N2.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="module-8-quality-control-electrical-metrology" class="level2">
+<h2 class="anchored" data-anchor-id="module-8-quality-control-electrical-metrology">Module 8: Quality Control &amp; Electrical Metrology</h2>
+<section id="step-8.1-physical-inspection" class="level3">
+<h3 class="anchored" data-anchor-id="step-8.1-physical-inspection">Step 8.1: Physical Inspection</h3>
+<ul>
+<li><strong>Optical Inspection</strong>: Check alignment tolerances (BE/Via, BE/TE overlap), confirm edge clearance and absence of metal flagging.</li>
+<li><strong>Atomic Force Microscopy (AFM)</strong>: Inspect top electrode roughness (<span class="math inline">\(R_q &lt; 1.0\text{ nm}\)</span>) and BE-to-SiNx step coverage profile.</li>
+<li><strong>Cross-Sectional Focused Ion Beam / SEM (FIB-SEM)</strong>: Validate junction layer integrity:
+<ul>
+<li><span class="math inline">\(\text{TiN (BE)} \approx 60\text{ nm}\)</span></li>
+<li><span class="math inline">\(\text{SiN}_x \approx 5\text{ nm}\)</span></li>
+<li><span class="math inline">\(\text{TiN (TE)} \approx 60\text{ nm}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="step-8.2-initial-electrical-screening" class="level3">
+<h3 class="anchored" data-anchor-id="step-8.2-initial-electrical-screening">Step 8.2: Initial Electrical Screening</h3>
+<ul>
+<li><strong>Equipment / Tool</strong>: Semi-automated Cryogenic/Ambient Probe Station coupled to a Semiconductor Parameter Analyser (e.g., Keysight B1500A / Keithley 4200A-SCS).</li>
+<li><strong>Test Sequence</strong>:
+<ol type="1">
+<li>Low-voltage ohmic continuity verification on BE and TE line monitors.</li>
+<li>DC IV sweep (0 V → <span class="math inline">\(+V_{\text{form}} \to -V_{\text{reset}}\)</span>) with strict compliance current (<span class="math inline">\(I_{\text{CC}} = 10\text{--}100\ \mu\text{A}\)</span>) to test electroforming and non-volatile resistive switching.</li>
+<li>Pulsed potentiation/depression testing to evaluate analog synaptic weight updates for neuromorphic applications.</li>
+</ol></li>
+</ul>
+</section>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

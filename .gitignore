@@ -2,3 +2,6 @@ bin/
 
 .DS_Store
 **/.DS_Store
+
+# Quarto-generated HTML dependencies
+*_files/

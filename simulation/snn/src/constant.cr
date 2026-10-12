@@ -1,0 +1,15 @@
+NETWORK_NODE_COUNT      = [2312_u32, 100_u32, 10_u32]
+MICROSECONDS_PER_MS     =     1_000_u64
+MS_PER_SECOND           =     1_000_u64
+MICROSECONDS_PER_SECOND = 1_000_000_u64
+SAMPLE_CAPACITY         = 4
+TRAIN_DATA              = "./data/Train"
+TEST_DATA               = "./data/Test"
+LAYER_LATENCY           = 1_000_u64
+MAX_DRIFT               = 990_u64
+MAX_WORKERS             = 8u32               # 2^3
+MAX_NODES_PER_LAYER     = 4096u32            # 2^12
+WORKERS_SHIFT           = 3u32
+NODES_PER_LAYER_SHIFT   = 12u32
+WORKERS_MASK            = (1u32 << WORKERS_SHIFT) - 1u32          # 0x7
+NODES_PER_LAYER_MASK    = (1u32 << NODES_PER_LAYER_SHIFT) - 1u32  # 0xFFF
