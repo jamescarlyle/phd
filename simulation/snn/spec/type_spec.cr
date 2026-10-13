@@ -24,8 +24,8 @@ describe "Compile-Time Type Configuration" do
       result.should be_false
     end
   {% else %}
-    it "binds ActiveNode to AccumulatorNode(UInt64) by default" do
-      ActiveNode.should eq(AccumulatorNode(UInt64))
+    it "binds ActiveNode to AccumulatorNode by default" do
+      ActiveNode.should eq(AccumulatorNode)
       ActivePayload.should eq(UInt64)
       ActiveReturn.should eq(UInt64)
     end

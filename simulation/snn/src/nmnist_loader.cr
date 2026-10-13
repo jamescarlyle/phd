@@ -1,9 +1,9 @@
 record AddressEvent, x : UInt32, y : UInt32, p : UInt32, t : UInt64
-record NMnistSample, events : Array(AddressEvent), label : UInt32
+record NMnistSample, events : Array(AddressEvent), label : UInt8
 
 module NMnistLoader
   # Helper method for recursive directory traversal.
-  private def self.scan_directory(dir : String, all_files : Array({String, UInt32}))
+  private def self.scan_directory(dir : String, all_files : Array({String, UInt8}))
     return unless Dir.exists?(dir)
     Dir.each_child(dir) do |child|
       path = File.join(dir, child)
@@ -12,7 +12,7 @@ module NMnistLoader
       elsif path.ends_with?(".bin")
          parent = File.basename(File.dirname(path))
         if parent.matches?(/^[0-9]$/)
-          all_files << {path, parent.to_u32}
+          all_files << {path, parent.to_u8}
         end
       end
     end
@@ -20,7 +20,7 @@ module NMnistLoader
 
   def self.stream_samples(target_dir : String, num_samples : UInt32, channel : Channel(NMnistSample)) : Void
     return if num_samples <= 0
-    all_files = [] of {String, UInt32}
+    all_files = [] of {String, UInt8}
     scan_directory(target_dir, all_files)
     return if all_files.empty?
 

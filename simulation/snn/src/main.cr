@@ -15,9 +15,9 @@ def train_and_test(network_type, layer_sizes, train_samples_count, test_samples_
 
   network = case network_type
   when "lif"
-    Network(LIFNode, Float64, Bool).new(layer_sizes, worker_count: MAX_WORKERS, layer_latency: LAYER_LATENCY, max_drift: MAX_DRIFT, training: true)
+    Network(LIFNode, Tuple(UInt8, Float64), Tuple(UInt8, Bool)).new(layer_sizes, worker_count: MAX_WORKERS, layer_latency: LAYER_LATENCY, max_drift: MAX_DRIFT, training: true)
   when "accumulator"
-    Network(AccumulatorNode(UInt64), UInt64, UInt64).new(layer_sizes, worker_count: MAX_WORKERS, layer_latency: LAYER_LATENCY, max_drift: MAX_DRIFT, training: true)
+    Network(AccumulatorNode, UInt64, UInt64).new(layer_sizes, worker_count: MAX_WORKERS, layer_latency: LAYER_LATENCY, max_drift: MAX_DRIFT, training: true)
   else
     raise "Unknown network type: #{network_type}. Use 'lif' or 'accumulator'."
   end
@@ -26,7 +26,7 @@ def train_and_test(network_type, layer_sizes, train_samples_count, test_samples_
     sample_counter += 1
     network.reset(NMnistLoader.sample_start_time(sample), NMnistLoader.sample_end_time(sample))
     sample.events.each do |event|
-      network.input(NMnistLoader.flatten(event), event.t)
+      network.input(NMnistLoader.flatten(event), event.t, {sample.label, 1.0})
     end
     network.run
     puts "Trained sample #{sample_counter}/#{train_samples_count}" if sample_counter % 100 == 0

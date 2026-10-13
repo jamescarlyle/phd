@@ -121,23 +121,35 @@ class Network(N, P, R)
     @sync_mgr.reset(start_time, last_process_time)
   end
 
-  def input(node_id : UInt32, process_at : UInt64, payload : P = P.new(1)) : Void
+  def input(node_id : UInt32, process_at : UInt64, raw_payload) : Void
+    payload = uninitialized P
+    {% if P == Tuple(UInt8, Float64) %}
+      # If raw_payload is a tuple like {label, value}, extract and cast them
+      tuple_payload = raw_payload.as(Tuple(UInt8, Float64))
+      payload = {tuple_payload[0].to_u8, tuple_payload[1].to_f64}
+    {% elsif P == UInt64 %}
+      # If the network expects a UInt64, convert the raw input
+      payload = 1_u64
+    {% else %}
+      # Fallback cast
+      payload = raw_payload.as(P)
+    {% end %}
     target_worker_id = worker_id_for_node(node_id)
     target_local_idx = worker_local_node_idx(node_id)
-    @workers[target_worker_id].schedule(target_local_idx, process_at, 1_u64)
+    @workers[target_worker_id].schedule(target_local_idx, process_at, payload)
   end
 
-  def propagate(from_node : N, from_time : UInt64, state : R) : Nil
-    {% if R == Bool %}
-      return unless state
+  def propagate(from_node : N, from_time : UInt64, process_result : R) : Nil
+    {% if R == Tuple(UInt8, Bool) %}
+      return unless process_result[1]
     {% end %}
     target_time = from_time + @layer_latency
     from_node.routes.each do |route|
       payload = uninitialized P
-      {% if P == Float64 %}
-        payload = route.weight
+      {% if R == Tuple(UInt8, Bool) %}
+        payload = {process_result[0], route.weight}
       {% else %}
-        payload = state
+        payload = process_result
       {% end %}
       @workers[route.target_worker_id].schedule(route.target_local_node_idx, target_time, payload)
     end

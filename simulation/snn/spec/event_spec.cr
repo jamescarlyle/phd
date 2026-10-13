@@ -13,4 +13,11 @@ describe Event do
     event = Event.new(1_u32, 200_u64, 0.75_f64)
     event.payload.should eq 0.75_f64
   end
+
+  it "initializes with labelled payloads" do
+    event = Event.new(1_u32, 200_u64, {0.75_f64, 1_u8})
+    event.payload[0].should eq 0.75
+    event.payload[1].should eq 1
+  end
+
 end

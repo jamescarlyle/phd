@@ -42,10 +42,10 @@ class Worker(N, P, R)
     events = @clock.advance_to(horizon)
     events.each do |event|
       process_node = @nodes[event.target_local_node_idx]
-      new_state = process_node.process(event)
-      @network.propagate(process_node, event.scheduled_time, new_state)
+      process_result = process_node.process(event)
+      @network.propagate(process_node, event.scheduled_time, process_result)
     end
-    @network.record_progress(worker_id, @clock.next_tick)
+    @network.record_progress(@worker_id, @clock.next_tick)
     :iterated
   end
 

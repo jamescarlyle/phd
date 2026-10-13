@@ -7,7 +7,8 @@ class Buffer(P)
 
     def initialize(seq : UInt64)
       @sequence = Atomic(UInt64).new(seq)
-      @event = Event.new(0_u64, 0_u64, P.zero)
+      dummy_payload = uninitialized P
+      @event = Event.new(0_u64, 0_u64, dummy_payload)
     end
   end
 

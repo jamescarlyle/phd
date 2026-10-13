@@ -7,7 +7,7 @@ require "./node/*"
   alias ActivePayload = Float64
   alias ActiveReturn = Bool
 {% else %}
-  alias ActiveNode = AccumulatorNode(UInt64)
+  alias ActiveNode = AccumulatorNode
   alias ActivePayload = UInt64
   alias ActiveReturn = UInt64
 {% end %}

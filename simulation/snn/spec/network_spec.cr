@@ -8,8 +8,8 @@ require "../src/event"
 require "./support/worker_schedule_probe"
 require "./support/network_probe"
 
-alias LIFNetwork = Network(LIFNode, Float64, Bool)
-alias AccumulatorNetwork = Network(AccumulatorNode(UInt64), UInt64, UInt64)
+alias LIFNetwork = Network(LIFNode, Tuple(UInt8, Float64), Tuple(UInt8, Bool))
+alias AccumulatorNetwork = Network(AccumulatorNode, UInt64, UInt64)
 
 describe Network do
   describe "#initialize and construction helpers" do
@@ -227,11 +227,11 @@ describe Network do
       network = AccumulatorNetwork.new([10_u32], MAX_WORKERS)
 
       # Node 0 should go to worker 0 (0 % 8 = 0)
-      network.input(0_u32, 100_u64)
+      network.input(0_u32, 100_u64, 0_u64)
       # Node 1 should go to worker 1 (1 % 8 = 1)
-      network.input(1_u32, 100_u64)
+      network.input(1_u32, 100_u64, 0_u64)
       # Node 8 should go to worker 0 (8 % 8 = 0)
-      network.input(8_u32, 100_u64)
+      network.input(8_u32, 100_u64, 0_u64)
 
       worker_for_node_0 = network.worker_for_node(0)
       worker_for_node_1 = network.worker_for_node(1)
@@ -248,7 +248,7 @@ describe Network do
       expected_worker_id = network.worker_id_for_node(node_id)
       workers = network.workers_for_spec
 
-      network.input(node_id, process_at)
+      network.input(node_id, process_at, 0_u64)
 
       workers.each do |worker|
         if worker.worker_id == expected_worker_id
@@ -353,7 +353,7 @@ describe Network do
 
       # Enqueue an input event for node 0 to be processed at time 5.
       process_at = 90_u64
-      network.input(input_node.node_id, process_at)
+      network.input(input_node.node_id, process_at, 0_u64)
       # The event should now be scheduled in the clock at time 100.
 
       # Step time forward to so that the next tick processes the specified time (half open).
@@ -389,8 +389,8 @@ describe Network do
       worker0 = network.workers[0]
 
       # Simulate some progression: enqueue and drain to move clocks.
-      network.input(0_u32, 10_u64)
-      network.input(0_u32, 20_u64)
+      network.input(0_u32, 10_u64, 0_u64)
+      network.input(0_u32, 20_u64, 0_u64)
 
       # Manually advance their clocks a bit.
       worker0.iterate
@@ -413,7 +413,7 @@ describe Network do
         node = LIFNode.new(1_u32)
         route = Route.new(0, 0)
         node.add_route(route)
-        network.propagate(node, 10_u64, false)
+        network.propagate(node, 10_u64, {1_u8, false})
         worker.scheduled_events.should be_empty
       end
 
@@ -426,16 +426,16 @@ describe Network do
         route2 = Route.new(weight: 2.5, target_worker_id: 0, target_local_node_idx: 3)
         node.add_route(route1)
         node.add_route(route2)
-        network.propagate(node, 10_u64, true)
+        network.propagate(node, 10_u64, {1_u8, true})
 
         worker.scheduled_events.size.should eq(2)
         worker.scheduled_events[0].target_local_node_idx.should eq(2)
         worker.scheduled_events[0].scheduled_time.should eq(15_u64) # 10 + 5
-        worker.scheduled_events[0].payload.should eq(1.5) # route weight
+        worker.scheduled_events[0].payload.should eq({1_u8, 1.5}) # route weight
 
         worker.scheduled_events[1].target_local_node_idx.should eq(3)
         worker.scheduled_events[1].scheduled_time.should eq(15_u64)
-        worker.scheduled_events[1].payload.should eq(2.5)
+        worker.scheduled_events[1].payload.should eq({1, 2.5})
       end
     end
 
@@ -456,11 +456,6 @@ describe Network do
       end
     end
   end
-
-
-
-
-
 
   describe "sample-end marker integration" do
     it "exposes sync_mgr for sample end time management" do
@@ -515,10 +510,10 @@ describe Network do
       network.reset(t0, sample1_end)
 
       # Feed events
-      network.input(0_u32, 10_u64)
-      network.input(1_u32, 20_u64)
-      network.input(2_u32, 50_u64)
-      network.input(3_u32, 100_u64)
+      network.input(0_u32, 10_u64, 0_u64)
+      network.input(1_u32, 20_u64, 0_u64)
+      network.input(2_u32, 50_u64, 0_u64)
+      network.input(3_u32, 100_u64, 0_u64)
 
       # Manually advance workers to simulate processing
       network.workers.each(&.iterate)
@@ -535,9 +530,9 @@ describe Network do
       # TODO network.sync_mgr.all_workers_finished_sample?.should be_false
 
       # Feed sample 2 events
-      network.input(0_u32, 210_u64)
-      network.input(1_u32, 250_u64)
-      network.input(2_u32, 300_u64)
+      network.input(0_u32, 210_u64, 0_u64)
+      network.input(1_u32, 250_u64, 0_u64)
+      network.input(2_u32, 300_u64, 0_u64)
 
       # Advance workers
       network.workers.each(&.iterate)
@@ -673,7 +668,7 @@ describe Network do
 
       # Send external input to node (0, 0)
       in_node_id = net.node_id(0_u32, 0_u32)
-      net.input(in_node_id, 10_u64)
+      net.input(in_node_id, 10_u64, 0_u64)
 
       # Run the network to convergence
       net.run
@@ -694,6 +689,25 @@ describe Network do
         l2_node = net.node_by_id(net.node_id(2_u32, i))
         l2_node.processed_count.should eq(3_u64)
       end
+    end
+
+    it "propagates labels unchanged across layers" do
+      net = LIFNetwork.new([1_u32, 1_u32], 8_u32, layer_latency: 10_u64, max_drift: 5_u64)
+      net.reset(0_u64, 1000_u64)
+
+      # Send external input to node (0, 0) with event weight 1.0 label 1
+      in_node_id = net.node_id(0_u32, 0_u32)
+      net.input(in_node_id, 1_u64, {1_u8, 2.0})
+
+      # Run the network to convergence
+      # net.run
+      net.node_by_id(in_node_id).potential.should eq 0.0
+      net.workers.each(&.iterate)
+      # Node (0, 0) should have processed 1 event
+      net.node_by_id(in_node_id).potential.should eq -1.0
+
+      net.workers[0].scheduled_events[1].target_local_node_idx.should eq(1_u32)
+      net.workers[0].scheduled_events[1].payload[0].should eq(1_u8)
     end
   end
 end
