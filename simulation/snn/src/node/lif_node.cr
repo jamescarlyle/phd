@@ -19,6 +19,11 @@ class LIFNode < Node(Tuple(UInt8, Float64), Tuple(UInt8, Bool))
     @potential += event.payload[1]
     @last_update_time = event.scheduled_time
     return {event.payload[0], false} unless @potential > V_THRESHOLD
+
+    # apply_vdsp(layer_idx, post_neuron, time) if @training
+    # layer.voltages[post_neuron] = V_RESET
+    # layer.consider_lateral_inhibition(post_neuron)
+
     @potential = V_RESET
     {event.payload[0], true}
   end

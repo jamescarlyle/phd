@@ -143,6 +143,12 @@ class Network(N, P, R)
     {% if R == Tuple(UInt8, Bool) %}
       return unless process_result[1]
     {% end %}
+
+    # apply_vdsp(layer_idx, post_neuron, time) if @training
+    # layer.voltages[post_neuron] = V_RESET
+    # layer.consider_lateral_inhibition(post_neuron)
+
+
     target_time = from_time + @layer_latency
     from_node.routes.each do |route|
       payload = uninitialized P
