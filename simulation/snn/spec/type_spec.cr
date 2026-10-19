@@ -47,9 +47,9 @@ describe "Compile-Time Type Configuration" do
 
   it "verifies route addition capabilities on the active node" do
     node = ActiveNode.new(1_u32)
-    route = Route.new(0_u32, 10_u32)
-    node.add_route(route)
-    node.routes.size.should eq(1)
-    node.routes.first.target_worker_id.should eq(0_u32)
+    route = TargetRoute.new(0_u32, 10_u32)
+    node.add_target_route(route)
+    node.target_routes.size.should eq(1)
+    node.target_routes.first.target_worker_id.should eq(0_u32)
   end
 end

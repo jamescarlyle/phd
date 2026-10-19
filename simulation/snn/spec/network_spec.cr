@@ -411,8 +411,8 @@ describe Network do
         network = LIFNetwork.new([1_u32], 1_u32)
         worker = network.workers[0]
         node = LIFNode.new(1_u32)
-        route = Route.new(0, 0)
-        node.add_route(route)
+        route = TargetRoute.new(0, 0)
+        node.add_target_route(route)
         network.propagate(node, 10_u64, {1_u8, false})
         worker.scheduled_events.should be_empty
       end
@@ -422,20 +422,20 @@ describe Network do
         worker = network.workers[0]
         node = LIFNode.new(1_u32)
 
-        route1 = Route.new(weight: 1.5, target_worker_id: 0, target_local_node_idx: 2)
-        route2 = Route.new(weight: 2.5, target_worker_id: 0, target_local_node_idx: 3)
-        node.add_route(route1)
-        node.add_route(route2)
+        route1 = TargetRoute.new(target_worker_id: 0, target_local_node_idx: 2) #TODO weight: 1.5,
+        route2 = TargetRoute.new(target_worker_id: 0, target_local_node_idx: 3) #TODO weight: 2.5,
+        node.add_target_route(route1)
+        node.add_target_route(route2)
         network.propagate(node, 10_u64, {1_u8, true})
 
         worker.scheduled_events.size.should eq(2)
         worker.scheduled_events[0].target_local_node_idx.should eq(2)
         worker.scheduled_events[0].scheduled_time.should eq(15_u64) # 10 + 5
-        worker.scheduled_events[0].payload.should eq({1_u8, 1.5}) # route weight
+        worker.scheduled_events[0].payload.should eq({1_u8, 0.0})
 
         worker.scheduled_events[1].target_local_node_idx.should eq(3)
         worker.scheduled_events[1].scheduled_time.should eq(15_u64)
-        worker.scheduled_events[1].payload.should eq({1, 2.5})
+        worker.scheduled_events[1].payload.should eq({1, 0.0}) # 2.5 route weight
       end
     end
 
@@ -444,8 +444,8 @@ describe Network do
         network = AccumulatorNetwork.new([1_u32], 1_u32, layer_latency: 10)
         worker = network.workers[0]
         node = AccumulatorNode.new(1_u32, 0_u64)
-        route = Route.new(weight: 99.9, target_worker_id: 0, target_local_node_idx: 1)
-        node.add_route(route)
+        route = TargetRoute.new(target_worker_id: 0, target_local_node_idx: 1) # weight: 99.9,
+        node.add_target_route(route)
 
         network.propagate(node, 5_u64, 42)
 
@@ -628,14 +628,14 @@ describe Network do
 
       # Check layer 0 nodes: each must have 10 routes connecting to all nodes of layer 1
       src_node_0 = net.node_by_id(net.node_id(0_u32, 0_u32))
-      src_node_0.routes.size.should eq(10)
+      src_node_0.target_routes.size.should eq(10)
 
       10_u32.times do |target_n_idx|
         expected_target_id = net.node_id(1_u32, target_n_idx)
         expected_worker_id = net.worker_id_for_node(expected_target_id)
         expected_local_idx = net.worker_local_node_idx(expected_target_id)
 
-        route = src_node_0.routes[target_n_idx]
+        route = src_node_0.target_routes[target_n_idx]
         route.target_worker_id.should eq(expected_worker_id)
         route.target_local_node_idx.should eq(expected_local_idx)
 
@@ -645,21 +645,21 @@ describe Network do
 
       # Check layer 1 nodes: each must have 200 routes connecting to layer 2
       src_node_l1 = net.node_by_id(net.node_id(1_u32, 5_u32))
-      src_node_l1.routes.size.should eq(200)
+      src_node_l1.target_routes.size.should eq(200)
 
       200_u32.times do |target_n_idx|
         expected_target_id = net.node_id(2_u32, target_n_idx)
         expected_worker_id = net.worker_id_for_node(expected_target_id)
         expected_local_idx = net.worker_local_node_idx(expected_target_id)
 
-        route = src_node_l1.routes[target_n_idx]
+        route = src_node_l1.target_routes[target_n_idx]
         route.target_worker_id.should eq(expected_worker_id)
         route.target_local_node_idx.should eq(expected_local_idx)
       end
 
       # Check layer 2 nodes (last layer): 0 routes
       src_node_l2 = net.node_by_id(net.node_id(2_u32, 0_u32))
-      src_node_l2.routes.size.should eq(0)
+      src_node_l2.target_routes.size.should eq(0)
     end
 
     it "delivers events and propagates across layers without per-event translation in hot path" do

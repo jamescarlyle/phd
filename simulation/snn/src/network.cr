@@ -66,27 +66,49 @@ class Network(N, P, R)
   private def build_routes : Void
     return if @layer_sizes.size < 2
 
-    (@layer_sizes.size - 1).times do |layer_idx|
-      next_layer_idx = layer_idx.to_u32 + 1_u32
+    (@layer_sizes.size - 1).times do |current_layer_idx|
+      current_layer_size = @layer_sizes[current_layer_idx]
+      next_layer_idx = current_layer_idx.to_u32 + 1_u32
       next_layer_size = @layer_sizes[next_layer_idx]
 
-      next_routes = Array(Route).new(next_layer_size.to_i)
-      next_layer_size.times do |target_node_idx|
-        target_id = node_id(next_layer_idx, target_node_idx)
-        next_routes << Route.new(
-          worker_id_for_node(target_id),
-          worker_local_node_idx(target_id)
-        )
-      end
-
-      current_layer_size = @layer_sizes[layer_idx]
       current_layer_size.times do |source_node_idx|
-        src_id = node_id(layer_idx.to_u32, source_node_idx)
+        src_id = node_id(current_layer_idx.to_u32, source_node_idx)
         src_node = node_by_id(src_id)
-        next_routes.each do |route|
-          src_node.add_route(route)
+        src_worker_id = worker_id_for_node(src_id)
+
+        next_layer_size.times do |target_node_idx|
+          target_id = node_id(next_layer_idx, target_node_idx)
+          target_node = node_by_id(target_id)
+          src_node.add_target_route(TargetRoute.new(worker_id_for_node(target_id), worker_local_node_idx(target_id)))
+          target_node.add_source_route(SourceRoute.new(src_worker_id, source_node_idx))
         end
       end
+
+
+#       next_routes = Array(TargetRoute).new(next_layer_size.to_i)
+#       next_layer_size.times do |target_node_idx|
+#         target_id = node_id(next_layer_idx, target_node_idx)
+#         next_routes << TargetRoute.new(
+#           worker_id_for_node(target_id),
+#           worker_local_node_idx(target_id)
+#         )
+#       end
+#
+#       current_layer_size.times do |source_node_idx|
+#         src_id = node_id(current_layer_idx.to_u32, source_node_idx)
+#         src_node = node_by_id(src_id)
+#
+#         next_routes.each do |route|
+#           src_node.add_target_route(route)
+#
+#         end
+#       end
+
+
+
+
+
+
     end
   end
 
@@ -150,10 +172,10 @@ class Network(N, P, R)
 
 
     target_time = from_time + @layer_latency
-    from_node.routes.each do |route|
+    from_node.target_routes.each do |route|
       payload = uninitialized P
       {% if R == Tuple(UInt8, Bool) %}
-        payload = {process_result[0], route.weight}
+        payload = {process_result[0], 0.0} # TODO route.weight
       {% else %}
         payload = process_result
       {% end %}

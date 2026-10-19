@@ -73,10 +73,10 @@ end
 describe Node do
   it "manages routes properly through inheritance" do
     node = AccumulatorNode.new(1_u32)
-    route = Route.new(0, 0)
+    route = TargetRoute.new(0, 0)
 
-    node.routes.should be_empty
-    node.add_route(route)
-    node.routes.size.should eq(1)
+    node.target_routes.should be_empty
+    node.add_target_route(route)
+    node.target_routes.size.should eq(1)
   end
 end
