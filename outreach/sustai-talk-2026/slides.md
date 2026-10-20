@@ -6,6 +6,23 @@ headingDivider: 1
 footer: 'James Carlyle Neuromorphic Research Update October 2026'
 style: |
   section {font-size: 1.3em}
+  img[alt~="vertical-right"] {
+    float: right;
+    clear: right;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    width: 50%;
+  }
+  section[data-marpit-advanced-background="background"] > div,
+  .marpit-bg-container > div,
+  .marpit-bg-container > figure {
+    padding: 15px 0px !important;
+    box-sizing: border-box !important;
+  }
+  section::after img,
+  .marpit-bg-container img {
+    object-fit: contain !important;
+  }
 ---
 
 # Research: Hardware-aware in-situ learning in an analog spiking neural network.
@@ -90,6 +107,14 @@ Researchers at HP Labs built the first working memristor in 2008.
 
 <!-- _footer: "1. https://www.nature.com/articles/s41928-018-0074-4" -->
 
+# What roles can memristors play in neuromorphic computing?
+
+- As a synapse, with a programmable weight. This requires **non-volatile** behaviour, as the memristor creates a summable current based on a known voltage at a known resistance.
+- As a neuron, with a highly non-linear voltage-dependent resistance. This requires repeatable, consistent **volatile** behaviour, as the memristor breaks down at a known voltage threshold to generate an output spike.
+
+![bg right:60% vertical contain](./images/D131-SA10-D29-3pulse-4V-2uS.png)
+![bg contain](./images/D131-SA10-H25-24-pulse-1_2V-20uS-3-runs.png)
+
 # What types of memristor exist? 
 
 4 types of memristor (even the taxonomy is debated):
@@ -116,13 +141,36 @@ Researchers at HP Labs built the first working memristor in 2008.
 
 <!-- _footer: "1. https://advanced.onlinelibrary.wiley.com/doi/full/10.1002/aisy.202000105" -->
 
-# What is in-situ learning?
+# What is in-situ (on-chip) learning?
 
-STDP
-VDSP
+- Spiking Neural Networks cannot use standard back-propagation, as the spikes cannot be differentiated. 
+- Surrogate gradient descent is one work-around, normally used off-chip. 
+- Spike Timing-Dependent Plasticity (STDP) depends on the relative timing of spikes of pre-synaptic and post-synaptic neurons. An example of Hebbian learning: "Neurons which fire together wire together."
+![bg right:60% height:400px](./images/prezioso-stdp.png)
+
+<!-- _footer: "1. https://www.nature.com/articles/s41467-018-07757-y" -->
+
+# What is in-situ (on-chip) learning?
+
+- STDP relies on the spike timing difference of neighbouring neurons.
+- A variant, Voltage Dependent Synaptic Plasticity (VDSP) relies on voltage difference between the "pre-synaptic neuron" and the "post-synaptic" neuron at its firing point.
+- VDSP relies on a negative reset voltage and an observable decay to a resting voltage.
+- Weight update is proportional to the voltage difference.
+![bg right:60% height:400px](./images/garg-vdsp.png)
+
+<!-- _footer: "1. https://www.frontiersin.org/journals/neuroscience/articles/10.3389/fnins.2022.983950/full" -->
 
 # What do we need hardware-awareness?
 
-C2C
+![bg right:50% vertical fit](./images/low-power-yifan-lu.png)
+![bg right:50% fit](./images/D131-SA10-D29-3pulse-4V-2uS.png)
+![bg right:50% fit](./images/D131-SA10-H25-24-pulse-1_2V-20uS-3-runs.png)
+
+- Memristors have significant Cycle-to-Cycle (C2C) and Device-to-Device (D2D) variability.
+- Often used in research as a source of entropy in random number generation. 
+- For synapses, we can accept C2C and D2D variability during training (e.g. more or fewer potentiation pulses) as long as we can continue to modify resistance in the right direction. We need stable resistance during inference.
+- For neurons, low C2C variability and consistent threshold firing is needed.
+
+<!-- _footer: "1. https://ieeexplore.ieee.org/document/9131823" -->
 
 # Initial results
