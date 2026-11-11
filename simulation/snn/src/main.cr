@@ -1,12 +1,12 @@
-require "./network"
-require "./nmnist_loader.cr"
-require "./constant"
-require "./type"
 require "option_parser"
+require "./network"
+require "./loader_adapter"
+require "./constant"
 
 Fiber::ExecutionContext.default.resize(maximum: MAX_WORKERS.to_i + LOADER_COUNT)
 # Default values for runtime:
 network_type = NETWORK_TYPE
+dataset_type = DATASET_TYPE
 layer_sizes = LAYER_SIZES
 train_samples_count = TRAIN_COUNT
 test_samples_count = TEST_COUNT
@@ -18,7 +18,7 @@ OptionParser.parse do |parser|
     network_type = n
   end
   parser.on("-l LAYER_SIZES", "--layer_sizes=LAYER_SIZES", "Number of nodes in network, by layer(default: #{LAYER_SIZES}). Note that if NMNIST data is fed, the input layer must have 2312 nodes.") do |l|
-    if parsed_count = l.split(',').map(&.strip.to_u32)
+    if parsed_count = l.split(',').map(&.strip.to_u16)
       layer_sizes = parsed_count
     else
       STDERR.puts "Error: '--layer_sizes' expects an comma-separated list of integers, got '#{l}'"
@@ -44,36 +44,44 @@ OptionParser.parse do |parser|
       exit(1)
     end
   end
-  parser.on("-f LABEL_FILTER", "--label_filter=LABEL_FILTER", "Specify the label filter (default: none)") do |f|
-    label_filter = f
+  parser.on("-d DATASET", "--dataset=DATASET", "Dataset type: mnist or nmnist") do |dataset|
+    dataset_type = dataset
+  end
+
+  parser.on("-f LABEL_FILTER", "--label_filter=LABEL_FILTER", "Specify the label filter (default: none)") do |filter|
+    label_filter = filter
   end
 end
 
-def train_and_test(network_type, layer_sizes, train_samples_count, test_samples_count, label_filter)
-  sample_channel = Channel(NMnistSample).new(capacity: SAMPLE_CAPACITY)
-  target_path = TRAIN_DATA + (label_filter ? "/#{label_filter}" : "")
-  spawn(name: "nmnist_loader") do
-    NMnistLoader.stream_samples(target_path, train_samples_count, sample_channel)
+train_and_test(network_type, layer_sizes, train_samples_count, test_samples_count, dataset_type, label_filter)
+
+def train_and_test(network_type, layer_sizes, train_samples_count, test_samples_count, dataset_type, label_filter)
+  dataset_loader = LoaderAdapter.build(dataset_type)
+  target_path = dataset_loader.target_path(TRAIN_DATA, label_filter)
+  sample_channel = Channel(DatasetSample).new(capacity: SAMPLE_CAPACITY)
+  # target_path = TRAIN_DATA + (label_filter ? "/#{label_filter}" : "")
+  spawn(name: "data_loader") do
+    dataset_loader.stream_samples(target_path, train_samples_count, sample_channel)
   end
 
   network = case network_type
   when "lif"
-    Network(LIFNode, Tuple(UInt8, Float64), Tuple(UInt8, Bool)).new(layer_sizes, worker_count: MAX_WORKERS, layer_latency: LAYER_LATENCY, max_drift: MAX_DRIFT, training: true)
+    Network(LIFNode, Float64, Bool).new(layer_sizes, slot_capacity: BUFFER_CAPACITY, training: true)
   when "accumulator"
-    Network(AccumulatorNode, UInt64, UInt64).new(layer_sizes, worker_count: MAX_WORKERS, layer_latency: LAYER_LATENCY, max_drift: MAX_DRIFT, training: true)
+    Network(AccumulatorNode, UInt64, UInt64).new(layer_sizes, slot_capacity: BUFFER_CAPACITY, training: true)
   else
     raise "Unknown network type: #{network_type}. Use 'lif' or 'accumulator'."
   end
   sample_counter = 0
   while sample = sample_channel.receive?
     sample_counter += 1
-    network.reset(NMnistLoader.sample_start_time(sample), NMnistLoader.sample_end_time(sample))
+    network.reset(dataset_loader.sample_start_time(sample), dataset_loader.sample_end_time(sample))
     sample.events.each do |event|
-      network.input(NMnistLoader.flatten(event), event.t, {sample.label, 1.0})
+      unless network.input(dataset_loader.flatten(event), event.t, 1.0)
+        raise "Input bucket full while loading event at #{event.t}"
+      end
     end
     network.run
     puts "Trained sample #{sample_counter}/#{train_samples_count}" if sample_counter % 100 == 0
   end
 end
-
-train_and_test(network_type, layer_sizes, train_samples_count, test_samples_count, label_filter)

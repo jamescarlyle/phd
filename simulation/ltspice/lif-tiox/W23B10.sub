@@ -1,0 +1,11 @@
+* Approximate image-derived bipolar hysteretic device
+* Currents in amperes; voltage in volts. Not a dynamic parameter fit.
+.subckt W23B10 p n
+Vref ref n 1
+Rstate x n 1k
+Sstate ref x p n MEMSW OFF
+.model MEMSW SW(Ron=1 Roff=1e12 Vt=-0.025 Vh=1.075)
+.func ion(v) {table(v,-1.4,-1.0m,-1.2,-0.36m,-1.1,-0.52m,-1.0,-0.76m,-0.8,-0.58m,-0.6,-0.39m,-0.4,-0.215m,-0.2,-0.083m,0,0,0.2,0.083m,0.4,0.20m,0.6,0.385m,0.8,0.575m,1.0,0.775m,1.2,0.955m,1.4,1.15m)}
+.func ioff(v) {table(v,-1.4,-0.4m,-1.2,-0.36m,-1.1,-0.29m,-1.0,-0.23m,-0.8,-0.125m,-0.6,-0.056m,-0.4,-0.0215m,-0.2,-0.0068m,-0.05,-0.0015m,0,0,0.05,3.4n,0.2,35n,0.4,0.24u,0.6,1.3u,0.8,4.8u,1.0,14u,1.2,30u,1.4,50u)}
+Bdevice p n I={V(x,n)*ion(V(p,n))+(1-V(x,n))*ioff(V(p,n))}
+.ends W23B10

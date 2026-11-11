@@ -26,12 +26,30 @@ end
 describe SyncManager do
 
   describe "#initialize" do
-    it "creates worker_clocks array with correct size" do
-      worker_count = 4_u32
-      sync_mgr = SyncManager.new(worker_count, 100_u64, 10_u64)
-      sync_mgr.layer_latency.should eq(100_u64)
-      sync_mgr.max_drift.should eq(10_u64)
-      sync_mgr.worker_count.should eq(worker_count)
+    it "rejects invalid worker, latency, and drift configurations" do
+      expect_raises(ArgumentError) { SyncManager.new(0_u32, 10_u64, 9_u64) }
+      expect_raises(ArgumentError) { SyncManager.new(9_u32, 10_u64, 9_u64) }
+      expect_raises(ArgumentError) { SyncManager.new(2_u32, 0_u64, 0_u64) }
+      expect_raises(ArgumentError) { SyncManager.new(2_u32, 10_u64, 0_u64) }
+      expect_raises(ArgumentError) { SyncManager.new(2_u32, 10_u64, 11_u64) }
+    end
+
+    it "checks worker IDs and reset interval ordering" do
+      mgr = SyncManager.new(2_u32, 10_u64, 9_u64)
+      expect_raises(IndexError) { mgr.worker_next_tick(2_u32) }
+      expect_raises(IndexError) { mgr.record_progress(2_u32, 1_u64) }
+      expect_raises(ArgumentError) { mgr.reset(10_u64, 9_u64) }
+    end
+
+    it "limits a worker to its own latency and peer progress plus drift" do
+      mgr = SyncManager.new(2_u32, 10_u64, 9_u64)
+      mgr.reset(0_u64, 100_u64)
+      mgr.horizon_next_tick(0_u32).should eq(9_u64)
+      mgr.record_progress(0_u32, 9_u64)
+      mgr.horizon_next_tick(0_u32).should eq(9_u64)
+      mgr.horizon_next_tick(1_u32).should eq(10_u64)
+      mgr.record_progress(1_u32, 10_u64)
+      mgr.horizon_next_tick(0_u32).should eq(19_u64)
     end
 
     it "initialises all clocks to 0" do
@@ -40,6 +58,27 @@ describe SyncManager do
         sync_mgr.worker_next_tick(idx).should eq(0_u64)
       end
     end
+  end
+
+  describe "#reset" do
+    it "allows drift equal to the minimum latency" do
+      mgr = SyncManager.new(2_u32, 10_u64, 10_u64)
+      mgr.reset(0_u64, 100_u64)
+      mgr.horizon_next_tick(0_u32).should eq(10_u64)
+    end
+
+    it "caps the horizon at the exclusive finish time" do
+      mgr = SyncManager.new(1_u32, 10_u64, 9_u64)
+      mgr.reset(5_u64, 12_u64)
+      mgr.horizon_next_tick(0_u32).should eq(12_u64)
+    end
+
+    it "saturates horizon arithmetic rather than overflowing UInt64" do
+      mgr = SyncManager.new(2_u32, 10_u64, 9_u64)
+      mgr.reset(UInt64::MAX - 3_u64, UInt64::MAX)
+      mgr.horizon_next_tick(0_u32).should eq(UInt64::MAX)
+    end
+
   end
 
   describe "#record_progress" do
@@ -57,14 +96,39 @@ describe SyncManager do
       sync_mgr.record_progress(0_u32, 150_u64)
       sync_mgr.worker_active?(0_u32).should be_false
     end
+
+    it "publishes completion only at the finish bound and can restart" do
+      mgr = SyncManager.new(1_u32, 10_u64, 9_u64)
+      mgr.reset(0_u64, 20_u64)
+      mgr.record_progress(0_u32, 19_u64)
+      mgr.worker_active?(0_u32).should be_true
+      mgr.record_progress(0_u32, 20_u64)
+      mgr.worker_active?(0_u32).should be_false
+      mgr.reset(3_u64, 30_u64)
+      mgr.worker_active?(0_u32).should be_true
+      mgr.worker_next_tick(0_u32).should eq(3_u64)
+    end
+
+    it "rejects progress regression without changing stored progress" do
+      mgr = SyncManager.new(1_u32, 10_u64, 9_u64)
+      mgr.reset(0_u64, 100_u64)
+      mgr.record_progress(0_u32, 10_u64)
+      expect_raises(ArgumentError) { mgr.record_progress(0_u32, 9_u64) }
+      mgr.worker_next_tick(0_u32).should eq(10_u64)
+    end
+
+    it "tests collective progress and ignores completed workers" do
+      mgr = SyncManager.new(2_u32, 10_u64, 9_u64)
+      mgr.reset(0_u64, 10_u64)
+      mgr.all_workers_at_time?(1_u64).should be_false
+      mgr.record_progress(0_u32, 10_u64)
+      mgr.record_progress(1_u32, 3_u64)
+      mgr.all_workers_at_time?(3_u64).should be_true
+      mgr.all_workers_at_time?(4_u64).should be_false
+    end
   end
 
   describe "#all_workers_at_time?" do
-    it "returns true when count is zero" do
-      sync_mgr = SyncManager.new(0)
-      sync_mgr.all_workers_at_time?(100).should be_true
-    end
-
     it "returns true when all active workers are exactly at the target" do
       sync_mgr = SyncManager.new(3)
       3_u32.times { |i| sync_mgr.set_worker_next_tick(i, 50) }
@@ -138,17 +202,6 @@ describe SyncManager do
   end
 
   describe "#horizon_next_tick" do
-    it "returns current_time + LAYER_LATENCY, or end_time, when there is only one worker" do
-      sync_mgr = SyncManager.new(1, layer_latency: 50)
-      sync_mgr.reset(50_u64, 500_u64)
-      sync_mgr.set_worker_next_tick(0, 100)
-      sync_mgr.horizon_next_tick(0).should eq(150_u64)
-      sync_mgr.set_worker_next_tick(0, 20)
-      sync_mgr.horizon_next_tick(0).should eq(70_u64)
-      sync_mgr.set_worker_next_tick(0, 470)
-      sync_mgr.horizon_next_tick(0).should eq(500_u64)
-    end
-
     it "returns the minimum peer tick plus MAX_DRIFT" do
       layer_latency = 1000_u64
       max_drift = 40_u64

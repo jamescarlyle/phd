@@ -41,9 +41,12 @@ class SyncManager
   getter layer_latency
   getter max_drift
   @start_time = Atomic(UInt64).new(0_u64)
-  @last_process_time = Atomic(UInt64).new(0_u64)
+  @end_time_exclusive = Atomic(UInt64).new(0_u64)
 
   def initialize(@worker_count : UInt32, @layer_latency : UInt64 = LAYER_LATENCY, @max_drift : UInt64 = MAX_DRIFT)
+    raise ArgumentError.new("Invalid worker count.") if @worker_count.zero? || @worker_count > MAX_WORKERS.to_u32
+    raise ArgumentError.new("Layer latency must be positive.") if @layer_latency.zero?
+    raise ArgumentError.new("Invalid maximum drift.") if @max_drift.zero? || @max_drift > layer_latency
     @worker_states = Array(WorkerState).new(worker_count) { WorkerState.new }
   end
 
@@ -91,10 +94,10 @@ class SyncManager
 
   # Workers cannot advance past peer workers + @max_drift.
   def horizon_next_tick(worker_id : UInt32) : UInt64
-    last_process_time = @last_process_time.get
+    end_time_exclusive = @end_time_exclusive.get
     this_worker_next_tick = worker_next_tick(worker_id)
     optimal_next_tick = saturating_add(this_worker_next_tick, @layer_latency)
-    optimal_next_tick = last_process_time if last_process_time < optimal_next_tick
+    optimal_next_tick = end_time_exclusive if end_time_exclusive < optimal_next_tick
     worker_count = @worker_count
     if worker_count > 1
       min_peer_next_tick = UInt64::MAX
@@ -114,17 +117,20 @@ class SyncManager
     optimal_next_tick
   end
 
-  def record_progress(worker_id : UInt32, worker_next_tick : UInt64) : Void
-    set_worker_next_tick(worker_id, worker_next_tick)
-    set_worker_active(worker_id, false) if worker_next_tick >= @last_process_time.get
+  def record_progress(worker_id : UInt32, new_tick : UInt64) : Void
+    previous_tick = worker_next_tick(worker_id)
+    raise ArgumentError.new("Worker progress cannot move backwards") if new_tick < previous_tick
+    set_worker_next_tick(worker_id, new_tick)
+    set_worker_active(worker_id, false) if new_tick >= @end_time_exclusive.get
   end
 
-  def reset(start_time : UInt64, last_process_time : UInt64) : Void
+  def reset(start_time : UInt64, end_time_exclusive : UInt64) : Void
+    raise ArgumentError.new("SyncManager cannot reset with a last time before a start time") if end_time_exclusive <= start_time
     @worker_states.each_with_index(0_u32) do |_, worker_id|
       set_worker_active(worker_id, true)
       set_worker_next_tick(worker_id, start_time)
     end
     @start_time.set(start_time)
-    @last_process_time.set(last_process_time)
+    @end_time_exclusive.set(end_time_exclusive)
   end
 end

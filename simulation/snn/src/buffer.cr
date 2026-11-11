@@ -8,25 +8,39 @@ class Buffer(P)
     def initialize(seq : UInt64)
       @sequence = Atomic(UInt64).new(seq)
       dummy_payload = uninitialized P
-      @event = Event.new(0_u64, 0_u64, dummy_payload)
+      @event = Event.new(0_u32, 0_u64, 0_u64, dummy_payload)
     end
   end
 
-  getter capacity : Int32
+  getter capacity : UInt32
   @mask : UInt64
   @buffer : Array(Cell(P))
   @tail : Atomic(UInt64)
   @head : UInt64
 
-  def initialize(@capacity : Int32 = 4096)
-    unless @capacity > 0 && (@capacity & (@capacity - 1)) == 0
-      raise ArgumentError.new("Capacity must be a positive power of two")
+  def initialize(@capacity : UInt32 = BUFFER_CAPACITY)
+    unless @capacity >= 2 && (@capacity & (@capacity - 1)) == 0
+      raise ArgumentError.new("Capacity must be a power of two and at least 2")
     end
 
     @mask = (@capacity - 1).to_u64
     @buffer = Array(Cell(P)).new(@capacity) { |i| Cell(P).new(i.to_u64) }
     @tail = Atomic(UInt64).new(0_u64)
     @head = 0_u64
+  end
+
+  def clear : Nil
+    @buffer.each_with_index do |cell, index|
+      cell.sequence.set(index.to_u64)
+    end
+
+    @head = 0_u64
+    @tail.set(0_u64)
+    nil
+  end
+
+  def drained? : Bool
+    @tail.get == @head
   end
 
   def push(event : Event(P)) : Bool
@@ -80,6 +94,26 @@ class Buffer(P)
   def size : UInt32
     t = @tail.get
     h = @head
-    t >= h ? (t - h).to_u32 : 0
+    t >= h ? (t - h).to_u32 : 0_u32
+  end
+
+
+  def debug_pending(label : String) : Nil
+    head = @head
+    tail = @tail.get
+    return if head == tail
+
+    cell = @buffer[(head & @mask).to_i]
+    sequence = cell.sequence.get
+
+    STDERR.puts "#{label}: head=#{head}, tail=#{tail}, sequence=#{sequence}"
+
+    if sequence == head + 1_u64
+      event = cell.event
+      STDERR.puts "  first_event_time=#{event.scheduled_time}"
+    else
+      STDERR.puts "  head cell is NOT published; expected sequence=#{head + 1_u64}"
+    end
+    nil
   end
 end
