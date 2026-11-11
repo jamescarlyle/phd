@@ -1,0 +1,64 @@
+Running SLURM prolog script on ruby053.cluster.local
+===============================================================================
+Job started on Fri Nov  6 13:30:28 GMT 2026
+Job ID          : 2135769
+Job name        : diehl-sigma-4mV-1600neuron
+WorkDir         : /iridisfs/home/jc6n25/brian2-stdp
+Command         : /iridisfs/home/jc6n25/brian2-stdp/diehl_sigma.slurm
+Partition       : amd
+Num hosts       : 1
+Num cores       : 1
+Num of tasks    : 1
+Hosts allocated : ruby053
+Job Output Follows ...
+===============================================================================
+Python: /iridisfs/home/jc6n25/brian2-stdp/.venv/bin/python
+NumPy: 2.5.4
+Brian2: 2.11.0
+
+Starting stage: train
+Saving    (60001, 9)      => /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/train_stats.npy
+Saving    (101, 1254400)  => /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/train_w_hist.npy
+Saving    (1254400,)      => /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/weights.npy
+Saving    (1600,)         => /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/theta.npy
+
+Starting stage: observe
+Loading   /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/theta.npy => (1600,)        
+Loading   /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/weights.npy => (1254400,)     
+Saving    (1600,)         => /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/assign.npy
+Saving    (10001, 9)      => /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/observe_stats.npy
+
+Starting stage: test
+Loading   /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/theta.npy => (1600,)        
+Loading   /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/weights.npy => (1254400,)     
+Accuracy:  0.164
+[[0.14 0.27 0.08 0.07 0.18 0.   0.04 0.04 0.09 0.11]
+ [0.01 0.58 0.07 0.06 0.08 0.   0.02 0.03 0.05 0.09]
+ [0.02 0.42 0.13 0.05 0.12 0.   0.03 0.03 0.1  0.1 ]
+ [0.02 0.41 0.08 0.11 0.13 0.   0.04 0.04 0.07 0.11]
+ [0.01 0.37 0.1  0.05 0.18 0.   0.03 0.03 0.07 0.15]
+ [0.02 0.35 0.1  0.08 0.14 0.   0.03 0.04 0.11 0.12]
+ [0.02 0.38 0.1  0.05 0.13 0.   0.09 0.02 0.07 0.13]
+ [0.01 0.37 0.07 0.06 0.14 0.   0.03 0.09 0.08 0.15]
+ [0.02 0.47 0.08 0.06 0.09 0.   0.04 0.04 0.09 0.12]
+ [0.01 0.38 0.07 0.06 0.15 0.   0.03 0.06 0.06 0.18]]
+Saving    (10, 10)        => /scratch/jc6n25/brian2-sigma/2135769-4mV-1600neuron/data/confusion.npy
+==============================================================================
+Running epilogue script on ruby053.
+
+Submit time  : 2026-11-06T13:29:35
+Start time   : 2026-11-06T13:30:25
+End time     : 2026-11-07T11:13:14
+Elapsed time : 21:42:49 (Timelimit=2-12:00:00)
+
+Job ID: 2135769
+Cluster: iridis_x
+User/Group: jc6n25/fp
+State: COMPLETED (exit code 0)
+Cores: 1
+CPU Utilized: 21:34:36
+CPU Efficiency: 99.37% of 21:42:49 core-walltime
+Job Wall-clock time: 21:42:49
+Memory Utilized: 1.70 GB
+Memory Efficiency: 21.21% of 8.00 GB (8.00 GB/node)
+

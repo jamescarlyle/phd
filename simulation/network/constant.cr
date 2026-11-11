@@ -1,0 +1,9 @@
+WINDOW_BITS = 10
+WINDOW_SIZE = 1 << WINDOW_BITS          # 1024
+WINDOW_COUNT = 1 << WINDOW_BITS         # 1024
+TOTAL_SIZE  = WINDOW_COUNT * WINDOW_SIZE
+LAYER_SIZES = [2312_u16, 100_u16, 100_u16]
+LADDER_SIZE = 3 # LAYER_SIZES.size
+LAYER_LATENCY = WINDOW_SIZE # This means that if an event has a time t at layer 0, it fall into the same slot in the next window at layer 1.
+WORKERS = 4
+LOADERS = 1

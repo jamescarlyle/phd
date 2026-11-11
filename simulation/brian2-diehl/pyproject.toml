@@ -1,0 +1,11 @@
+[project]
+name = "brian2-stdp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "brian2>=2.10.1",
+    "matplotlib>=3.11.2",
+    "progressbar2>=4.6.0",
+]
